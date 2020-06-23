@@ -36,7 +36,7 @@ public class interfazDelivery extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButtonSalirMenu = new javax.swing.JButton();
+        jButtonSalir = new javax.swing.JButton();
         idDestino = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         outputCaminoMasCorto = new javax.swing.JTextField();
@@ -64,16 +64,16 @@ public class interfazDelivery extends javax.swing.JFrame {
         jLabel3.setText("Indique el iD de su destino:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, -1, -1));
 
-        jButtonSalirMenu.setBackground(new java.awt.Color(255, 0, 51));
-        jButtonSalirMenu.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
-        jButtonSalirMenu.setForeground(new java.awt.Color(255, 0, 0));
-        jButtonSalirMenu.setText("Salir");
-        jButtonSalirMenu.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSalir.setBackground(new java.awt.Color(255, 0, 51));
+        jButtonSalir.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
+        jButtonSalir.setForeground(new java.awt.Color(255, 0, 0));
+        jButtonSalir.setText("Salir");
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalirMenuActionPerformed(evt);
+                jButtonSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSalirMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 450, 90, 40));
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 450, 90, 40));
         getContentPane().add(idDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 60, 40));
 
         jLabel4.setText("El camino mas corto entre la empresa y el punto seleccionado es:");
@@ -132,9 +132,9 @@ public class interfazDelivery extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonSalirMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirMenuActionPerformed
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jButtonSalirMenuActionPerformed
+    }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void jButtonMenuDeliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuDeliveryActionPerformed
         interfazMenu a = new interfazMenu();
@@ -152,7 +152,7 @@ public class interfazDelivery extends javax.swing.JFrame {
         FileReader leer;
         BufferedReader almacenamiento;
         String cadena, texto="";
-        miArchivo = new File("ArchivoDeTexto.txt");
+        miArchivo = new File("ArchivoDeTextoClientes.txt");
         
         try {
             leer = new FileReader(miArchivo);
@@ -216,7 +216,7 @@ public class interfazDelivery extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDFS;
     private javax.swing.JButton jButtonEnterRegistro;
     private javax.swing.JButton jButtonMenuDelivery;
-    private javax.swing.JButton jButtonSalirMenu;
+    private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

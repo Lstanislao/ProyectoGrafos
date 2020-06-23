@@ -31,7 +31,7 @@ public class interfazMenu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButtonSalirMenu = new javax.swing.JButton();
+        jButtonSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,16 +63,16 @@ public class interfazMenu extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 120, 40));
 
-        jButtonSalirMenu.setBackground(new java.awt.Color(255, 0, 51));
-        jButtonSalirMenu.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
-        jButtonSalirMenu.setForeground(new java.awt.Color(255, 0, 0));
-        jButtonSalirMenu.setText("Salir");
-        jButtonSalirMenu.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSalir.setBackground(new java.awt.Color(255, 0, 51));
+        jButtonSalir.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
+        jButtonSalir.setForeground(new java.awt.Color(255, 0, 0));
+        jButtonSalir.setText("Salir");
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSalirMenuActionPerformed(evt);
+                jButtonSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSalirMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 262, 90, 40));
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 262, 90, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/wallpaper.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 494, 309));
@@ -80,9 +80,9 @@ public class interfazMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonSalirMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirMenuActionPerformed
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jButtonSalirMenuActionPerformed
+    }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         interfazDelivery a = new interfazDelivery();
@@ -136,7 +136,7 @@ public class interfazMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButtonSalirMenu;
+    private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
