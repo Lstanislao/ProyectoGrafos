@@ -15,7 +15,7 @@ public class FloydWarshall {
     int[][] dist;
     int[][] camino;
 
-    public String Floyd(int inicio, int end, Grafo grafo) {
+    public String[] Floyd(int inicio, int end, Grafo grafo) {
         num = grafo.getnVertices(); // Es el numero de vertices
         dist = new int[num][num]; // Guardara la distancia mas corta entre pares
         camino = new int[num][num]; // Guardara indices para reconstruir el camino mas corto
@@ -47,9 +47,8 @@ public class FloydWarshall {
         return CaminoMasCorto(inicio, end);
     }
 
-    public String CaminoMasCorto(int inicio, int end) {
-        String ruta = "Distancia: " + dist[inicio][end] + "\n\n" 
-                + Integer.toString(inicio + 1);
+    public String[] CaminoMasCorto(int inicio, int end) {
+        String ruta = Integer.toString(inicio + 1);
         int max = 999999999;
         // Se reconstruye la ruta del camino mas corto
         if (dist[inicio][end] != max && inicio != end) {
@@ -57,10 +56,10 @@ public class FloydWarshall {
             int v = end + 1;
             do {
                 u = camino[u - 1][v - 1];
-                ruta += " -> " + u;
+                ruta += ","+ (u - 1);
             } while (u != v);
         }
-        return ruta;
+        return ruta.split(",");
     }
 
 }
