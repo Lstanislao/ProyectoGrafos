@@ -5,6 +5,7 @@
  */
 package Ventanas;
 
+import Grafo.Central;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -172,12 +173,14 @@ public class interfazDelivery extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
         }*/
-
+        
+        String ultimoCargado = Central.Actual;
         if (seleccionado.showDialog(this, "CARGAR ARCHIVO") == JFileChooser.APPROVE_OPTION) {
             archivo = seleccionado.getSelectedFile();
             if (archivo.canRead()) {
                 if (archivo.getName().endsWith("txt")) {
                     nombreDelArchivoTxtSeleccionado = archivo.getName();
+                    ultimoCargado = Central.Actual;
                 } else {
                     JOptionPane.showMessageDialog(null, "ERROR. Por favor seleccione un archivo de texto (.txt)");
                 }
@@ -205,7 +208,7 @@ public class interfazDelivery extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        Central.CargarGrafo();
     }//GEN-LAST:event_jButtonActualizarListaActionPerformed
 
     /**

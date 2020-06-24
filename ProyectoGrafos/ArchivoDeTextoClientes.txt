@@ -10,3 +10,4 @@
 10, Guille, Los Chorros, Ave 6
 11, Guillermo Sosa, Los Chorros, Intento #5
 12, GSOSA, Urb, Calle
+13, luis, stanislao, sa

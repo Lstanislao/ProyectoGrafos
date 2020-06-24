@@ -5,16 +5,90 @@
  */
 package Grafo;
 
+import Ventanas.interfazDelivery;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Luis Stanislao
  */
 public class Central {
+    
     public static Grafo graph = new Grafo(10);
+    public static String Actual;
 
+    public static String getActual() {return Actual;}
+
+    public static void setActual(String Actual) {Central.Actual = Actual;}
+    
     public static Grafo getGraph() {return graph;}
 
     public static void setGraph(Grafo graph) {Central.graph = graph;}
+    
+    public static void CargarGrafo()
+    {
+        //Grafo mygraph = Central.getGraph();
+        Grafo mygraph = new Grafo(10);
+        File miArchivo;
+        File ruta;
+        FileReader leer;
+        BufferedReader almacenamiento;
+        String nombre, linea,cadena[];
+        int v1,v2,distancia;
+        
+        
+        miArchivo = new File(Actual);
+        
+        try {
+            leer = new FileReader(miArchivo);
+            almacenamiento = new BufferedReader(leer);
+            
+            try {
+                while((linea = almacenamiento.readLine())!=null){
+                    cadena=linea.split(",");
+                    nombre=cadena[1];
+                    mygraph.NuevoV(nombre);
+                }
+                
+            } catch (IOException ex) {
+                Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        ruta=new File(Actual);
+        
+        try {
+            leer = new FileReader(ruta);
+            almacenamiento = new BufferedReader(leer);
+            
+            try {
+                while((linea = almacenamiento.readLine())!=null){
+                    System.out.println("hola");
+                    cadena=linea.split(",");
+                    v1=Integer.parseInt(cadena[0].replaceAll(" ", ""));
+                    v2=Integer.parseInt(cadena[1].replaceAll(" ", ""));
+                    distancia=Integer.parseInt(cadena[2].replaceAll(" ", ""));
+                    mygraph.NuevoA(v1,v2,distancia);
+                }
+                
+            } catch (IOException ex) {
+                Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        graph=mygraph; 
+    }
     
     
 }

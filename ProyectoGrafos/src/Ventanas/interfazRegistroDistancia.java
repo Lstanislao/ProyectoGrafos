@@ -212,12 +212,14 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
             Grafo mygraph = Central.getGraph();
             //UNA COSA SI SE LE VA PASAR UN ID AL GRAFO HAY QUE RESTARLE 1 PORQUE EN EL ARREGLO DONDE ESTAN EMPIEZA DESDE 0
             boolean valido = mygraph.NuevoA((Integer.parseInt(verticeOrigen.getText())) - 1, (Integer.parseInt(verticeNuevo.getText())) - 1, Integer.parseInt(distanciaEntreVertices.getText()));
+            mygraph.imprimirTabla();
             if (valido) {
                 File archivo;
                 FileWriter escribir;
                 PrintWriter linea;
                 String cadena = "";
-                archivo = new File(nombreDelArchivoTxtSeleccionado.replace("CLIENTES", "CAMINOS"));
+                nombreDelArchivoTxtSeleccionado=Central.getActual();
+                archivo = new File(nombreDelArchivoTxtSeleccionado.replace("CLIENTES","CAMINOS"));
                
                 if (!archivo.exists()) {
                     try {
@@ -269,7 +271,6 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "ERROR. Por favor ingrese valores numericos");
         }
-
     }//GEN-LAST:event_registrarDatosActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
