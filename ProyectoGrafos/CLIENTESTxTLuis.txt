@@ -1,0 +1,6 @@
+1, Luis, 1, 1
+2, Oriana, 2, 2
+3, Alex, 6, 6
+4, Juan, g, h
+5, miguel, 7, 8
+6, Allan, h, g

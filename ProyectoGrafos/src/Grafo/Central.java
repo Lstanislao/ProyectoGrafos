@@ -64,7 +64,7 @@ public class Central {
             Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        ruta=new File(Actual);
+        ruta=new File(Actual.replace("CLIENTES","CAMINOS"));
         
         try {
             leer = new FileReader(ruta);
@@ -72,10 +72,10 @@ public class Central {
             
             try {
                 while((linea = almacenamiento.readLine())!=null){
-                    System.out.println("hola");
+                    
                     cadena=linea.split(",");
-                    v1=Integer.parseInt(cadena[0].replaceAll(" ", ""));
-                    v2=Integer.parseInt(cadena[1].replaceAll(" ", ""));
+                    v1=(Integer.parseInt(cadena[0].replaceAll(" ", "")))-1;
+                    v2=(Integer.parseInt(cadena[1].replaceAll(" ", "")))-1;
                     distancia=Integer.parseInt(cadena[2].replaceAll(" ", ""));
                     mygraph.NuevoA(v1,v2,distancia);
                 }

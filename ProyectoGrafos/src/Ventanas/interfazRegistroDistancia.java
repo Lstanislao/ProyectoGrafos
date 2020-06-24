@@ -105,6 +105,12 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
             }
         });
         getContentPane().add(verticeOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 50, 40));
+
+        verticeNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verticeNuevoActionPerformed(evt);
+            }
+        });
         getContentPane().add(verticeNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, 50, 40));
 
         jButtonSalir.setBackground(new java.awt.Color(255, 255, 255));
@@ -283,6 +289,10 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
     private void verticeOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verticeOrigenActionPerformed
 
     }//GEN-LAST:event_verticeOrigenActionPerformed
+
+    private void verticeNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verticeNuevoActionPerformed
+        
+    }//GEN-LAST:event_verticeNuevoActionPerformed
 
     /**
      * @param args the command line arguments

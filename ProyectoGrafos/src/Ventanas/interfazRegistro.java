@@ -176,7 +176,7 @@ public class interfazRegistro extends javax.swing.JFrame {
                     Logger.getLogger(interfazRegistro.class.getName()).log(Level.SEVERE, null, ex);
                 }
             nuevoTxt=false;  
-        } else if((!cargarArchivo))
+        } /*else if((!cargarArchivo))
         {
             //System.out.println(ultimoCargado+"FLAG");
             //System.out.println("segundo");
@@ -208,9 +208,7 @@ public class interfazRegistro extends javax.swing.JFrame {
 
             } catch (IOException ex) {
                 Logger.getLogger(interfazRegistro.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        }
+            }*/
         else {
             try {
                 FileReader leer;
