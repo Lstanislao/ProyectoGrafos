@@ -41,7 +41,6 @@ public class interfazDelivery extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButtonSalir = new javax.swing.JButton();
         idDestino = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         outputCaminoMasCorto = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jButtonBFS = new javax.swing.JButton();
@@ -53,6 +52,9 @@ public class interfazDelivery extends javax.swing.JFrame {
         jButtonActualizarLista = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         clientesRegistrados = new javax.swing.JTextPane();
+        jLabel7 = new javax.swing.JLabel();
+        jButtonEnterRegistro1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,14 +62,13 @@ public class interfazDelivery extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 153, 102));
         jLabel2.setText("DELIVERY");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jLabel3.setText("Indique el iD de su destino:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, -1, -1));
+        jLabel3.setText("Oprima uno de los sig. botones para ver la distantcia mas corta por el metodo Floyd o Dijkstra:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
 
-        jButtonSalir.setBackground(new java.awt.Color(255, 0, 51));
+        jButtonSalir.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSalir.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
         jButtonSalir.setForeground(new java.awt.Color(255, 0, 0));
         jButtonSalir.setText("Salir");
@@ -76,14 +77,11 @@ public class interfazDelivery extends javax.swing.JFrame {
                 jButtonSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 450, 90, 40));
-        getContentPane().add(idDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 60, 40));
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 570, 90, 40));
+        getContentPane().add(idDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 50, 30));
+        getContentPane().add(outputCaminoMasCorto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 720, 30));
 
-        jLabel4.setText("El camino mas corto entre la empresa y el punto seleccionado es:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, -1, -1));
-        getContentPane().add(outputCaminoMasCorto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 450, 30));
-
-        jLabel5.setText("Grafo:");
+        jLabel5.setText("Impresión del Grafo:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, -1, -1));
 
         jButtonBFS.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -96,9 +94,9 @@ public class interfazDelivery extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jTextPane1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 340, 320));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 340, 230));
 
-        jButtonMenuDelivery.setBackground(new java.awt.Color(255, 0, 51));
+        jButtonMenuDelivery.setBackground(new java.awt.Color(255, 255, 255));
         jButtonMenuDelivery.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
         jButtonMenuDelivery.setForeground(new java.awt.Color(0, 153, 102));
         jButtonMenuDelivery.setText("Menu");
@@ -107,15 +105,15 @@ public class interfazDelivery extends javax.swing.JFrame {
                 jButtonMenuDeliveryActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonMenuDelivery, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 450, 90, 40));
+        getContentPane().add(jButtonMenuDelivery, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 90, 40));
 
-        jButtonEnterRegistro.setText("ENTER");
+        jButtonEnterRegistro.setText("DIJKSTR");
         jButtonEnterRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEnterRegistroActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonEnterRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, 50, 40));
+        getContentPane().add(jButtonEnterRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 480, 80, 40));
 
         jButtonActualizarLista.setText("SELECCIONAR LISTA");
         jButtonActualizarLista.addActionListener(new java.awt.event.ActionListener() {
@@ -129,8 +127,23 @@ public class interfazDelivery extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 320, 260));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/wallpaper.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 502));
+        jLabel7.setText("A continuacion, indique el iD de su destino:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
+
+        jButtonEnterRegistro1.setText("FLOYD");
+        jButtonEnterRegistro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEnterRegistro1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonEnterRegistro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 80, 40));
+
+        jLabel6.setFont(new java.awt.Font("Lucida Grande", 2, 18)); // NOI18N
+        jLabel6.setText("OBTENCION DEL CAMINO MAS CORTO ENTRE LA EMPRESA Y UN DESTINO:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/morado.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 620));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -211,6 +224,10 @@ public class interfazDelivery extends javax.swing.JFrame {
         Central.CargarGrafo();
     }//GEN-LAST:event_jButtonActualizarListaActionPerformed
 
+    private void jButtonEnterRegistro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnterRegistro1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEnterRegistro1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -253,13 +270,15 @@ public class interfazDelivery extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBFS;
     private javax.swing.JButton jButtonDFS;
     private javax.swing.JButton jButtonEnterRegistro;
+    private javax.swing.JButton jButtonEnterRegistro1;
     private javax.swing.JButton jButtonMenuDelivery;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextPane jTextPane1;
