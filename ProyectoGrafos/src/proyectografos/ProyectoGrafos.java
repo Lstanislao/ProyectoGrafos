@@ -6,7 +6,7 @@
 package proyectografos;
 
 import Grafo.*;
-import static Grafo.DibujarGrafo.*;
+//import static Grafo.DibujarGrafo.*;
 import Grafo.FloydWarshall;
 import Grafo.Dijkstra;
 import Ventanas.interfazMenu;
@@ -45,8 +45,8 @@ public class ProyectoGrafos {
 
         
         /*
-        Grafo prueba = new Grafo(9);
-        prueba.NuevoV("empresa");
+         Grafo prueba = new Grafo(20);
+        prueba.NuevoV("Empresa");
         prueba.NuevoV("b");
         prueba.NuevoV("c");
         prueba.NuevoV("d");
@@ -55,35 +55,48 @@ public class ProyectoGrafos {
         prueba.NuevoV("g");
         prueba.NuevoV("h");
         prueba.NuevoV("i");
+        prueba.NuevoV("j");
+        prueba.NuevoV("k");
+        prueba.NuevoV("l");
         
         
         
-        prueba.NuevoA(0, 1, 4);
-        prueba.NuevoA(0, 6, 4);
-        prueba.NuevoA(0, 8, 7);
-        prueba.NuevoA(0, 2, 20);
-        prueba.NuevoA(1, 5, 1);
-        prueba.NuevoA(1, 3, 9);
-        prueba.NuevoA(3, 8, 9);
-        prueba.NuevoA(3, 4, 4);
-        prueba.NuevoA(3, 6, 3);
-        prueba.NuevoA(4, 1, 10);
-        prueba.NuevoA(5, 7, 6);
-        prueba.NuevoA(5, 2, 4);
-        prueba.NuevoA(6, 2, 6);
-        prueba.NuevoA(6, 8, 7);
+        prueba.NuevoA(0, 5, 4);
+        prueba.NuevoA(0, 2, 11);
+        prueba.NuevoA(0, 6, 13);
+        prueba.NuevoA(1, 6, 5);
+        prueba.NuevoA(2, 1, 3);
+        prueba.NuevoA(3, 6, 10);
+        prueba.NuevoA(3, 0, 1);
+        prueba.NuevoA(4, 5, 3);
+        prueba.NuevoA(5, 1, 7);
+        prueba.NuevoA(5, 3, 8);
+        prueba.NuevoA(6, 4, 7);
+        prueba.NuevoA(6, 11, 6);
+        prueba.NuevoA(3, 8, 8);
+        prueba.NuevoA(11, 9, 7);
+        prueba.NuevoA(8, 7, 4);
+        prueba.NuevoA(8, 9, 12);
+        prueba.NuevoA(7, 10, 10);
+        prueba.NuevoA(9, 10, 2);
         
         
         Dibujar(prueba);
 
-        FloydWarshall sos = new FloydWarshall();
+        FloydW sos = new FloydW();
         System.out.println("Prueba");
-        String[] camino = sos.Floyd(0, 3, prueba);
+        String[] camino = sos.Floyd(0, 9, prueba);
         for (int i = 0; i < camino.length; i++) {
             System.out.println(camino[i]);
         }
         
         DibujarRutaMasCorta(prueba, camino);
+        
+        Dijkstra sos2 = new Dijkstra(prueba, 0, 9);
+        sos2.CaminoDijkstra();
+        String[] camino2 = sos2.caminoformato(sos2.recuperaCamino(9, ""));
+        DibujarRutaMasCorta(prueba, camino2);
+
        */
         
 

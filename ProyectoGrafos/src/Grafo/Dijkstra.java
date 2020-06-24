@@ -74,36 +74,37 @@ public class Dijkstra {
         if (v != Orig) {  
             cadena=cadena+","+v;
             cadena=recuperaCamino(anterior,cadena);
-            System.out.print(" -> V" + v); 
+            //System.out.print(" -> V" + v); 
             
         }else
         {
-            System.out.print("V" + Orig);
+            //System.out.print("V" + Orig);
             cadena=cadena+",0";
         } 
         return cadena;
     }
     
-    public String caminoformato(String cadena)
+    public String[] caminoformato(String cadena)
     {
 
         String s [] = cadena.split(",");
 
         
-        String inverse="";
-        int j = s.length-1;
         
-        for (int i = 0; i < s.length-1; i++) 
+        int j = s.length-1;
+        String inverse=s[j];
+        j--;
+        for (int i = 1; i < s.length-1; i++) 
         {
             
-            inverse=inverse+s[j]+",";
+            inverse=inverse+","+ s[j];
 
             j--;
            
         }
 ;
 
-        return inverse;
+        return inverse.split(",");
     }
     
     private int MenorDistacia()
