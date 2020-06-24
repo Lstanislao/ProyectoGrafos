@@ -27,7 +27,7 @@ public class interfazMenu extends javax.swing.JFrame {
         
         initComponents();
         this.setLocationRelativeTo(null);
-        File miArchivo;
+       /* File miArchivo;
         File ruta;
         FileReader leer;
         BufferedReader almacenamiento;
@@ -79,7 +79,7 @@ public class interfazMenu extends javax.swing.JFrame {
             Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
+        */
     }
 
     /**

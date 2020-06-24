@@ -217,7 +217,7 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
                 FileWriter escribir;
                 PrintWriter linea;
                 String cadena = "";
-                archivo = new File("DISTANCIAS" + nombreDelArchivoTxtSeleccionado);
+                archivo = new File(nombreDelArchivoTxtSeleccionado.replace("CLIENTES", "CAMINOS"));
                
                 if (!archivo.exists()) {
                     try {
