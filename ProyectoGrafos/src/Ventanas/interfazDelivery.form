@@ -187,7 +187,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonActualizarLista">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ACTUALIZAR LISTA"/>
+        <Property name="text" type="java.lang.String" value="SELECCIONAR LISTA"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonActualizarListaActionPerformed"/>

@@ -27,7 +27,7 @@ public class interfazMenu extends javax.swing.JFrame {
         
         initComponents();
         this.setLocationRelativeTo(null);
-       /* File miArchivo;
+        File miArchivo;
         File ruta;
         FileReader leer;
         BufferedReader almacenamiento;
@@ -77,7 +77,7 @@ public class interfazMenu extends javax.swing.JFrame {
             
         } catch (FileNotFoundException ex) {
             Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
         
         
     }
@@ -102,7 +102,7 @@ public class interfazMenu extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 270, 210));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 270, 210));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
@@ -113,7 +113,7 @@ public class interfazMenu extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 120, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 120, 40));
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
@@ -124,7 +124,7 @@ public class interfazMenu extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 120, 40));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 120, 40));
 
         jButtonSalir.setBackground(new java.awt.Color(255, 0, 51));
         jButtonSalir.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N

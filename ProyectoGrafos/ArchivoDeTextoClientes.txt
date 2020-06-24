@@ -6,3 +6,7 @@
 6, mm, f, f
 7, , , 
 8, guillermo, no se, tampoco
+9, Guillermo Sosa, Los Chorros, Ave 6
+10, Guille, Los Chorros, Ave 6
+11, Guillermo Sosa, Los Chorros, Intento #5
+12, GSOSA, Urb, Calle

@@ -5,14 +5,14 @@
  */
 package Grafo;
 
-import org.graphstream.graph.*;
-import org.graphstream.graph.implementations.SingleGraph;
+//import org.graphstream.graph.*;
+//import org.graphstream.graph.implementations.SingleGraph;
 
 /**
  *
  * @author orian
  */
-public class DibujarGrafo {
+//public class DibujarGrafo {
     /*
     En esta clase se utiliza la libreria GraphStream (http://graphstream-project.org/) 
     para representar el grafo de forma grafica
@@ -20,7 +20,7 @@ public class DibujarGrafo {
     
     /* Aqui se especifica todo lo referente al estilo de los vertices y aristas 
     al graficar*/
-    protected static String estilo = ""
+/*    protected static String estilo = ""
         + " node {"
         + "     fill-color: rgb(35,154,198);"
         + "     text-size: 40;"
@@ -57,20 +57,20 @@ public class DibujarGrafo {
         + "     text-size: 30;"
         + "     text-alignment: right;"
         + " }";
-
+*/
     /* 
     Esta funcion se encarga de representar graficamente el grafo recibido 
     como argumento
     */
-    public static void Dibujar(Grafo g) {
+/*    public static void Dibujar(Grafo g) {
 
         Graph graph = new SingleGraph("Clientes");
 
         graph.addAttribute("ui.stylesheet", estilo);
-
+*/
         /* A partir del grafo recibido agrego los vertices y aristas en un nuevo
         grafo que pertenece a la clase grafo de la libreria*/
-        for (int i = 0; i < g.getnVertices(); i++) {
+/*        for (int i = 0; i < g.getnVertices(); i++) {
             Node n = graph.addNode(g.Vertices[i].getNombre());
             n.addAttribute("ui.label", i);
             System.out.println("agregue vertice " + i);
@@ -90,21 +90,21 @@ public class DibujarGrafo {
         // Una vez que el grafo esta construido, lo muestro al usuario
         graph.display();
     }
-
+*/
     /* 
     Esta funcion se encarga de representar graficamente el grafo recibido como 
     argumento, señalando el camino mas corto entre dos vertices
     */
     
-    public static void DibujarRutaMasCorta(Grafo g, String[] camino) {
+/*    public static void DibujarRutaMasCorta(Grafo g, String[] camino) {
         Graph graph = new SingleGraph("Ruta corta");
 
         graph.addAttribute("ui.stylesheet", estilo);
-        /* A partir del grafo recibido agrego los vertices y aristas en un nuevo
+/*        /* A partir del grafo recibido agrego los vertices y aristas en un nuevo
         grafo que pertenece a la clase grafo de la libreria. Me aseguro de marcar
         los vertices y aristas qeu formen parte del recorrido, para poder 
         mostrarlo*/
-        for (int i = 0; i < g.getnVertices(); i++) {
+/*        for (int i = 0; i < g.getnVertices(); i++) {
             Node n = graph.addNode(g.Vertices[i].getNombre());
 
             if (Pertenece(i, camino)) {
@@ -144,3 +144,4 @@ public class DibujarGrafo {
         return existe;
     }
 }
+*/

@@ -5,10 +5,11 @@
  */
 package Ventanas;
 
-
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,9 +17,10 @@ import java.util.logging.Logger;
  */
 public class interfazDelivery extends javax.swing.JFrame {
 
-    /**
-     * Creates new form interfazDelivery
-     */
+    JFileChooser seleccionado = new JFileChooser();
+    File archivo;
+    String nombreDelArchivoTxtSeleccionado;
+
     public interfazDelivery() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -114,7 +116,7 @@ public class interfazDelivery extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonEnterRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, 50, 40));
 
-        jButtonActualizarLista.setText("ACTUALIZAR LISTA");
+        jButtonActualizarLista.setText("SELECCIONAR LISTA");
         jButtonActualizarLista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonActualizarListaActionPerformed(evt);
@@ -148,7 +150,7 @@ public class interfazDelivery extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEnterRegistroActionPerformed
 
     private void jButtonActualizarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarListaActionPerformed
-        File miArchivo;
+        /*File miArchivo;
         FileReader leer;
         BufferedReader almacenamiento;
         String cadena, texto="";
@@ -169,8 +171,41 @@ public class interfazDelivery extends javax.swing.JFrame {
             
         } catch (FileNotFoundException ex) {
             Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+
+        if (seleccionado.showDialog(this, "CARGAR ARCHIVO") == JFileChooser.APPROVE_OPTION) {
+            archivo = seleccionado.getSelectedFile();
+            if (archivo.canRead()) {
+                if (archivo.getName().endsWith("txt")) {
+                    nombreDelArchivoTxtSeleccionado = archivo.getName();
+                } else {
+                    JOptionPane.showMessageDialog(null, "ERROR. Por favor seleccione un archivo de texto (.txt)");
+                }
+            }
         }
-        
+        File miArchivo;
+        FileReader leer;
+        BufferedReader almacenamiento;
+        String cadena, texto = "";
+        miArchivo = new File(nombreDelArchivoTxtSeleccionado);
+
+        try {
+            leer = new FileReader(miArchivo);
+            almacenamiento = new BufferedReader(leer);
+
+            try {
+                while ((cadena = almacenamiento.readLine()) != null) {
+                    texto += cadena + "\n";
+                }
+                clientesRegistrados.setText(texto);
+            } catch (IOException ex) {
+                Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jButtonActualizarListaActionPerformed
 
     /**

@@ -15,16 +15,28 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author sosag
  */
 public class interfazRegistroDistancia extends javax.swing.JFrame {
+    
+    JFileChooser seleccionado = new JFileChooser();
+    File archivo;
+    String nombreDelArchivoTxtSeleccionado;
+    public boolean Validacion(String cadena) {
+        int num;
+        try {
+            num = Integer.parseInt(cadena);
+            return true;
+        } catch (Exception e) {
+        }
+        return false;
+    }
 
-    /**
-     * Creates new form interfazRegistroDistancia
-     */
     public interfazRegistroDistancia() {
         initComponents();
     }
@@ -42,7 +54,7 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         clientesRegistrados = new javax.swing.JTextPane();
-        jButtonActualizarLista = new javax.swing.JButton();
+        jButtonSeleccionarLista = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         distanciaEntreVertices = new javax.swing.JTextField();
@@ -70,13 +82,13 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 440, 230));
 
-        jButtonActualizarLista.setText("ACTUALIZAR LISTA");
-        jButtonActualizarLista.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSeleccionarLista.setText("SELECCIONAR LISTA");
+        jButtonSeleccionarLista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonActualizarListaActionPerformed(evt);
+                jButtonSeleccionarListaActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonActualizarLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, -1, -1));
+        getContentPane().add(jButtonSeleccionarLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel7.setText("iD Cliente Origen :");
@@ -86,6 +98,12 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
         jLabel8.setText("iD Cliente Nuevo :");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, -1, -1));
         getContentPane().add(distanciaEntreVertices, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, 50, 40));
+
+        verticeOrigen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verticeOrigenActionPerformed(evt);
+            }
+        });
         getContentPane().add(verticeOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 50, 40));
         getContentPane().add(verticeNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 370, 50, 40));
 
@@ -136,12 +154,22 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonActualizarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarListaActionPerformed
+    private void jButtonSeleccionarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeleccionarListaActionPerformed
+        if (seleccionado.showDialog(this,"CARGAR ARCHIVO")==JFileChooser.APPROVE_OPTION) {
+            archivo = seleccionado.getSelectedFile();
+            if (archivo.canRead()) {
+                if (archivo.getName().endsWith("txt")) {
+                    nombreDelArchivoTxtSeleccionado = archivo.getName();
+                }else{
+                    JOptionPane.showMessageDialog(null, "ERROR. Por favor seleccione un archivo de texto (.txt)");
+                }
+            }
+        }   
         File miArchivo;
         FileReader leer;
         BufferedReader almacenamiento;
         String cadena, texto = "";
-        miArchivo = new File("ArchivoDeTextoClientes.txt");
+        miArchivo = new File(nombreDelArchivoTxtSeleccionado);
 
         try {
             leer = new FileReader(miArchivo);
@@ -160,7 +188,7 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
             Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }//GEN-LAST:event_jButtonActualizarListaActionPerformed
+    }//GEN-LAST:event_jButtonSeleccionarListaActionPerformed
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
         System.exit(0);
@@ -174,65 +202,74 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMenuRegDistActionPerformed
 
     private void registrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarDatosActionPerformed
-        Grafo mygraph  = Central.getGraph();
-        //HAY QUE VALIDAR QUE LO INTRODUCE EL USUARIO ES UN NUMERO PARA LUEGO MANDARLO A VALIDO SI ID SON VALIDOS QUE YA ESAS VALIDACION DE HACE INTERNA EN EL PROCEDIMITO
-        //UNA COSA SI SE LE VA PASAR UN ID AL GRAFO HAY QUE RESTARLE 1 PORQUE EN EL ARREGLO DONDE ESTAN EMPIEZA DESDE 0
-        boolean valido = mygraph.NuevoA((Integer.parseInt(verticeOrigen.getText()))-1,(Integer.parseInt(verticeNuevo.getText()))-1,Integer.parseInt(distanciaEntreVertices.getText()));
-        if(valido)
-        {
-        File archivo;
-        FileWriter escribir;
-        PrintWriter linea;
-        String cadena = "";
-        archivo = new File("ArchivoDeTextoDistancias.txt");
-        if (!archivo.exists()) {
-            try {
-                archivo.createNewFile();
-                cadena = verticeOrigen.getText() + ", " + verticeNuevo.getText() + ", " + distanciaEntreVertices.getText();
-                escribir = new FileWriter(archivo, true);
-                linea = new PrintWriter(escribir);
-                linea.println(cadena);
-                linea.close();
-                escribir.close();
+        
+        boolean valid1 = Validacion(verticeOrigen.getText());
+        boolean valid2 = Validacion(verticeNuevo.getText());
+        boolean valid3 = Validacion(distanciaEntreVertices.getText());
 
-            } catch (IOException ex) {
-                Logger.getLogger(interfazRegistro.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            try {
-                FileReader leer;
-                BufferedReader almacenamiento;
-                try {
-                    leer = new FileReader(archivo);
-                    almacenamiento = new BufferedReader(leer);
+        if (valid1 != false && valid2 != false && valid3 != false) {
+
+            Grafo mygraph = Central.getGraph();
+            //UNA COSA SI SE LE VA PASAR UN ID AL GRAFO HAY QUE RESTARLE 1 PORQUE EN EL ARREGLO DONDE ESTAN EMPIEZA DESDE 0
+            boolean valido = mygraph.NuevoA((Integer.parseInt(verticeOrigen.getText())) - 1, (Integer.parseInt(verticeNuevo.getText())) - 1, Integer.parseInt(distanciaEntreVertices.getText()));
+            if (valido) {
+                File archivo;
+                FileWriter escribir;
+                PrintWriter linea;
+                String cadena = "";
+                archivo = new File("DISTANCIAS" + nombreDelArchivoTxtSeleccionado);
+               
+                if (!archivo.exists()) {
                     try {
-                        while (almacenamiento.readLine() != null) {
-                        }
+                        archivo.createNewFile();
+                        cadena = verticeOrigen.getText() + ", " + verticeNuevo.getText() + ", " + distanciaEntreVertices.getText();
+                        escribir = new FileWriter(archivo, true);
+                        linea = new PrintWriter(escribir);
+                        linea.println(cadena);
+                        linea.close();
+                        escribir.close();
+
                     } catch (IOException ex) {
-                        Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(interfazRegistro.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
+                } else {
+                    try {
+                        FileReader leer;
+                        BufferedReader almacenamiento;
+                        try {
+                            leer = new FileReader(archivo);
+                            almacenamiento = new BufferedReader(leer);
+                            try {
+                                while (almacenamiento.readLine() != null) {
+                                }
+                            } catch (IOException ex) {
+                                Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        } catch (FileNotFoundException ex) {
+                            Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
+                        cadena = verticeOrigen.getText() + ", " + verticeNuevo.getText() + ", " + distanciaEntreVertices.getText();
+                        escribir = new FileWriter(archivo, true);
+                        linea = new PrintWriter(escribir);
+                        linea.println(cadena);
+                        linea.close();
+                        escribir.close();
+
+                    } catch (IOException ex) {
+                        Logger.getLogger(interfazRegistro.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
 
-                cadena = verticeOrigen.getText() + ", " + verticeNuevo.getText() + ", " + distanciaEntreVertices.getText();
-                escribir = new FileWriter(archivo, true);
-                linea = new PrintWriter(escribir);
-                linea.println(cadena);
-                linea.close();
-                escribir.close();
-
-            } catch (IOException ex) {
-                Logger.getLogger(interfazRegistro.class.getName()).log(Level.SEVERE, null, ex);
-            } 
+            }
+            interfazRegistroDistancia a = new interfazRegistroDistancia();
+            a.setVisible(true);
+            a.setLocationRelativeTo(null);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "ERROR. Por favor ingrese valores numericos");
         }
-        
 
-        }
-        interfazRegistroDistancia a = new interfazRegistroDistancia();
-        a.setVisible(true);
-        a.setLocationRelativeTo(null);
-        this.setVisible(false);
     }//GEN-LAST:event_registrarDatosActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -241,6 +278,10 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
         distanciaEntreVertices.setText("");
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void verticeOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verticeOrigenActionPerformed
+
+    }//GEN-LAST:event_verticeOrigenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -281,9 +322,9 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
     private javax.swing.JTextPane clientesRegistrados;
     private javax.swing.JTextField distanciaEntreVertices;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButtonActualizarLista;
     private javax.swing.JButton jButtonMenuRegDist;
     private javax.swing.JButton jButtonSalir;
+    private javax.swing.JButton jButtonSeleccionarLista;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
