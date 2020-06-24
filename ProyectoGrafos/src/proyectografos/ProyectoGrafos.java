@@ -5,8 +5,9 @@
  */
 package proyectografos;
 
-import Grafo.Grafo;
+import Grafo.*;
 import Grafo.FloydWarshall;
+import Grafo.Dijkstra;
 import Ventanas.interfazMenu;
 
 /**
@@ -21,6 +22,29 @@ public class ProyectoGrafos {
     public static void main(String[] args) {
         interfazMenu a = new interfazMenu();
         a.setVisible(true);
+        
+       /* Grafo nuevo = Central.getGraph();
+        
+        //nuevo.imprimirTabla();
+        nuevo.NuevoV("A");
+        nuevo.NuevoV("B");
+        nuevo.NuevoV("C");
+        nuevo.NuevoV("D");
+        nuevo.NuevoV("F");
+        nuevo.NuevoA(0, 1, 20);
+        nuevo.NuevoA(0, 2, 5);
+        nuevo.NuevoA(0, 3, 10);
+        nuevo.NuevoA(4, 3, 50);
+        nuevo.NuevoA(1, 4, 30);
+        Dijkstra busqueda = new Dijkstra(nuevo,0,4); 
+        busqueda.CaminoDijkstra();
+        String cadena =busqueda.recuperaCamino(4,"");
+        busqueda.caminoformato(cadena);
+        System.out.println(cadena);*/
+
+        
+        
+        
 
     }
     

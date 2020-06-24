@@ -5,6 +5,15 @@
  */
 package Ventanas;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import Grafo.*;
+
 /**
  *
  * @author sosag
@@ -15,8 +24,62 @@ public class interfazMenu extends javax.swing.JFrame {
      * Creates new form interfazMenu
      */
     public interfazMenu() {
+        
         initComponents();
         this.setLocationRelativeTo(null);
+       /* File miArchivo;
+        File ruta;
+        FileReader leer;
+        BufferedReader almacenamiento;
+        String nombre, linea,cadena[];
+        int v1,v2,distancia;
+        Grafo mygraph = Central.getGraph();
+        
+        miArchivo = new File("ArchivoDeTextoClientes.txt");
+        
+        try {
+            leer = new FileReader(miArchivo);
+            almacenamiento = new BufferedReader(leer);
+            
+            try {
+                while((linea = almacenamiento.readLine())!=null){
+                    cadena=linea.split(",");
+                    nombre=cadena[1];
+                    mygraph.NuevoV(nombre);
+                }
+                
+            } catch (IOException ex) {
+                Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        ruta=new File("ArchivoDeTextoDistancias.txt");
+        
+        try {
+            leer = new FileReader(ruta);
+            almacenamiento = new BufferedReader(leer);
+            
+            try {
+                while((linea = almacenamiento.readLine())!=null){
+                    cadena=linea.split(",");
+                    v1=Integer.parseInt(cadena[0].replaceAll(" ", ""));
+                    v2=Integer.parseInt(cadena[1].replaceAll(" ", ""));
+                    distancia=Integer.parseInt(cadena[2].replaceAll(" ", ""));
+                    mygraph.NuevoA(v1,v2,distancia);
+                }
+                
+            } catch (IOException ex) {
+                Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+        
+        
     }
 
     /**

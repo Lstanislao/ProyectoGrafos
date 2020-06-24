@@ -5,6 +5,8 @@
  */
 package Ventanas;
 
+import Grafo.Central;
+import Grafo.Grafo;
 import java.io.*;
 import java.io.BufferedReader;
 import java.io.File;
@@ -172,6 +174,12 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMenuRegDistActionPerformed
 
     private void registrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarDatosActionPerformed
+        Grafo mygraph  = Central.getGraph();
+        //HAY QUE VALIDAR QUE LO INTRODUCE EL USUARIO ES UN NUMERO PARA LUEGO MANDARLO A VALIDO SI ID SON VALIDOS QUE YA ESAS VALIDACION DE HACE INTERNA EN EL PROCEDIMITO
+        //UNA COSA SI SE LE VA PASAR UN ID AL GRAFO HAY QUE RESTARLE 1 PORQUE EN EL ARREGLO DONDE ESTAN EMPIEZA DESDE 0
+        boolean valido = mygraph.NuevoA((Integer.parseInt(verticeOrigen.getText()))-1,(Integer.parseInt(verticeNuevo.getText()))-1,Integer.parseInt(distanciaEntreVertices.getText()));
+        if(valido)
+        {
         File archivo;
         FileWriter escribir;
         PrintWriter linea;
@@ -216,7 +224,9 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
 
             } catch (IOException ex) {
                 Logger.getLogger(interfazRegistro.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            } 
+        }
+        
 
         }
         interfazRegistroDistancia a = new interfazRegistroDistancia();

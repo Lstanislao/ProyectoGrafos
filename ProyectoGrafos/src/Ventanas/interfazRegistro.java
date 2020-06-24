@@ -1,9 +1,12 @@
 
 package Ventanas;
 
+
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import Grafo.*;
+
 
 /**
  *
@@ -112,10 +115,13 @@ public class interfazRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMenuRegistroActionPerformed
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+        Grafo mygraph  = Central.getGraph();
         System.exit(0);
+      
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void registrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarDatosActionPerformed
+        Grafo mygraph  = Central.getGraph();
         File archivo;
         FileWriter escribir;
         PrintWriter linea;
@@ -164,10 +170,17 @@ public class interfazRegistro extends javax.swing.JFrame {
             }
 
         }
+        
+        mygraph.NuevoV(nombreRegistro.getText());
         interfazRegistroDistancia a = new interfazRegistroDistancia();
         a.setVisible(true);
         a.setLocationRelativeTo(null);
         this.setVisible(false);
+        
+        
+        
+        
+        
     }//GEN-LAST:event_registrarDatosActionPerformed
 
     private void nombreRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreRegistroActionPerformed

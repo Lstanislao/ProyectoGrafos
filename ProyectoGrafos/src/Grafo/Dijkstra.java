@@ -44,7 +44,7 @@ public class Dijkstra {
             Visitados[min]=true;
             for (int j = 1; j < Num; j++) 
             {
-                System.out.println(Cost[4]);
+
 
             if(!Visitados[j]){//si ese nodo no ha sido visitado 
                 if(Cost[min]+Matriz[min][j]< Cost[j])
@@ -55,26 +55,55 @@ public class Dijkstra {
                 }   
             }
         }
-        for(int costo:Cost)
-        {
-            System.out.println(costo);
-        }
         
         
     }
     
-    public void recuperaCamino(int v){
-    int anterior = Ultimo[Orig]; 
-    if (v != Orig)
-    {
+    public String recuperaCamino(int v, String cadena){
+            /*for(int i = 0; i<Cost.length; i++){
+            System.out.println("Cost[" + i + "]: " + Cost[i]);
+        }
+        System.out.println("");
+        
+        for (int i = 0; i<Visitados.length; i++){
+            System.out.println("Ultimo[" + i + "]: " + Visitados[i]);
+        }
+        System.out.println("");*/
+         
+    int anterior = Ultimo[v]; 
         if (v != Orig) {  
-            recuperaCamino(anterior);
+            cadena=cadena+","+v;
+            cadena=recuperaCamino(anterior,cadena);
             System.out.print(" -> V" + v); 
+            
         }else
         {
             System.out.print("V" + Orig);
+            cadena=cadena+",0";
         } 
-    }   
+        return cadena;
+    }
+    
+    public String caminoformato(String cadena)
+    {
+
+        String s [] = cadena.split(",");
+
+        
+        String inverse="";
+        int j = s.length-1;
+        
+        for (int i = 0; i < s.length-1; i++) 
+        {
+            
+            inverse=inverse+s[j]+",";
+
+            j--;
+           
+        }
+;
+
+        return inverse;
     }
     
     private int MenorDistacia()

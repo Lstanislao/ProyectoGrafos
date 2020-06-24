@@ -73,15 +73,24 @@ public class Grafo {
         Vertice nuevo = new Vertice(nombre);
         boolean encontrado = false;
         int i = 0;
-        while ((i < getnVertices()) && (encontrado == false)) {
+        while ((i < nVertices) && (encontrado == false)) {
 
             encontrado = Vertices[i].getNombre().equals(nuevo.getNombre());
             if (!encontrado) {
                 i++;
             }
         }
-        if (i < getnVertices()) {
+        if (i < nVertices) {
             return i;
+        } else {
+            return -1;
+        }
+
+    }
+    
+        public int IndiceVerticeInt(int id) {
+        if (id < nVertices) {
+            return id;
         } else {
             return -1;
         }
@@ -95,10 +104,11 @@ public class Grafo {
             Vertice newVertice = new Vertice(nombre);
             newVertice.setNumVertice(getnVertices());
             System.out.println(newVertice.getNumVertice() + newVertice.getNombre());
-            Vertices[(getnVertices())] = newVertice;
-            setnVertices(getnVertices() + 1);
+            Vertices[nVertices] = newVertice;
+            nVertices++;
         }
     }
+    
 
     public void EliminarV(String nombre) {
         int indice = IndiceVertice(nombre);
@@ -107,7 +117,7 @@ public class Grafo {
         }
     }
 
-    public void NuevoA(String v1, String v2, int recorrido) {
+    public void NewA(String v1, String v2, int recorrido) {
         int n1, n2;
         n1 = IndiceVertice(v1);
         n2 = IndiceVertice(v2);
@@ -118,6 +128,21 @@ public class Grafo {
             MatrizAd[n2][n1] = recorrido;
         }
     }
+    
+        public boolean NuevoA(int v1, int v2, int recorrido) {
+        int n1, n2;
+        n1 = IndiceVerticeInt(v1);
+        n2 = IndiceVerticeInt(v2);
+        if (n1 < 0 || n2 < 0) {
+            JOptionPane.showMessageDialog(null, "Alguno de los vertices no existe");
+            return false;
+        } else {
+            MatrizAd[n1][n2] = recorrido;
+            MatrizAd[n2][n1] = recorrido;
+            return true;
+        }
+    }
+
 
     public void EliminarA(String v1, String v2, int recorrido) {
         int n1, n2;
@@ -155,13 +180,13 @@ public class Grafo {
 
     public String BFS(String orig) {
         int origen = IndiceVertice(orig);
-        int recorrido[] = new int[getnVertices()];
+        int recorrido[] = new int[nVertices];
         int aux;
         String cadena;
         cadena = orig;
         if (origen >= 0) {
             Lista cola = new Lista();
-            for (int i = 0; i < getnVertices(); i++) {
+            for (int i = 0; i < nVertices; i++) {
                 recorrido[i] = 0;//0 para los no recorridos 1 para los ya recorridos
             }
             recorrido[origen] = 1;//ya recorremos el origen
@@ -170,7 +195,7 @@ public class Grafo {
                 aux = (int) cola.LeerCabeza();
                 cola.Desencolar();
 
-                for (int i = 0; i < getnVertices(); i++) {
+                for (int i = 0; i < nVertices; i++) {
                     if (MatrizAd[aux][i] != 0 && recorrido[i] == 0)//a partir de ya recorrido va por la matriz verificando aquellos con los que tiene arco y si hay arco agarra ese vertice que viene siendo i 
                     {
                         cadena = cadena + " " + Vertices[i].getNombre();
@@ -222,7 +247,7 @@ public class Grafo {
         cadena = cadena + " " + Vertices[aux].getNombre();
         recorrido[aux] = 1;
 
-        for (int i = 0; i < getnVertices(); i++) {
+        for (int i = 0; i < nVertices; i++) {
             if ((aux != i) && (MatrizAd[aux][i] != 0) && (recorrido[i] == 0)) {
                 cadena = DFS(cadena, i, recorrido);
             }
@@ -236,11 +261,11 @@ public class Grafo {
         String cadena = "";
 
         if (origen >= 0) {
-            for (int i = 0; i < getnVertices(); i++) {
+            for (int i = 0; i < nVertices; i++) {
                 recorrido[i] = 0;
             }
 
-            for (int i = 0; i < getnVertices(); i++) {
+            for (int i = 0; i < nVertices; i++) {
                 if (recorrido[i] == 0) {
                     cadena = DFS(cadena, i, recorrido);
                 }
