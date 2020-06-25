@@ -102,7 +102,8 @@ public class DibujarGrafo {
      */
     public static void DibujarRutaMasCorta(Grafo g, String camino) {
         
-        String[] transicion = camino.split(" | ");
+        String[] transicion = camino.split("  ~  ");
+        
         String[] ruta = transicion[0].split(" -> ");
         
         Graph graph = new SingleGraph("Ruta corta");
@@ -135,7 +136,6 @@ public class DibujarGrafo {
                         e.setAttribute("ui.class", "marked");
                     }
                     e.addAttribute("ui.label", g.MatrizAd[i][j]);
-                    System.out.println("Agregue edge " + b + a);
                 }
             }
         }
@@ -150,7 +150,7 @@ public class DibujarGrafo {
     public static boolean Pertenece(int i, String[] camino) {
         boolean existe = false;
         for (int j = 0; j < camino.length; j++) {
-            System.out.println("vertice" + camino[j]);
+            System.out.println(Integer.parseInt(camino[j]) - 1);
             if (i == (Integer.parseInt(camino[j]) - 1)) {
                 existe = true;
             }
@@ -169,9 +169,9 @@ public class DibujarGrafo {
             int a = Integer.parseInt(camino[k]) - 1;
             int b = Integer.parseInt(camino[k - 1]) - 1;
             if (a > b) {
-                aristas[k - 1] = Integer.toString(b + a);
+                aristas[k - 1] = Integer.toString(b) + Integer.toString(a);
             } else {
-                aristas[k - 1] = Integer.toString(a + b);
+                aristas[k - 1] = Integer.toString(a) + Integer.toString(b);
             }
         }
         return aristas;

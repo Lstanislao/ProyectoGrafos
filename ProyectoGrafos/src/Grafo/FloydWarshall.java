@@ -58,7 +58,7 @@ public class FloydWarshall {
                 ruta += " -> " + u;
             } while (u != v);
         }
-        return ruta + " | Distancia total entre los puntos: " + dist[inicio][end] +" Km";
+        return ruta + "  ~  Distancia total entre los puntos: " + dist[inicio][end] +" Km";
     }
 
 }

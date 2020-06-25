@@ -95,7 +95,7 @@ public class Dijkstra {
 
         }
         
-        return inverse+" | Distancia total entre los puntos: "+Cost[Destino]+" Km";
+        return inverse+"  ~  Distancia total entre los puntos: "+Cost[Destino]+" Km";
     }
 
     private int MenorDistancia() {
