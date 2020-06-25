@@ -184,15 +184,19 @@ public class Grafo {
     }
 
     public String DFS(String cadena, int aux, int recorrido[]) {
-        cadena = cadena + Vertices[aux].getNumVertice() + ",";
+        if (aux == 0) {
+            cadena += aux;
+        } else {
+            cadena += "," + aux;
+        }
+
         recorrido[aux] = 1;
 
         for (int i = 0; i < nVertices; i++) {
-            if ((aux != i) && (MatrizAd[aux][i] != 0) && (recorrido[i] == 0)) {
+            if ((aux != i) && (MatrizAd[aux][i] != 999999999) && (recorrido[i] == 0)) {
                 cadena = DFS(cadena, i, recorrido);
             }
         }
-        System.out.println(cadena);
         return cadena;
     }
 
@@ -222,6 +226,7 @@ public class Grafo {
         int num;
         String array[];
         cadena = IniciarDFS(0);
+        System.out.println("dfs"+cadena);
         array = cadena.split(",");
         for (String a : array) {
             num = Integer.parseInt(a);
