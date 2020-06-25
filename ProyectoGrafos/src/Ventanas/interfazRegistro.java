@@ -1,6 +1,4 @@
-
 package Ventanas;
-
 
 import java.io.*;
 import java.util.logging.Level;
@@ -8,26 +6,24 @@ import java.util.logging.Logger;
 import Grafo.*;
 import javax.swing.*;
 
-
 /**
  *
  * @author sosag
  */
 public class interfazRegistro extends javax.swing.JFrame {
-    
+
     JFileChooser seleccionado = new JFileChooser();
     File archivo;
     Integer id = 1;
     boolean cargarArchivo = false;
-    boolean nuevoTxt=false;
+    boolean nuevoTxt = false;
     String nombreDelArchivoTxtSeleccionado;
-    
+
     public interfazRegistro() {
         initComponents();
         this.setLocationRelativeTo(null);
 
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -138,14 +134,14 @@ public class interfazRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMenuRegistroActionPerformed
 
     private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
-        Grafo mygraph  = Central.getGraph();
+        Grafo mygraph = Central.getGraph();
         System.exit(0);
-      
+
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void registrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarDatosActionPerformed
-        Grafo mygraph  = Central.getGraph();
-        mygraph.imprimirTabla();
+        Grafo mygraph = Central.getGraph();
+        mygraph.ImprimirTabla();
         String ultimoCargado = Central.Actual;
         File archivo;
         FileWriter escribir;
@@ -153,29 +149,27 @@ public class interfazRegistro extends javax.swing.JFrame {
         String cadena = "";
 
         //System.out.println(cargarArchivo+" "+nombreDelArchivoTxtSeleccionado+" "+ultimoCargado+"sirve por favor");
-        if(nombreDelArchivoTxtSeleccionado==null && ultimoCargado==null)
-        {
-         JOptionPane.showMessageDialog(this, "Cargue o cree un Txt por favor ");
-        }
-        else
-        {
-            if ((!cargarArchivo)&&(nuevoTxt)){
-            //System.out.println("Primero");
-            
-            archivo = new File(nombreDelArchivoTxtSeleccionado);
-            try {
+        if (nombreDelArchivoTxtSeleccionado == null && ultimoCargado == null) {
+            JOptionPane.showMessageDialog(this, "Cargue o cree un Txt por favor ");
+        } else {
+            if ((!cargarArchivo) && (nuevoTxt)) {
+                //System.out.println("Primero");
+
+                archivo = new File(nombreDelArchivoTxtSeleccionado);
+                try {
                     archivo.createNewFile();
-                    cadena = id + ", " + nombreRegistro.getText() + ", " + urbRegistro.getText() + ", " + calleAveRegistro.getText();
+                    cadena = id + ", " + nombreRegistro.getText() + ", " 
+                            + urbRegistro.getText() + ", " + calleAveRegistro.getText();
                     escribir = new FileWriter(archivo, true);
-                    linea = new PrintWriter(escribir);     
+                    linea = new PrintWriter(escribir);
                     linea.println(cadena);
                     linea.close();
                     escribir.close();
                 } catch (IOException ex) {
                     Logger.getLogger(interfazRegistro.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            nuevoTxt=false;  
-        } /*else if((!cargarArchivo))
+                nuevoTxt = false;
+            } /*else if((!cargarArchivo))
         {
             //System.out.println(ultimoCargado+"FLAG");
             //System.out.println("segundo");
@@ -207,65 +201,63 @@ public class interfazRegistro extends javax.swing.JFrame {
 
             } catch (IOException ex) {
                 Logger.getLogger(interfazRegistro.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
-        else {
-            try {
-                FileReader leer;
-                BufferedReader almacenamiento;
+            }*/ else {
                 try {
-                    
-                    nombreDelArchivoTxtSeleccionado=ultimoCargado;
-                    leer = new FileReader(nombreDelArchivoTxtSeleccionado);
-                    almacenamiento = new BufferedReader(leer);
+                    FileReader leer;
+                    BufferedReader almacenamiento;
                     try {
-                        while(almacenamiento.readLine()!=null){
-                            id += 1;
+
+                        nombreDelArchivoTxtSeleccionado = ultimoCargado;
+                        leer = new FileReader(nombreDelArchivoTxtSeleccionado);
+                        almacenamiento = new BufferedReader(leer);
+                        try {
+                            while (almacenamiento.readLine() != null) {
+                                id += 1;
+                            }
+                        } catch (IOException ex) {
+                            Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                    } catch (IOException ex) {
+                    } catch (FileNotFoundException ex) {
                         Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
-                cadena = id + ", " + nombreRegistro.getText() + ", " + urbRegistro.getText() + ", " + calleAveRegistro.getText();
-                escribir = new FileWriter(nombreDelArchivoTxtSeleccionado, true);
-                linea = new PrintWriter(escribir);    
-                linea.println(cadena);
-                linea.close();
-                escribir.close();
 
-            } catch (IOException ex) {
-                Logger.getLogger(interfazRegistro.class.getName()).log(Level.SEVERE, null, ex);
+                    cadena = id + ", " + nombreRegistro.getText() + ", " 
+                            + urbRegistro.getText() + ", " + calleAveRegistro.getText();
+                    escribir = new FileWriter(nombreDelArchivoTxtSeleccionado, true);
+                    linea = new PrintWriter(escribir);
+                    linea.println(cadena);
+                    linea.close();
+                    escribir.close();
+
+                } catch (IOException ex) {
+                    Logger.getLogger(interfazRegistro.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             }
 
-        }
-        
-        mygraph.NuevoV(nombreRegistro.getText(),calleAveRegistro.getText(),urbRegistro.getText());//Cuando lo necesite lo genero 
-        interfazRegistroDistancia a = new interfazRegistroDistancia();
-        a.setVisible(true);
-        a.setLocationRelativeTo(null);
-        this.setVisible(false);
+            mygraph.NuevoV(nombreRegistro.getText(), calleAveRegistro.getText(), urbRegistro.getText());//Cuando lo necesite lo genero 
+            interfazRegistroDistancia a = new interfazRegistroDistancia();
+            a.setVisible(true);
+            a.setLocationRelativeTo(null);
+            this.setVisible(false);
         }
 
-        
-        
-        
+
     }//GEN-LAST:event_registrarDatosActionPerformed
 
     private void nombreRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreRegistroActionPerformed
-        
+
     }//GEN-LAST:event_nombreRegistroActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    
+
         cargarArchivo = true;
-        if (seleccionado.showDialog(this,"CARGAR ARCHIVO")==JFileChooser.APPROVE_OPTION) {
+        if (seleccionado.showDialog(this, "CARGAR ARCHIVO") == JFileChooser.APPROVE_OPTION) {
             archivo = seleccionado.getSelectedFile();
             if (archivo.canRead()) {
                 if (archivo.getName().endsWith("txt")) {
                     nombreDelArchivoTxtSeleccionado = archivo.getName();
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(null, "ERROR. Por favor seleccione un archivo de texto (.txt)");
                 }
             }
@@ -275,10 +267,10 @@ public class interfazRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-    cargarArchivo = false;
-    nuevoTxt=true;
-    nombreDelArchivoTxtSeleccionado = "CLIENTES" + JOptionPane.showInputDialog("Introduzca el nombre de su nuevo archivo de texto") + ".txt";
-    Central.setActual(nombreDelArchivoTxtSeleccionado);
+        cargarArchivo = false;
+        nuevoTxt = true;
+        nombreDelArchivoTxtSeleccionado = "CLIENTES" + JOptionPane.showInputDialog("Introduzca el nombre de su nuevo archivo de texto") + ".txt";
+        Central.setActual(nombreDelArchivoTxtSeleccionado);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**

@@ -196,7 +196,7 @@ public class interfazDelivery extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
         }*/
-        
+
         String ultimoCargado = Central.Actual;
         if (seleccionado.showDialog(this, "CARGAR ARCHIVO") == JFileChooser.APPROVE_OPTION) {
             archivo = seleccionado.getSelectedFile();
@@ -240,34 +240,29 @@ public class interfazDelivery extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEnterRegistro1ActionPerformed
 
     private void jButtonDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDFSActionPerformed
-    Grafo mygraph = Central.getGraph();
-    String cargado= Central.getActual();
-    String output="";
-    if(cargado!=null)
-    {
-        output=mygraph.OutputDFS();
-        Salida.setText(output);
-    }else
-    {
-        JOptionPane.showConfirmDialog(this,"No ha cargado ningun archivo");
-    }
+        Grafo mygraph = Central.getGraph();
+        String cargado = Central.getActual();
+        String output = "";
+        if (cargado != null) {
+            output = mygraph.OutputDFS();
+            Salida.setText(output);
+        } else {
+            JOptionPane.showConfirmDialog(this, "No ha cargado ningun archivo");
+        }
 
-       
+
     }//GEN-LAST:event_jButtonDFSActionPerformed
 
     private void jButtonBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBFSActionPerformed
-    Grafo mygraph = Central.getGraph();
-    String cargado= Central.getActual();
-    String output="";
-    if(cargado!=null)
-    {
-        output=mygraph.BFS(0);
-        Salida.setText(output);
-    }else
-    {
-        JOptionPane.showConfirmDialog(this,"No ha cargado ningun archivo");
-    }
- 
+        Grafo mygraph = Central.getGraph();
+        String cargado = Central.getActual();
+        String output = "";
+        if (cargado != null) {
+            output = mygraph.BFS(0);
+            Salida.setText(output);
+        } else {
+            JOptionPane.showConfirmDialog(this, "No ha cargado ningun archivo");
+        }
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBFSActionPerformed

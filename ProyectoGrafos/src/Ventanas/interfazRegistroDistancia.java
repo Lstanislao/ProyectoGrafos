@@ -23,10 +23,11 @@ import javax.swing.JOptionPane;
  * @author sosag
  */
 public class interfazRegistroDistancia extends javax.swing.JFrame {
-    
+
     JFileChooser seleccionado = new JFileChooser();
     File archivo;
     String nombreDelArchivoTxtSeleccionado;
+
     public boolean Validacion(String cadena) {
         int num;
         try {
@@ -160,16 +161,16 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSeleccionarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeleccionarListaActionPerformed
-        if (seleccionado.showDialog(this,"CARGAR ARCHIVO")==JFileChooser.APPROVE_OPTION) {
+        if (seleccionado.showDialog(this, "CARGAR ARCHIVO") == JFileChooser.APPROVE_OPTION) {
             archivo = seleccionado.getSelectedFile();
             if (archivo.canRead()) {
                 if (archivo.getName().endsWith("txt")) {
                     nombreDelArchivoTxtSeleccionado = archivo.getName();
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(null, "ERROR. Por favor seleccione un archivo de texto (.txt)");
                 }
             }
-        }   
+        }
         File miArchivo;
         FileReader leer;
         BufferedReader almacenamiento;
@@ -207,7 +208,7 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMenuRegDistActionPerformed
 
     private void registrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarDatosActionPerformed
-        
+
         boolean valid1 = Validacion(verticeOrigen.getText());
         boolean valid2 = Validacion(verticeNuevo.getText());
         boolean valid3 = Validacion(distanciaEntreVertices.getText());
@@ -217,15 +218,15 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
             Grafo mygraph = Central.getGraph();
             //UNA COSA SI SE LE VA PASAR UN ID AL GRAFO HAY QUE RESTARLE 1 PORQUE EN EL ARREGLO DONDE ESTAN EMPIEZA DESDE 0
             boolean valido = mygraph.NuevoA((Integer.parseInt(verticeOrigen.getText())) - 1, (Integer.parseInt(verticeNuevo.getText())) - 1, Integer.parseInt(distanciaEntreVertices.getText()));
-            mygraph.imprimirTabla();
+            mygraph.ImprimirTabla();
             if (valido) {
                 File archivo;
                 FileWriter escribir;
                 PrintWriter linea;
                 String cadena = "";
-                nombreDelArchivoTxtSeleccionado=Central.getActual();
-                archivo = new File(nombreDelArchivoTxtSeleccionado.replace("CLIENTES","CAMINOS"));
-               
+                nombreDelArchivoTxtSeleccionado = Central.getActual();
+                archivo = new File(nombreDelArchivoTxtSeleccionado.replace("CLIENTES", "CAMINOS"));
+
                 if (!archivo.exists()) {
                     try {
                         archivo.createNewFile();
@@ -290,7 +291,7 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
     }//GEN-LAST:event_verticeOrigenActionPerformed
 
     private void verticeNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verticeNuevoActionPerformed
-        
+
     }//GEN-LAST:event_verticeNuevoActionPerformed
 
     /**

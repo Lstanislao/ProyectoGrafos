@@ -24,10 +24,10 @@ public class interfazMenu extends javax.swing.JFrame {
      * Creates new form interfazMenu
      */
     public interfazMenu() {
-        
+
         initComponents();
         this.setLocationRelativeTo(null);
-      
+
     }
 
     /**

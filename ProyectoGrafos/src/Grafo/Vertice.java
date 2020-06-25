@@ -15,14 +15,14 @@ public class Vertice {
     private int NumVertice;
     private String Calle;
     private String Urb;
-    
+
     public Vertice(String Nombre, String Calle, String Urb) {
         this.Nombre = Nombre;
         NumVertice = -1;
         this.Calle = Calle;
         this.Urb = Urb;
     }
-    
+
     public String getNombre() {
         return Nombre;
     }

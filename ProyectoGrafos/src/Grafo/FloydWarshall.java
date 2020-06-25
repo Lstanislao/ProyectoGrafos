@@ -21,7 +21,6 @@ public class FloydWarshall {
         camino = new int[num][num]; // Guardara indices para reconstruir el camino mas corto
         int max = 999999999;
 
-
         // Asignamos a las matrices sus valores iniciales
         for (int i = 0; i < num; i++) {
             for (int j = 0; j < num; j++) {
@@ -56,7 +55,7 @@ public class FloydWarshall {
             int v = end + 1;
             do {
                 u = camino[u - 1][v - 1];
-                ruta += ","+ (u - 1);
+                ruta += "," + (u - 1);
             } while (u != v);
         }
         return ruta.split(",");
