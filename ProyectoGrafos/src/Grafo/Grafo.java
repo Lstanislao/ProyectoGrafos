@@ -161,7 +161,7 @@ public class Grafo {
                 cola.Desencolar();
 
                 for (int i = 0; i < nVertices; i++) {
-                    if (MatrizAd[aux][i] != 0 && recorrido[i] == 0 && MatrizAd[aux][i] < 9999999 )//a partir de ya recorrido va por la matriz verificando aquellos con los que tiene arco y si hay arco agarra ese vertice que viene siendo i 
+                    if (MatrizAd[aux][i] != 0 && recorrido[i] == 0 && MatrizAd[aux][i] != 999999999 )//a partir de ya recorrido va por la matriz verificando aquellos con los que tiene arco y si hay arco agarra ese vertice que viene siendo i 
                     {
                         if (i < nVertices - 1) {
                             cadena = cadena + "ID" + Integer.toString(Vertices[i].getNumVertice() + 1) + "->";

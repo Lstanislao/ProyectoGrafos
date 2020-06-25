@@ -53,7 +53,7 @@ public class Dijkstra {
 
     }
 
-    public String RecuperaCamino(int v, String cadena) {
+    public String RecuperarCamino(int v, String cadena) {
         /*for(int i = 0; i<Cost.length; i++){
             System.out.println("Cost[" + i + "]: " + Cost[i]);
         }
@@ -63,11 +63,10 @@ public class Dijkstra {
             System.out.println("Ultimo[" + i + "]: " + Visitados[i]);
         }
         System.out.println("");*/
-
         int anterior = Ultimo[v];
         if (v != Orig) {
             cadena = cadena + "," + v;
-            cadena = RecuperaCamino(anterior, cadena);
+            cadena = RecuperarCamino(anterior, cadena);
             //System.out.print(" -> V" + v); 
 
         } else {
@@ -77,22 +76,26 @@ public class Dijkstra {
         return cadena;
     }
 
-    public String[] CaminoFormato(String cadena) {
-
+    public String CaminoFormato() {
+        CaminoDijkstra();
+        String cadena = RecuperarCamino(Destino,"");
         String s[] = cadena.split(",");
 
         int j = s.length - 1;
-        String inverse = s[j];
+        String inverse = "1";
         j--;
         for (int i = 1; i < s.length - 1; i++) {
 
-            inverse = inverse + "," + s[j];
+
+
+                inverse = inverse + "->" + Integer.toString(Integer.parseInt(s[j])+1)  ;
+
 
             j--;
 
         }
-
-        return inverse.split(",");
+        
+        return inverse+" | Distancia total entre los puntos: "+Cost[Destino]+" Km";
     }
 
     private int MenorDistancia() {

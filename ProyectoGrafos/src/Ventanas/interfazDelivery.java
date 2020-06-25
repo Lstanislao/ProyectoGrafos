@@ -21,6 +21,18 @@ public class interfazDelivery extends javax.swing.JFrame {
     JFileChooser seleccionado = new JFileChooser();
     File archivo;
     String nombreDelArchivoTxtSeleccionado;
+    
+    public boolean validarArchivoCargado()
+    {
+        String cargado = Central.getActual();
+        if (cargado != null) 
+        {
+            return true;
+        }else {
+            JOptionPane.showMessageDialog(this, "No ha cargado ningun archivo");
+            return false;
+        }
+    }
 
     public interfazDelivery() {
         initComponents();
@@ -78,7 +90,19 @@ public class interfazDelivery extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 570, 90, 40));
+
+        idDestino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idDestinoActionPerformed(evt);
+            }
+        });
         getContentPane().add(idDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 50, 30));
+
+        outputCaminoMasCorto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                outputCaminoMasCortoActionPerformed(evt);
+            }
+        });
         getContentPane().add(outputCaminoMasCorto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 720, 30));
 
         jLabel5.setText("Impresión del Grafo:");
@@ -170,7 +194,24 @@ public class interfazDelivery extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMenuDeliveryActionPerformed
 
     private void jButtonEnterRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnterRegistroActionPerformed
-        // TODO add your handling code here:
+        Grafo mygraph = Central.getGraph();
+        boolean cargado = validarArchivoCargado() ;
+        int destino =Integer.parseInt(idDestino.getText());
+        String output = "";
+        destino=mygraph.IndiceVerticeInt(destino-1);
+        if (cargado) {
+            if(destino!=-1)
+            {
+                Dijkstra camino = new Dijkstra(mygraph,0,(destino));
+                output=camino.CaminoFormato();
+                outputCaminoMasCorto.setText(output);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Vertice Invalido , intentelo nuevamente");
+                idDestino.setText("");
+            }
+        }
     }//GEN-LAST:event_jButtonEnterRegistroActionPerformed
 
     private void jButtonActualizarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarListaActionPerformed
@@ -241,13 +282,11 @@ public class interfazDelivery extends javax.swing.JFrame {
 
     private void jButtonDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDFSActionPerformed
         Grafo mygraph = Central.getGraph();
-        String cargado = Central.getActual();
+        boolean cargado = validarArchivoCargado() ;
         String output = "";
-        if (cargado != null) {
+        if (cargado) {
             output = mygraph.OutputDFS();
             Salida.setText(output);
-        } else {
-            JOptionPane.showConfirmDialog(this, "No ha cargado ningun archivo");
         }
 
 
@@ -255,17 +294,23 @@ public class interfazDelivery extends javax.swing.JFrame {
 
     private void jButtonBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBFSActionPerformed
         Grafo mygraph = Central.getGraph();
-        String cargado = Central.getActual();
+        boolean cargado = validarArchivoCargado() ;
         String output = "";
-        if (cargado != null) {
+        if (cargado ) {
             output = mygraph.BFS(0);
             Salida.setText(output);
-        } else {
-            JOptionPane.showConfirmDialog(this, "No ha cargado ningun archivo");
         }
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBFSActionPerformed
+
+    private void outputCaminoMasCortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outputCaminoMasCortoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_outputCaminoMasCortoActionPerformed
+
+    private void idDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idDestinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idDestinoActionPerformed
 
     /**
      * @param args the command line arguments
