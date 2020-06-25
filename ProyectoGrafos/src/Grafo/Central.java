@@ -62,7 +62,14 @@ public class Central {
                     nombre = cadena[1];
                     urb = cadena[2];
                     calle = cadena[3];
-                    System.out.println(nombre + " " + urb + " " + calle);
+                    System.out.println(nombre);
+                    
+                    nombre=nombre.substring(1);
+                    urb =urb.substring(1);
+                    calle=calle.substring(1);
+         
+                    
+                    System.out.println(nombre+urb+calle);
                     mygraph.NuevoV(nombre, calle, urb);
                 }
 

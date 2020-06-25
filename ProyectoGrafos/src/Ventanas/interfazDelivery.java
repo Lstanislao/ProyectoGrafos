@@ -7,7 +7,7 @@ package Ventanas;
 
 import Grafo.*;
 import Grafo.DibujarGrafo.*;
-import static Grafo.DibujarGrafo.DibujarRutaMasCorta;
+//import static Grafo.DibujarGrafo.DibujarRutaMasCorta;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -208,7 +208,7 @@ public class interfazDelivery extends javax.swing.JFrame {
                 output = camino.CaminoFormato();
                 outputCaminoMasCorto.setText(output);
                 
-                DibujarRutaMasCorta(mygraph, output);
+            //    DibujarRutaMasCorta(mygraph, output);
             } else {
                 JOptionPane.showMessageDialog(this, "Vertice Invalido , intentelo nuevamente");
                 idDestino.setText("");
@@ -290,7 +290,7 @@ public class interfazDelivery extends javax.swing.JFrame {
                 output = camino.Floyd(0, destino, mygraph);
                 outputCaminoMasCorto.setText(output);
                 
-                DibujarRutaMasCorta(mygraph, output);
+ //               DibujarRutaMasCorta(mygraph, output);
             } else {
                 JOptionPane.showMessageDialog(this, "Vertice Invalido , intentelo nuevamente");
                 idDestino.setText("");
@@ -305,6 +305,8 @@ public class interfazDelivery extends javax.swing.JFrame {
         if (cargado) {
             output = mygraph.OutputDFS();
             Salida.setText(output);
+            //RecorrerGrafoPaTxt.Clientes();
+            Archivo.EscribirGrafoEnTxt();
         }
 
 

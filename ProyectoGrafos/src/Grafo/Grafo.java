@@ -34,6 +34,16 @@ public class Grafo {
         Grafo.MaxVertices = MaxVertices;
     }
 
+    public Vertice[] getVertices() {
+        return Vertices;
+    }
+
+    public void setVertices(Vertice[] Vertices) {
+        this.Vertices = Vertices;
+    }
+    
+    
+
     public Grafo(int MaxVertices) {
         MatrizAd = new int[MaxVertices][MaxVertices];
         Vertices = new Vertice[MaxVertices];

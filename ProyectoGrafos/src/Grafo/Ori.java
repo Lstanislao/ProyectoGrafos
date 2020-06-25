@@ -24,5 +24,18 @@ public class Ori {
         }
         return caminos;
     }
+    
+    public static String EncontrarCamino(Grafo g) {
+        String caminos = "caminos\n";
+        for (int i = 1; i < g.getnVertices(); i++) {
+            for (int j = 0; j < i; j++) {
+                if (g.MatrizAd[i][j] != 999999999) {
+                    caminos += (j + 1) + " , " + (i + 1) + " , " + g.MatrizAd[i][j];
+                }
+
+            }
+        }
+        return caminos;
+    }
 
 }

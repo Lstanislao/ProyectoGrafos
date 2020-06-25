@@ -23,6 +23,8 @@ public class ProyectoGrafos {
     public static void main(String[] args) {
         interfazMenu a = new interfazMenu();
         a.setVisible(true);
+ 
+
         
        /* Grafo nuevo = Central.getGraph();
         
