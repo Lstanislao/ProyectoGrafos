@@ -241,7 +241,7 @@ public class interfazRegistro extends javax.swing.JFrame {
 
         }
         
-        mygraph.NuevoV(nombreRegistro.getText());//Cuando lo necesite lo genero 
+        mygraph.NuevoV(nombreRegistro.getText(),calleAveRegistro.getText(),urbRegistro.getText());//Cuando lo necesite lo genero 
         interfazRegistroDistancia a = new interfazRegistroDistancia();
         a.setVisible(true);
         a.setLocationRelativeTo(null);

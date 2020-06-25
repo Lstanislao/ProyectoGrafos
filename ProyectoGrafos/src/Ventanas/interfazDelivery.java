@@ -5,7 +5,7 @@
  */
 package Ventanas;
 
-import Grafo.Central;
+import Grafo.*;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,7 +46,7 @@ public class interfazDelivery extends javax.swing.JFrame {
         jButtonBFS = new javax.swing.JButton();
         jButtonDFS = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        Salida = new javax.swing.JTextPane();
         jButtonMenuDelivery = new javax.swing.JButton();
         jButtonEnterRegistro = new javax.swing.JButton();
         jButtonActualizarLista = new javax.swing.JButton();
@@ -86,13 +86,23 @@ public class interfazDelivery extends javax.swing.JFrame {
 
         jButtonBFS.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jButtonBFS.setText("BFS");
+        jButtonBFS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBFSActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonBFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, 90, 40));
 
         jButtonDFS.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jButtonDFS.setText("DFS");
+        jButtonDFS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDFSActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonDFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 90, 40));
 
-        jScrollPane1.setViewportView(jTextPane1);
+        jScrollPane1.setViewportView(Salida);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 340, 230));
 
@@ -221,12 +231,46 @@ public class interfazDelivery extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
         }
+        Central.setActual(nombreDelArchivoTxtSeleccionado);
         Central.CargarGrafo();
     }//GEN-LAST:event_jButtonActualizarListaActionPerformed
 
     private void jButtonEnterRegistro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnterRegistro1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonEnterRegistro1ActionPerformed
+
+    private void jButtonDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDFSActionPerformed
+    Grafo mygraph = Central.getGraph();
+    String cargado= Central.getActual();
+    String output="";
+    if(cargado!=null)
+    {
+        output=mygraph.OutputDFS();
+        Salida.setText(output);
+    }else
+    {
+        JOptionPane.showConfirmDialog(this,"No ha cargado ningun archivo");
+    }
+
+       
+    }//GEN-LAST:event_jButtonDFSActionPerformed
+
+    private void jButtonBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBFSActionPerformed
+    Grafo mygraph = Central.getGraph();
+    String cargado= Central.getActual();
+    String output="";
+    if(cargado!=null)
+    {
+        output=mygraph.BFS(0);
+        Salida.setText(output);
+    }else
+    {
+        JOptionPane.showConfirmDialog(this,"No ha cargado ningun archivo");
+    }
+ 
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonBFSActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,6 +308,7 @@ public class interfazDelivery extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextPane Salida;
     private javax.swing.JTextPane clientesRegistrados;
     private javax.swing.JTextField idDestino;
     private javax.swing.JButton jButtonActualizarLista;
@@ -281,7 +326,6 @@ public class interfazDelivery extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextField outputCaminoMasCorto;
     // End of variables declaration//GEN-END:variables
 }

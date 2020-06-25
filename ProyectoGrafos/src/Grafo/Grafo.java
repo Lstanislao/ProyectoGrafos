@@ -69,8 +69,8 @@ public class Grafo {
     Este metodo se va al arreglo de vertices y compara para ver si ya existe uno
     con ese nombre y retorna su indice, de no existir retorna -1
      */
-    public int IndiceVertice(String nombre) {
-        Vertice nuevo = new Vertice(nombre);
+    public int IndiceVertice(String nombre,String calle,String urb) {
+        Vertice nuevo = new Vertice(nombre,calle,urb);
         boolean encontrado = false;
         int i = 0;
         while ((i < nVertices) && (encontrado == false)) {
@@ -97,37 +97,20 @@ public class Grafo {
 
     }
 
-    public void NuevoV(String nombre)//para crear un nuevo vertice 
+    public void NuevoV(String nombre, String calle, String urb)//para crear un nuevo vertice 
     {
-        boolean existe = IndiceVertice(nombre) >= 0;
+        boolean existe = IndiceVertice(nombre,calle,urb) >= 0;
         if (!existe) {
-            Vertice newVertice = new Vertice(nombre);
+            Vertice newVertice = new Vertice(nombre,calle,urb);
             newVertice.setNumVertice(getnVertices());
             System.out.println(newVertice.getNumVertice() + newVertice.getNombre());
             Vertices[nVertices] = newVertice;
             nVertices++;
         }
     }
-    
+   
 
-    public void EliminarV(String nombre) {
-        int indice = IndiceVertice(nombre);
-        if (indice > 0) {
 
-        }
-    }
-
-    public void NewA(String v1, String v2, int recorrido) {
-        int n1, n2;
-        n1 = IndiceVertice(v1);
-        n2 = IndiceVertice(v2);
-        if (n1 < 0 || n2 < 0) {
-            JOptionPane.showMessageDialog(null, "Alguno de los vertices no existe");
-        } else {
-            MatrizAd[n1][n2] = recorrido;
-            MatrizAd[n2][n1] = recorrido;
-        }
-    }
     
         public boolean NuevoA(int v1, int v2, int recorrido) {
         int n1, n2;
@@ -144,23 +127,8 @@ public class Grafo {
     }
 
 
-    public void EliminarA(String v1, String v2, int recorrido) {
-        int n1, n2;
-        n1 = IndiceVertice(v1);
-        n2 = IndiceVertice(v2);
-        if (n1 < 0 || n2 < 0) {
-            JOptionPane.showMessageDialog(null, "Alguno de los vertices no existe");
-        } else {
-            MatrizAd[n1][n2] = 0;
-            MatrizAd[n2][n1] = 0;
-        }
-
-    }
-
-    public boolean Adyacente(String v1, String v2) throws Exception {
-        int n1, n2;
-        n1 = IndiceVertice(v1);
-        n2 = IndiceVertice(v2);
+ 
+    public boolean Adyacente(int n1, int n2) throws Exception {
         if (n1 < 0 || n2 < 0) {
             JOptionPane.showMessageDialog(null, "Alguno de los vertices no existe");
             return false;
@@ -178,19 +146,20 @@ public class Grafo {
         }
     }
 
-    public String BFS(String orig) {
-        int origen = IndiceVertice(orig);
+    public String BFS(int orig) 
+    {
         int recorrido[] = new int[nVertices];
         int aux;
-        String cadena;
-        cadena = orig;
-        if (origen >= 0) {
+        String cadena,cadena1,cadenafinal;
+        cadena1 ="ID: "+Integer.toString(Vertices[orig].getNumVertice()+1)+" "+Vertices[orig].getNombre()+", "+Vertices[orig].getUrb()+", "+Vertices[orig].getCalle()+"\n";
+        cadena = "ID"+Integer.toString(Vertices[orig].getNumVertice()+1)+"->";
+        if (orig >= 0) {
             Lista cola = new Lista();
             for (int i = 0; i < nVertices; i++) {
                 recorrido[i] = 0;//0 para los no recorridos 1 para los ya recorridos
             }
-            recorrido[origen] = 1;//ya recorremos el origen
-            cola.Encolar(origen);//se encola el origen
+            recorrido[orig] = 1;//ya recorremos el origen
+            cola.Encolar(orig);//se encola el origen
             while (!cola.EsVacio()) {
                 aux = (int) cola.LeerCabeza();
                 cola.Desencolar();
@@ -198,17 +167,95 @@ public class Grafo {
                 for (int i = 0; i < nVertices; i++) {
                     if (MatrizAd[aux][i] != 0 && recorrido[i] == 0)//a partir de ya recorrido va por la matriz verificando aquellos con los que tiene arco y si hay arco agarra ese vertice que viene siendo i 
                     {
-                        cadena = cadena + " " + Vertices[i].getNombre();
+                        if(i<nVertices-1)
+                        {
+                          cadena = cadena + "ID"+Integer.toString(Vertices[i].getNumVertice()+1)+"->";  
+                        }
+                        else
+                        {
+                            cadena = cadena + " ID"+Integer.toString(Vertices[i].getNumVertice()+1);
+                        }
+                        cadena1 =cadena1+"ID: "+Integer.toString(Vertices[i].getNumVertice()+1)+" "+Vertices[i].getNombre()+", "+Vertices[i].getUrb()+", "+Vertices[i].getCalle()+"\n";
                         recorrido[i] = 1;//se marca ese ahora como visitado y se agrega para en un futuro reocorrer sus adyacentes
                         cola.Encolar(i);
                     }
                 }
             }
         }
-        System.out.println(cadena);
+        cadenafinal="Recorrido BSF: \n"+cadena+"\n\n"+cadena1;
+        //System.out.println(cadenafinal);
+        
+        return cadenafinal;
+    }
+    
+    
+    
+        public String DFS(String cadena, int aux, int recorrido[]) {
+        cadena = cadena+ Vertices[aux].getNumVertice()+",";
+        recorrido[aux] = 1;
 
+        for (int i = 0; i < nVertices; i++) {
+            if ((aux != i) && (MatrizAd[aux][i] != 0) && (recorrido[i] == 0)) {
+                cadena = DFS(cadena, i, recorrido);
+            }
+        }
+        System.out.println(cadena);
         return cadena;
     }
+
+    public String IniciarDFS(int orig) {
+        int origen = IndiceVerticeInt(orig);
+        int recorrido[] = new int[getnVertices()];
+        String cadena = "";
+
+        if (origen >= 0) {
+            for (int i = 0; i < nVertices; i++) {
+                recorrido[i] = 0;
+            }
+
+            for (int i = 0; i < nVertices; i++) {
+                if (recorrido[i] == 0) {
+                    cadena = DFS(cadena, i, recorrido);
+                }
+            }
+        }
+        return cadena;
+    }
+    
+    public String OutputDFS()
+    {
+        String cadena="";
+        String out1="";
+        String out2="";
+        int num;
+        String array[];
+        cadena=IniciarDFS(0);
+        array=cadena.split(",");
+        for (String a :array) {
+            num=Integer.parseInt(a);
+            if(num<nVertices-1)
+                {
+                    out1 = out1 + "ID"+Integer.toString(Vertices[num].getNumVertice()+1)+"->";  
+                }
+            else
+                {
+                     out1 = out1 + "ID"+Integer.toString(Vertices[num].getNumVertice()+1);  
+                }
+            out2 =out2+"ID: "+Integer.toString(Vertices[num].getNumVertice()+1)+" "+Vertices[num].getNombre()+", "+Vertices[num].getUrb()+", "+Vertices[num].getCalle()+"\n";  
+        }
+        cadena="Recorrido DSF: \n"+out1+"\n\n"+out2;
+
+        return cadena;
+        
+        
+        
+        
+        
+    }
+    
+    
+}
+
 
 //    public String DFS(String orig) {
 //        int origen = IndiceVertice(orig);
@@ -243,34 +290,29 @@ public class Grafo {
 //        return cadena;
 //
 //    }
-    public String DFS(String cadena, int aux, int recorrido[]) {
-        cadena = cadena + " " + Vertices[aux].getNombre();
-        recorrido[aux] = 1;
-
-        for (int i = 0; i < nVertices; i++) {
-            if ((aux != i) && (MatrizAd[aux][i] != 0) && (recorrido[i] == 0)) {
-                cadena = DFS(cadena, i, recorrido);
-            }
+    
+       /*public void EliminarA(String v1, String v2, int recorrido) {
+        int n1, n2;
+        n1 = IndiceVertice(v1);
+        n2 = IndiceVertice(v2);
+        if (n1 < 0 || n2 < 0) {
+            JOptionPane.showMessageDialog(null, "Alguno de los vertices no existe");
+        } else {
+            MatrizAd[n1][n2] = 0;
+            MatrizAd[n2][n1] = 0;
         }
-        return cadena;
-    }
 
-    public String IniciarDFS(String orig) {
-        int origen = IndiceVertice(orig);
-        int recorrido[] = new int[getnVertices()];
-        String cadena = "";
-
-        if (origen >= 0) {
-            for (int i = 0; i < nVertices; i++) {
-                recorrido[i] = 0;
-            }
-
-            for (int i = 0; i < nVertices; i++) {
-                if (recorrido[i] == 0) {
-                    cadena = DFS(cadena, i, recorrido);
-                }
-            }
+    }*/
+    
+        /*public void NewA(String v1, String v2, int recorrido) {
+        int n1, n2;
+        n1 = IndiceVertice(v1);
+        n2 = IndiceVertice(v2);
+        if (n1 < 0 || n2 < 0) {
+            JOptionPane.showMessageDialog(null, "Alguno de los vertices no existe");
+        } else {
+            MatrizAd[n1][n2] = recorrido;
+            MatrizAd[n2][n1] = recorrido;
         }
-        return cadena;
-    }
-}
+    }*/
+

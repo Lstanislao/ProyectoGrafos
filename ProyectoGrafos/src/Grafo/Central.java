@@ -39,10 +39,10 @@ public class Central {
         File ruta;
         FileReader leer;
         BufferedReader almacenamiento;
-        String nombre, linea,cadena[];
+        String nombre,calle,urb, linea,cadena[];
         int v1,v2,distancia;
         
-        
+        System.out.println(Actual);
         miArchivo = new File(Actual);
         
         try {
@@ -53,7 +53,10 @@ public class Central {
                 while((linea = almacenamiento.readLine())!=null){
                     cadena=linea.split(",");
                     nombre=cadena[1];
-                    mygraph.NuevoV(nombre);
+                    urb=cadena[2];
+                    calle=cadena[3];
+                    System.out.println(nombre+" "+urb+" "+calle);
+                    mygraph.NuevoV(nombre,calle, urb);
                 }
                 
             } catch (IOException ex) {
