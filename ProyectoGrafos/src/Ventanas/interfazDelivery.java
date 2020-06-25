@@ -6,6 +6,7 @@
 package Ventanas;
 
 import Grafo.*;
+//import Grafo.DibujarGrafo.*;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,14 +22,12 @@ public class interfazDelivery extends javax.swing.JFrame {
     JFileChooser seleccionado = new JFileChooser();
     File archivo;
     String nombreDelArchivoTxtSeleccionado;
-    
-    public boolean validarArchivoCargado()
-    {
+
+    public boolean validarArchivoCargado() {
         String cargado = Central.getActual();
-        if (cargado != null) 
-        {
+        if (cargado != null) {
             return true;
-        }else {
+        } else {
             JOptionPane.showMessageDialog(this, "No ha cargado ningun archivo");
             return false;
         }
@@ -195,19 +194,19 @@ public class interfazDelivery extends javax.swing.JFrame {
 
     private void jButtonEnterRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnterRegistroActionPerformed
         Grafo mygraph = Central.getGraph();
-        boolean cargado = validarArchivoCargado() ;
-        int destino =Integer.parseInt(idDestino.getText());
+        boolean cargado = validarArchivoCargado();
+        int destino = Integer.parseInt(idDestino.getText());
         String output = "";
-        destino=mygraph.IndiceVerticeInt(destino-1);
+        destino = mygraph.IndiceVerticeInt(destino - 1);
         if (cargado) {
-            if(destino!=-1)
-            {
-                Dijkstra camino = new Dijkstra(mygraph,0,(destino));
-                output=camino.CaminoFormato();
+            if (destino != -1) {
+                Dijkstra camino = new Dijkstra(mygraph, 0, (destino));
+                output = camino.CaminoFormato();
                 outputCaminoMasCorto.setText(output);
-            }
-            else
-            {
+                String[] transicion = output.split(" | ");
+                String[] ruta = transicion[0].split(" -> ");
+//              DibujarRutaMasCorta(ruta);
+            } else {
                 JOptionPane.showMessageDialog(this, "Vertice Invalido , intentelo nuevamente");
                 idDestino.setText("");
             }
@@ -277,12 +276,29 @@ public class interfazDelivery extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonActualizarListaActionPerformed
 
     private void jButtonEnterRegistro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnterRegistro1ActionPerformed
-        // TODO add your handling code here:
+        Grafo mygraph = Central.getGraph();
+        boolean cargado = validarArchivoCargado();
+        int destino = Integer.parseInt(idDestino.getText());
+        String output = "";
+        destino = mygraph.IndiceVerticeInt(destino - 1);
+        if (cargado) {
+            if (destino != -1) {
+                FloydWarshall camino = new FloydWarshall();
+                output = camino.Floyd(0, destino, mygraph);
+                outputCaminoMasCorto.setText(output);
+                String[] transicion = output.split(" | ");
+                String[] ruta = transicion[0].split(" -> ");
+//                DibujarRutaMasCorta(ruta);
+            } else {
+                JOptionPane.showMessageDialog(this, "Vertice Invalido , intentelo nuevamente");
+                idDestino.setText("");
+            }
+        }
     }//GEN-LAST:event_jButtonEnterRegistro1ActionPerformed
 
     private void jButtonDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDFSActionPerformed
         Grafo mygraph = Central.getGraph();
-        boolean cargado = validarArchivoCargado() ;
+        boolean cargado = validarArchivoCargado();
         String output = "";
         if (cargado) {
             output = mygraph.OutputDFS();
@@ -294,9 +310,9 @@ public class interfazDelivery extends javax.swing.JFrame {
 
     private void jButtonBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBFSActionPerformed
         Grafo mygraph = Central.getGraph();
-        boolean cargado = validarArchivoCargado() ;
+        boolean cargado = validarArchivoCargado();
         String output = "";
-        if (cargado ) {
+        if (cargado) {
             output = mygraph.BFS(0);
             Salida.setText(output);
         }

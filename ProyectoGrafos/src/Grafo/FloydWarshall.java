@@ -55,10 +55,10 @@ public class FloydWarshall {
             int v = end + 1;
             do {
                 u = camino[u - 1][v - 1];
-                ruta += " -> " + (u - 1);
+                ruta += " -> " + u;
             } while (u != v);
         }
-        return ruta;
+        return ruta + " | Distancia total entre los puntos: " + dist[inicio][end] +" Km";
     }
 
 }
