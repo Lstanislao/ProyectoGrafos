@@ -78,6 +78,7 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
         jLabel6.setText("Distancia (Km) :");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, -1, -1));
 
+        clientesRegistrados.setEditable(false);
         jScrollPane1.setViewportView(clientesRegistrados);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 440, 230));
@@ -218,7 +219,7 @@ public class interfazRegistroDistancia extends javax.swing.JFrame {
             Grafo mygraph = Central.getGraph();
             //UNA COSA SI SE LE VA PASAR UN ID AL GRAFO HAY QUE RESTARLE 1 PORQUE EN EL ARREGLO DONDE ESTAN EMPIEZA DESDE 0
             boolean valido = mygraph.NuevoA((Integer.parseInt(verticeOrigen.getText())) - 1, (Integer.parseInt(verticeNuevo.getText())) - 1, Integer.parseInt(distanciaEntreVertices.getText()));
-            mygraph.ImprimirTabla();
+            //mygraph.ImprimirTabla();
             if (valido) {
                 File archivo;
                 FileWriter escribir;

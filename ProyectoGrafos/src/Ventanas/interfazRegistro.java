@@ -140,36 +140,45 @@ public class interfazRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void registrarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarDatosActionPerformed
-        Grafo mygraph = Central.getGraph();
-        mygraph.ImprimirTabla();
-        String ultimoCargado = Central.Actual;
-        File archivo;
-        FileWriter escribir;
-        PrintWriter linea;
-        String cadena = "";
-
-        //System.out.println(cargarArchivo+" "+nombreDelArchivoTxtSeleccionado+" "+ultimoCargado+"sirve por favor");
-        if (nombreDelArchivoTxtSeleccionado == null && ultimoCargado == null) {
-            JOptionPane.showMessageDialog(this, "Cargue o cree un Txt por favor ");
+        if ("".equals(nombreRegistro.getText()) || "".equals(urbRegistro.getText()) || "".equals(calleAveRegistro.getText())) {
+            JOptionPane.showMessageDialog(this, "Por favor registre correctamente toda la información que se le pide");
         } else {
-            if ((!cargarArchivo) && (nuevoTxt)) {
-                //System.out.println("Primero");
 
-                archivo = new File(nombreDelArchivoTxtSeleccionado);
-                try {
-                    archivo.createNewFile();
-                    cadena = id + ", " + nombreRegistro.getText() + ", " 
-                            + urbRegistro.getText() + ", " + calleAveRegistro.getText();
-                    escribir = new FileWriter(archivo, true);
-                    linea = new PrintWriter(escribir);
-                    linea.println(cadena);
-                    linea.close();
-                    escribir.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(interfazRegistro.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                nuevoTxt = false;
-            } /*else if((!cargarArchivo))
+            Grafo mygraph = Central.getGraph();
+            //mygraph.ImprimirTabla();
+            String ultimoCargado = Central.Actual;
+            File archivo;
+            FileWriter escribir;
+            PrintWriter linea;
+            String cadena = "";
+
+            if ("".equals(nombreRegistro.getText()) || "".equals(urbRegistro.getText()) || "".equals(calleAveRegistro.getText())) {
+                JOptionPane.showMessageDialog(this, "Por favor registre correctmente toda la información que se le pide");
+            } else {
+                //System.out.println(cargarArchivo+" "+nombreDelArchivoTxtSeleccionado+" "+ultimoCargado+"sirve por favor");
+                if (nombreDelArchivoTxtSeleccionado == null && ultimoCargado == null) {
+                    JOptionPane.showMessageDialog(this, "Cargue o cree un Txt por favor ");
+                } else {
+                    if ((!cargarArchivo) && (nuevoTxt)) {
+                        id = 2;
+                        //System.out.println("Primero");
+
+                        archivo = new File(nombreDelArchivoTxtSeleccionado);
+                        try {
+                            archivo.createNewFile();
+                            cadena = id + ", " + nombreRegistro.getText() + ", "
+                                    + urbRegistro.getText() + ", " + calleAveRegistro.getText();
+                            escribir = new FileWriter(archivo, true);
+                            linea = new PrintWriter(escribir);
+                            linea.println("1, Empresa Delivery, HQ Empresa, Calle Principal de la Empresa");
+                            linea.println(cadena);
+                            linea.close();
+                            escribir.close();
+                        } catch (IOException ex) {
+                            Logger.getLogger(interfazRegistro.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        nuevoTxt = false;
+                    } /*else if((!cargarArchivo))
         {
             //System.out.println(ultimoCargado+"FLAG");
             //System.out.println("segundo");
@@ -202,46 +211,49 @@ public class interfazRegistro extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(interfazRegistro.class.getName()).log(Level.SEVERE, null, ex);
             }*/ else {
-                try {
-                    FileReader leer;
-                    BufferedReader almacenamiento;
-                    try {
-
-                        nombreDelArchivoTxtSeleccionado = ultimoCargado;
-                        leer = new FileReader(nombreDelArchivoTxtSeleccionado);
-                        almacenamiento = new BufferedReader(leer);
                         try {
-                            while (almacenamiento.readLine() != null) {
-                                id += 1;
+                            FileReader leer;
+                            BufferedReader almacenamiento;
+                            try {
+
+                                nombreDelArchivoTxtSeleccionado = ultimoCargado;
+                                leer = new FileReader(nombreDelArchivoTxtSeleccionado);
+                                almacenamiento = new BufferedReader(leer);
+                                try {
+                                    while (almacenamiento.readLine() != null) {
+                                        id += 1;
+                                    }
+                                } catch (IOException ex) {
+                                    Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            } catch (FileNotFoundException ex) {
+                                Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
                             }
+
+                            cadena = id + ", " + nombreRegistro.getText() + ", "
+                                    + urbRegistro.getText() + ", " + calleAveRegistro.getText();
+                            escribir = new FileWriter(nombreDelArchivoTxtSeleccionado, true);
+                            linea = new PrintWriter(escribir);
+                            linea.println(cadena);
+                            linea.close();
+                            escribir.close();
+
                         } catch (IOException ex) {
-                            Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(interfazRegistro.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                    } catch (FileNotFoundException ex) {
-                        Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
+
                     }
 
-                    cadena = id + ", " + nombreRegistro.getText() + ", " 
-                            + urbRegistro.getText() + ", " + calleAveRegistro.getText();
-                    escribir = new FileWriter(nombreDelArchivoTxtSeleccionado, true);
-                    linea = new PrintWriter(escribir);
-                    linea.println(cadena);
-                    linea.close();
-                    escribir.close();
+                    mygraph.NuevoV(nombreRegistro.getText(), calleAveRegistro.getText(), urbRegistro.getText());//Cuando lo necesite lo genero 
+                    interfazRegistroDistancia a = new interfazRegistroDistancia();
+                    a.setVisible(true);
+                    a.setLocationRelativeTo(null);
+                    this.setVisible(false);
 
-                } catch (IOException ex) {
-                    Logger.getLogger(interfazRegistro.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
-
-            mygraph.NuevoV(nombreRegistro.getText(), calleAveRegistro.getText(), urbRegistro.getText());//Cuando lo necesite lo genero 
-            interfazRegistroDistancia a = new interfazRegistroDistancia();
-            a.setVisible(true);
-            a.setLocationRelativeTo(null);
-            this.setVisible(false);
         }
-
 
     }//GEN-LAST:event_registrarDatosActionPerformed
 

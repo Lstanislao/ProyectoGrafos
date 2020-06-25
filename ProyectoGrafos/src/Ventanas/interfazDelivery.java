@@ -98,6 +98,7 @@ public class interfazDelivery extends javax.swing.JFrame {
         });
         getContentPane().add(idDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 50, 30));
 
+        outputCaminoMasCorto.setEditable(false);
         outputCaminoMasCorto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 outputCaminoMasCortoActionPerformed(evt);
@@ -126,6 +127,7 @@ public class interfazDelivery extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonDFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 90, 40));
 
+        Salida.setEditable(false);
         jScrollPane1.setViewportView(Salida);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 340, 230));
@@ -157,6 +159,7 @@ public class interfazDelivery extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonActualizarLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, -1, -1));
 
+        clientesRegistrados.setEditable(false);
         jScrollPane3.setViewportView(clientesRegistrados);
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 320, 260));
@@ -284,7 +287,7 @@ public class interfazDelivery extends javax.swing.JFrame {
         if (cargado) {
             if (destino != -1) {
                 FloydWarshall camino = new FloydWarshall();
-                output = camino.Floyd(0, destino, mygraph);
+                //output = camino.Floyd(0, destino, mygraph);
                 outputCaminoMasCorto.setText(output);
                 
                 DibujarRutaMasCorta(mygraph, output);

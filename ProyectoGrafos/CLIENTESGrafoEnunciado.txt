@@ -10,3 +10,4 @@
 10, Luís Salazar, San Bernardino, calle 3
 11, Rafael Pérez, Urb. EL Marqués, Cale 4
 12, Lázaro, Urb. Los Dos Caminos, calle 6
+14, Guillermo Sosa, Los Chorros, Avenida 6
