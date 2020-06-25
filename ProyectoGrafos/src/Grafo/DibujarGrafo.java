@@ -5,8 +5,8 @@
  */
 package Grafo;
 
-import org.graphstream.graph.*;
-import org.graphstream.graph.implementations.SingleGraph;
+//import org.graphstream.graph.*;
+//import org.graphstream.graph.implementations.SingleGraph;
 
 /**
  *
@@ -21,7 +21,7 @@ public class DibujarGrafo {
 
  /* Aqui se especifica todo lo referente al estilo de los vertices y aristas 
     al graficar*/
-    protected static String estilo = ""
+   /* protected static String estilo = ""
             + " node {"
             + "     fill-mode: gradient-diagonal1;"
             + "     fill-color: rgb(0,118,137), rgb(144,212,222);"
@@ -60,14 +60,14 @@ public class DibujarGrafo {
             + "     text-padding: 10, 0;"
             + "     text-background-mode: rounded-box;"
             + "     text-background-color: rgb(255,255,255);"
-            + " }";
+            + " }";*/
 
 
     /* 
     Esta funcion se encarga de representar graficamente el grafo recibido 
     como argumento
      */
-    public static void Dibujar(Grafo g) {
+    /*public static void Dibujar(Grafo g) {
 
         Graph graph = new SingleGraph("Clientes");
 
@@ -75,7 +75,7 @@ public class DibujarGrafo {
 
         /* A partir del grafo recibido agrego los vertices y aristas en un nuevo
         grafo que pertenece a la clase grafo de la libreria*/
-        for (int i = 0; i < g.getnVertices(); i++) {
+        /*for (int i = 0; i < g.getnVertices(); i++) {
             Node n = graph.addNode(g.Vertices[i].getNombre());
             n.addAttribute("ui.label", i + 1);
         }
@@ -100,7 +100,7 @@ public class DibujarGrafo {
     Esta funcion se encarga de representar graficamente el grafo recibido como 
     argumento, señalando el camino mas corto entre dos vertices
      */
-    public static void DibujarRutaMasCorta(Grafo g, String[] camino) {
+   /* public static void DibujarRutaMasCorta(Grafo g, String[] camino) {
         Graph graph = new SingleGraph("Ruta corta");
 
         graph.addAttribute("ui.stylesheet", estilo);
@@ -111,7 +111,7 @@ public class DibujarGrafo {
         los vertices y aristas qeu formen parte del recorrido, para poder 
         mostrarlo
          */
-        for (int i = 0; i < g.getnVertices(); i++) {
+        /*for (int i = 0; i < g.getnVertices(); i++) {
             Node n = graph.addNode(g.Vertices[i].getNombre());
 
             if (Pertenece(i, camino)) {
@@ -158,7 +158,7 @@ public class DibujarGrafo {
     Crea un arreglo que tiene en cada posicion un String con los dos vertices
     de la arista
      */
-    public static String[] ArregloAristas(String[] camino) {
+    /*public static String[] ArregloAristas(String[] camino) {
         String[] aristas = new String[camino.length - 1];
 
         for (int k = 1; k < camino.length; k++) {
@@ -182,5 +182,5 @@ public class DibujarGrafo {
             }
         }
         return existe;
-    }
+    }*/
 }

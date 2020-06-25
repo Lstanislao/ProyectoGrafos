@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class Central {
 
-    public static Grafo graph = new Grafo(10);
+    public static Grafo graph = new Grafo(100);
     public static String Actual;
 
     public static String getActual() {
@@ -41,7 +41,7 @@ public class Central {
 
     public static void CargarGrafo() {
         //Grafo mygraph = Central.getGraph();
-        Grafo mygraph = new Grafo(10);
+        Grafo mygraph = new Grafo(100);
         File miArchivo;
         File ruta;
         FileReader leer;
