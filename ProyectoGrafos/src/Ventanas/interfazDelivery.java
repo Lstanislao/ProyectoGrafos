@@ -6,7 +6,8 @@
 package Ventanas;
 
 import Grafo.*;
-//import Grafo.DibujarGrafo.*;
+import Grafo.DibujarGrafo.*;
+import static Grafo.DibujarGrafo.DibujarRutaMasCorta;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -203,9 +204,8 @@ public class interfazDelivery extends javax.swing.JFrame {
                 Dijkstra camino = new Dijkstra(mygraph, 0, (destino));
                 output = camino.CaminoFormato();
                 outputCaminoMasCorto.setText(output);
-                String[] transicion = output.split(" | ");
-                String[] ruta = transicion[0].split(" -> ");
-//              DibujarRutaMasCorta(ruta);
+                
+                DibujarRutaMasCorta(mygraph, output);
             } else {
                 JOptionPane.showMessageDialog(this, "Vertice Invalido , intentelo nuevamente");
                 idDestino.setText("");
@@ -286,9 +286,8 @@ public class interfazDelivery extends javax.swing.JFrame {
                 FloydWarshall camino = new FloydWarshall();
                 output = camino.Floyd(0, destino, mygraph);
                 outputCaminoMasCorto.setText(output);
-                String[] transicion = output.split(" | ");
-                String[] ruta = transicion[0].split(" -> ");
-//                DibujarRutaMasCorta(ruta);
+                
+                DibujarRutaMasCorta(mygraph, output);
             } else {
                 JOptionPane.showMessageDialog(this, "Vertice Invalido , intentelo nuevamente");
                 idDestino.setText("");
