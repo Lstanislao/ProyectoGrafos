@@ -1,0 +1,6 @@
+1, empresa, por ahi, si
+2, luis, s, 2
+3, guille, s, s
+4, j, d, d
+5, g, t, b
+6, 34, afd, dfs

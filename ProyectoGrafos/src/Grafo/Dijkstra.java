@@ -88,7 +88,7 @@ public class Dijkstra {
 
 
 
-                inverse = inverse + "->" + Integer.toString(Integer.parseInt(s[j])+1)  ;
+                inverse = inverse + " -> " + Integer.toString(Integer.parseInt(s[j])+1)  ;
 
 
             j--;
