@@ -287,7 +287,7 @@ public class interfazDelivery extends javax.swing.JFrame {
         if (cargado) {
             if (destino != -1) {
                 FloydWarshall camino = new FloydWarshall();
-                //output = camino.Floyd(0, destino, mygraph);
+                output = camino.Floyd(0, destino, mygraph);
                 outputCaminoMasCorto.setText(output);
                 
                 DibujarRutaMasCorta(mygraph, output);
