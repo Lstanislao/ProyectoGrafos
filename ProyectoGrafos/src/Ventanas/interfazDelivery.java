@@ -315,6 +315,7 @@ public class interfazDelivery extends javax.swing.JFrame {
         BufferedReader almacenamiento;
         String cadena, texto = "";
         miArchivo = new File(nombreDelArchivoTxtSeleccionado);
+         File porDefecto = new File("ArchivoPorDefecto.txt");
 
         try {
             leer = new FileReader(miArchivo);
@@ -333,7 +334,8 @@ public class interfazDelivery extends javax.swing.JFrame {
             Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
         }
         Central.setActual(nombreDelArchivoTxtSeleccionado);
-        Archivo.copiarTxt(miArchivo);
+        
+        Archivo.copiarTxt(miArchivo,porDefecto);
         Central.CargarGrafo1();
     }//GEN-LAST:event_jButtonActualizarListaActionPerformed
 

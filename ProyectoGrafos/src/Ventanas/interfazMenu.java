@@ -29,9 +29,20 @@ public class interfazMenu extends javax.swing.JFrame {
     String nombreDelArchivoTxtSeleccionado;
 
     public interfazMenu() {
+        boolean PrimeraVezInciado= Central.getIniciado();
+        if(!PrimeraVezInciado)
+        {
+            String archivoActual= Central.Actual;
+            File porDefecto = new File("ArchivoPorDefecto.txt");
+            File actual = new File(archivoActual);    
+            Archivo.copiarTxt(actual,porDefecto);
+            Central.CargarGrafo1();
+            Central.setInciado(true);
+        }
 
         initComponents();
         this.setLocationRelativeTo(null);
+
 
     }
 
@@ -183,6 +194,8 @@ public class interfazMenu extends javax.swing.JFrame {
         a.setVisible(true);
         a.setLocationRelativeTo(null);
         this.setVisible(false);
+        
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -196,8 +209,20 @@ public class interfazMenu extends javax.swing.JFrame {
                 }
             }
         }
-        File archivoPorDefecto = new File("ArchivoPorDefecto.txt");
-        Archivo.copiarTxt(archivo);
+        int cambiar=JOptionPane.showConfirmDialog(this,"Se guardaran los datos actuales en memeroia y se procedera a caragar el nuevo archivo. Desea seguir?");
+        if(cambiar==0)
+        {
+            String archivoActual= Central.Actual;
+            File actual = new File(archivoActual);    
+            File porDefecto = new File("ArchivoPorDefecto.txt");
+            File porCargarse = new File(nombreDelArchivoTxtSeleccionado);
+            Archivo.copiarTxt(porDefecto,actual);
+            Archivo.copiarTxt(porCargarse, porDefecto);
+            Central.CargarGrafo1();
+            Central.setActual(nombreDelArchivoTxtSeleccionado);
+        }
+        
+
         
     }//GEN-LAST:event_jButton6ActionPerformed
 

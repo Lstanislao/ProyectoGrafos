@@ -21,8 +21,10 @@ import java.util.logging.Logger;
 public class Central {
 
     public static Grafo graph = new Grafo(100);
-    public static String Actual;
+    public static String Actual="Enunciado.txt";
+    public static boolean Iniciado=false;
 
+    
     public static String getActual() {
         return Actual;
     }
@@ -38,6 +40,16 @@ public class Central {
     public static void setGraph(Grafo graph) {
         Central.graph = graph;
     }
+
+    public static boolean getIniciado() {
+        return Iniciado;
+    }
+
+    public static void setInciado(boolean Inciado) {
+        Central.Iniciado = Inciado;
+    }
+    
+    
 
     public static void CargarGrafo() {
         //Grafo mygraph = Central.getGraph();

@@ -5,7 +5,9 @@
  */
 package Ventanas;
 
+import Grafo.Central;
 import static Grafo.Central.graph;
+import Grafo.Grafo;
 import javax.swing.JOptionPane;
 
 /**
@@ -138,6 +140,7 @@ public class interfazNuevaRuta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Grafo graph = Central.getGraph();
         boolean valid1 = Validacion(idVertice1.getText())
                 && graph.IndiceVerticeInt(Integer.parseInt(idVertice2.getText())) != -1;
         boolean valid2 = Validacion(idVertice2.getText())
@@ -153,6 +156,7 @@ public class interfazNuevaRuta extends javax.swing.JFrame {
             int dist = Integer.parseInt(distanciaEntreVertices.getText());
             graph.NuevoA(v1, v2, dist);
             mensaje.setText("Registro Existoso");
+            Central.setGraph(graph);
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -94,8 +94,7 @@ public class Archivo {
         return caminos;
     }
     
-    public static void copiarTxt(File archivoExterno) {
-        File archivoFijo= new File("ArchivoPorDefecto.txt");
+    public static void copiarTxt(File archivoExterno, File archivoFijo) {//el que voy a copiar , donde lo quiero copiar
         FileReader leer;
         BufferedReader almacenamiento;
         String cadena, texto = "";

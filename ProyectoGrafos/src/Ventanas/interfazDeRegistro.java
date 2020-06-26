@@ -5,7 +5,10 @@
  */
 package Ventanas;
 
+import Grafo.Archivo;
+import Grafo.Central;
 import static Grafo.Central.graph;
+import Grafo.Grafo;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +16,7 @@ import javax.swing.JOptionPane;
  * @author sosag
  */
 public class interfazDeRegistro extends javax.swing.JFrame {
+    
 
     // Valida que el argumento sea un numero entero
     public boolean Validacion(String cadena) {
@@ -28,7 +32,9 @@ public class interfazDeRegistro extends javax.swing.JFrame {
     public interfazDeRegistro() {
         initComponents();
         this.setLocationRelativeTo(null);
-
+        Grafo graph = Central.getGraph();
+        int id =graph.getnVertices()+1;
+        idVertice1.setText(Integer.toString(id));
     }
 
     /**
@@ -84,6 +90,12 @@ public class interfazDeRegistro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(calleAveRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 280, -1));
+
+        nombreRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreRegistroActionPerformed(evt);
+            }
+        });
         getContentPane().add(nombreRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 280, -1));
         getContentPane().add(urbRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 280, -1));
 
@@ -162,6 +174,7 @@ public class interfazDeRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_idVertice1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Grafo graph = Central.getGraph();
         boolean valid1 = Validacion(idVertice1.getText());
         boolean valid2 = Validacion(idVertice2.getText())
                 && graph.IndiceVerticeInt(Integer.parseInt(idVertice2.getText())) != -1;
@@ -173,10 +186,13 @@ public class interfazDeRegistro extends javax.swing.JFrame {
         } else {
             //REGISTRAR LOS DATOS
 
-            graph.NuevoV(nombreRegistro.getText(), urbRegistro.getText(), calleAveRegistro.getText());
-            //graph.NuevoA(, idVertice2.getText(), distanciaEntreVertices.getText());
-            // el primer valor deberia ya estar anclado
+            graph.NuevoV(nombreRegistro.getText(), calleAveRegistro.getText(),urbRegistro.getText());
+            int id =graph.getnVertices()-1;
+            System.out.println("ID"+id);
+            graph.NuevoA(id, Integer.parseInt(idVertice2.getText())-1,Integer.parseInt(distanciaEntreVertices.getText()));
+            Central.setGraph(graph);
             mensaje.setText("Registro Existoso");
+            Archivo.EscribirGrafoEnTxt();
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -184,6 +200,10 @@ public class interfazDeRegistro extends javax.swing.JFrame {
     private void calleAveRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calleAveRegistroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_calleAveRegistroActionPerformed
+
+    private void nombreRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreRegistroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreRegistroActionPerformed
 
     /**
      * @param args the command line arguments
