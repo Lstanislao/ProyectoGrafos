@@ -275,7 +275,7 @@ public class interfazDelivery extends javax.swing.JFrame {
             Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
         }
         Central.setActual(nombreDelArchivoTxtSeleccionado);
-        Central.CargarGrafo();
+        Central.CargarGrafo1();
     }//GEN-LAST:event_jButtonActualizarListaActionPerformed
 
     private void jButtonEnterRegistro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnterRegistro1ActionPerformed
@@ -305,8 +305,8 @@ public class interfazDelivery extends javax.swing.JFrame {
         if (cargado) {
             output = mygraph.OutputDFS();
             Salida.setText(output);
-            //RecorrerGrafoPaTxt.Clientes();
-            Archivo.EscribirGrafoEnTxt();
+            
+           
         }
 
 

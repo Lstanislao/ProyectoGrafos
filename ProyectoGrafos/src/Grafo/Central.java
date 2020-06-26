@@ -106,5 +106,79 @@ public class Central {
         }
         graph = mygraph;
     }
+    
+    public static void CargarGrafo1()
+    {
+        Grafo mygraph = new Grafo(100);
+        File miArchivo;
+        File ruta;
+        FileReader leer;
+        BufferedReader almacenamiento;
+        String id,nombre, calle, urb, linea, cadena[];
+        int v1, v2, distancia;
+        miArchivo = new File("ArchivoPorDefecto.txt");                
+        String line;        
+        
+        boolean lineaClientes=false;
+        boolean lineaCaminos=false;
+        
+        try {
+            FileReader fileReader = 
+                new FileReader(miArchivo);
+            BufferedReader bufferedReader = 
+                new BufferedReader(fileReader);
+
+            //Usa las separaciones del archivo(clientes, caminos)
+            //para poder saber que lineas del archivo se usaran para crear las listas
+            while((line = bufferedReader.readLine()) != null) {
+                if(line.toLowerCase().equals("clientes")){
+                    lineaClientes = true;
+                    line = bufferedReader.readLine();
+                }
+                if(line.toLowerCase().equals("caminos")){
+                    lineaClientes=false;
+                    line = bufferedReader.readLine();
+                    lineaCaminos=true;
+                }
+                
+                         
+                // Parte que inserta clientes en la lista clientes
+                if(lineaClientes==true){
+                    cadena = line.split(",");
+                    nombre = cadena[1];
+                    urb = cadena[2];
+                    calle = cadena[3];
+                    mygraph.NuevoV(nombre, calle, urb);
+                    
+                // Parte que inserta caminos en la lista caminos
+                } else if(lineaCaminos==true){
+                    cadena = line.split(",");
+                    System.out.println(cadena[0]);
+                    System.out.println(cadena[1]);
+                    System.out.println(cadena[2]);
+                    v1 = Integer.parseInt(cadena[0])- 1;
+                    v2 = Integer.parseInt(cadena[1])- 1;
+                    distancia = Integer.parseInt(cadena[2]);
+                    mygraph.NuevoA(v1, v2, distancia);
+                }  
+            }
+            
+            bufferedReader.close();         
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println(
+                "No se puede abrir este archivo'" + 
+                miArchivo + "'");                
+        }
+        catch(IOException ex) {
+            System.out.println(
+                "No se puede leer este archivo '" 
+                + miArchivo  + "'");                  
+            
+        }
+        catch(IndexOutOfBoundsException ex){
+            
+        }
+    }
 
 }
