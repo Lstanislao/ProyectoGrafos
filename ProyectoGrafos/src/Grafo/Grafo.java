@@ -145,8 +145,8 @@ public class Grafo {
     }
 
     public void ImprimirTabla() { //PROVISIONAL
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
+        for (int i = 0; i < nVertices; i++) {
+            for (int j = 0; j < nVertices; j++) {
                 System.out.print(MatrizAd[i][j] + " ");
             }
             System.out.println("");
@@ -259,10 +259,11 @@ public class Grafo {
                 + ", " + Vertices[orig].getCalle() + "\n";
 
         for (int i = 1; i < array.length; i++) {
-            out1 += "->" + "ID" + Integer.toString(Vertices[i].getNumVertice() + 1);
-            out2 += "ID: " + Integer.toString(Vertices[i].getNumVertice() + 1)
-                    + " " + Vertices[i].getNombre() + ", " + Vertices[i].getUrb()
-                    + ", " + Vertices[i].getCalle() + "\n";
+            int indice = Integer.parseInt(array[i]);
+            out1 += "->" + "ID" + Integer.toString(Vertices[indice].getNumVertice() + 1);
+            out2 += "ID: " + Integer.toString(Vertices[indice].getNumVertice() + 1)
+                    + " " + Vertices[indice].getNombre() + ", " + Vertices[i].getUrb()
+                    + ", " + Vertices[indice].getCalle() + "\n";
         }
 
         cadena = "Recorrido DSF: \n" + out1 + "\n\n" + out2;
