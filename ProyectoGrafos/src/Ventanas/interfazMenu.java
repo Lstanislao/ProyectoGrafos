@@ -44,35 +44,24 @@ public class interfazMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Silom", 0, 10)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 153, 102));
-        jButton2.setText("Registro Viejo");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 110, 30));
 
         jButtonSalir.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSalir.setFont(new java.awt.Font("Silom", 1, 14)); // NOI18N
@@ -83,7 +72,7 @@ public class interfazMenu extends javax.swing.JFrame {
                 jButtonSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 262, 70, 40));
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 70, 40));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Silom", 1, 14)); // NOI18N
@@ -94,10 +83,10 @@ public class interfazMenu extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 30));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/upload.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 50, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 50, -1));
 
         jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setFont(new java.awt.Font("Silom", 1, 14)); // NOI18N
@@ -108,24 +97,13 @@ public class interfazMenu extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 10, 250, 40));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 250, 40));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delivery.png"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, -1, -1));
-
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Silom", 1, 14)); // NOI18N
-        jButton1.setText("Grafico");
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 120, 40));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pin.png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 40, 40));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 40, 40));
 
         jButton5.setFont(new java.awt.Font("Silom", 1, 14)); // NOI18N
         jButton5.setText("Crear Nueva Ruta");
@@ -135,13 +113,13 @@ public class interfazMenu extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 210, 40));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 210, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 270, 210));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 260, 200));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/registrar.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 40, 40));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 40, 40));
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Silom", 1, 14)); // NOI18N
@@ -152,7 +130,7 @@ public class interfazMenu extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 250, 40));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 250, 40));
 
         jButton8.setBackground(new java.awt.Color(255, 255, 255));
         jButton8.setFont(new java.awt.Font("Silom", 1, 14)); // NOI18N
@@ -163,10 +141,24 @@ public class interfazMenu extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 210, 40));
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, 210, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo1.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 494, 320));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/grafo icon.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, 90, 50));
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Silom", 1, 14)); // NOI18N
+        jButton1.setText("Graficar Grafo");
+        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 300, 210, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo azul claro.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -178,13 +170,6 @@ public class interfazMenu extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Dibujar(graph);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        interfazRegistro a = new interfazRegistro();
-        a.setVisible(true);
-        a.setLocationRelativeTo(null);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         interfazInstrucciones a = new interfazInstrucciones();
@@ -213,6 +198,7 @@ public class interfazMenu extends javax.swing.JFrame {
         }
         File archivoPorDefecto = new File("ArchivoPorDefecto.txt");
         Ori.copiarTxt(archivo, archivoPorDefecto);
+        
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -223,10 +209,33 @@ public class interfazMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        interfazDelivery a = new interfazDelivery();
-        a.setVisible(true);
-        a.setLocationRelativeTo(null);
-        this.setVisible(false);
+
+        File archivoPorDefecto = new File("ArchivoPorDefecto.txt");
+        FileReader leer;
+        BufferedReader almacenamiento;
+        String cadena, texto = "";
+
+        try {
+            leer = new FileReader(archivoPorDefecto);
+            almacenamiento = new BufferedReader(leer);
+
+            try {
+                while ((cadena = almacenamiento.readLine()) != null) {
+                    texto += cadena + "\n";
+                }
+                    interfazDelivery a = new interfazDelivery(texto);
+                    a.setVisible(true);
+                    a.setLocationRelativeTo(null);
+                    this.setVisible(false);
+                
+            } catch (IOException ex) {
+                Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
@@ -266,7 +275,6 @@ public class interfazMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -279,5 +287,6 @@ public class interfazMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }

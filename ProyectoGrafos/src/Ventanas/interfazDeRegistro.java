@@ -96,7 +96,7 @@ public class interfazDeRegistro extends javax.swing.JFrame {
                 jButtonSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 450, 90, 40));
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 450, 90, 40));
 
         jButtonMenu.setBackground(new java.awt.Color(255, 255, 255));
         jButtonMenu.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
@@ -141,7 +141,7 @@ public class interfazDeRegistro extends javax.swing.JFrame {
         getContentPane().add(distanciaEntreVertices, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, 50, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pastel.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

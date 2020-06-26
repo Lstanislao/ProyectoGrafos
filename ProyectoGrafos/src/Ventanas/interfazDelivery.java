@@ -40,6 +40,13 @@ public class interfazDelivery extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
 
     }
+    
+    public interfazDelivery(String lista){
+        initComponents();
+        this.setLocationRelativeTo(null);
+        clientesRegistrados.setText(lista);
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -217,17 +224,67 @@ public class interfazDelivery extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonEnterRegistroActionPerformed
 
+    private void jButtonEnterRegistro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnterRegistro1ActionPerformed
+        Grafo mygraph = Central.getGraph();
+        boolean cargado = validarArchivoCargado();
+        int destino = Integer.parseInt(idDestino.getText());
+        String output = "";
+        destino = mygraph.IndiceVerticeInt(destino - 1);
+        if (cargado) {
+            if (destino != -1) {
+                FloydWarshall camino = new FloydWarshall();
+                output = camino.Floyd(0, destino, mygraph);
+                outputCaminoMasCorto.setText(output);
+
+                DibujarRutaMasCorta(mygraph, output);
+            } else {
+                JOptionPane.showMessageDialog(this, "Vertice Invalido , intentelo nuevamente");
+                idDestino.setText("");
+            }
+        }
+    }//GEN-LAST:event_jButtonEnterRegistro1ActionPerformed
+
+    private void jButtonDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDFSActionPerformed
+        Grafo mygraph = Central.getGraph();
+        boolean cargado = validarArchivoCargado();// se va?
+        String output = "";
+        if (cargado) {
+            output = mygraph.OutputDFS(0);
+            Salida.setText(output);
+        }
+
+    }//GEN-LAST:event_jButtonDFSActionPerformed
+
+    private void jButtonBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBFSActionPerformed
+        Grafo mygraph = Central.getGraph();
+        boolean cargado = validarArchivoCargado();//se va?
+        String output = "";
+        if (cargado) {
+            output = mygraph.BFS(0);
+            Salida.setText(output);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonBFSActionPerformed
+
+    private void outputCaminoMasCortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outputCaminoMasCortoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_outputCaminoMasCortoActionPerformed
+
+    private void idDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idDestinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idDestinoActionPerformed
+
     private void jButtonActualizarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarListaActionPerformed
         /*File miArchivo;
         FileReader leer;
         BufferedReader almacenamiento;
         String cadena, texto="";
         miArchivo = new File("ArchivoDeTextoClientes.txt");
-        
+
         try {
             leer = new FileReader(miArchivo);
             almacenamiento = new BufferedReader(leer);
-            
+
             try {
                 while((cadena = almacenamiento.readLine())!=null){
                     texto += cadena + "\n";
@@ -236,7 +293,7 @@ public class interfazDelivery extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
         }*/
@@ -278,57 +335,6 @@ public class interfazDelivery extends javax.swing.JFrame {
         Central.setActual(nombreDelArchivoTxtSeleccionado);
         Central.CargarGrafo1();
     }//GEN-LAST:event_jButtonActualizarListaActionPerformed
-
-    private void jButtonEnterRegistro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnterRegistro1ActionPerformed
-        Grafo mygraph = Central.getGraph();
-        boolean cargado = validarArchivoCargado();
-        int destino = Integer.parseInt(idDestino.getText());
-        String output = "";
-        destino = mygraph.IndiceVerticeInt(destino - 1);
-        if (cargado) {
-            if (destino != -1) {
-                FloydWarshall camino = new FloydWarshall();
-                output = camino.Floyd(0, destino, mygraph);
-                outputCaminoMasCorto.setText(output);
-
-                DibujarRutaMasCorta(mygraph, output);
-            } else {
-                JOptionPane.showMessageDialog(this, "Vertice Invalido , intentelo nuevamente");
-                idDestino.setText("");
-            }
-        }
-    }//GEN-LAST:event_jButtonEnterRegistro1ActionPerformed
-
-    private void jButtonDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDFSActionPerformed
-        Grafo mygraph = Central.getGraph();
-        boolean cargado = validarArchivoCargado();// se va?
-        String output = "";
-        if (cargado) {
-            output = mygraph.OutputDFS(0);
-            Salida.setText(output);
-        }
-
-    }//GEN-LAST:event_jButtonDFSActionPerformed
-
-    private void jButtonBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBFSActionPerformed
-        Grafo mygraph = Central.getGraph();
-        boolean cargado = validarArchivoCargado();//se va?
-        String output = "";
-        if (cargado) {
-            output = mygraph.BFS(0);
-            Salida.setText(output);
-        }
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonBFSActionPerformed
-
-    private void outputCaminoMasCortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outputCaminoMasCortoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_outputCaminoMasCortoActionPerformed
-
-    private void idDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idDestinoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idDestinoActionPerformed
 
     /**
      * @param args the command line arguments
