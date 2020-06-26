@@ -17,12 +17,6 @@ import javax.swing.JFileChooser;
  */
 public class Ori {
 
-    File miArchivo;
-    FileReader leer;
-    BufferedReader almacenamiento;
-    String cadena, texto = "";
-
-
 
     public static String EncontrarCaminos(Grafo g) {
         String caminos = "caminos\n";
@@ -37,7 +31,7 @@ public class Ori {
         }
         return caminos;
     }
-    
+
     public static String EncontrarCamino(Grafo g) {
         String caminos = "caminos\n";
         for (int i = 1; i < g.getnVertices(); i++) {
@@ -51,7 +45,11 @@ public class Ori {
         return caminos;
     }
 
-    public void copiarTxt(File archivoExterno, File archivoFijo) {
+    public static void copiarTxt(File archivoExterno, File archivoFijo) {
+        FileReader leer;
+        BufferedReader almacenamiento;
+        String cadena, texto = "";
+
         try {
             leer = new FileReader(archivoExterno);
             almacenamiento = new BufferedReader(leer);
@@ -62,8 +60,8 @@ public class Ori {
                 }
                 PrintWriter escribir;
                 archivoFijo.createNewFile();
-                escribir = new PrintWriter(archivoFijo,"utf-8");
-                
+                escribir = new PrintWriter(archivoFijo, "utf-8");
+
                 escribir.println(texto);
                 escribir.close();
 
@@ -75,5 +73,3 @@ public class Ori {
         }
     }
 }
-
-

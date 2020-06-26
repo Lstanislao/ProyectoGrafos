@@ -200,6 +200,8 @@ public class interfazMenu extends javax.swing.JFrame {
                 }
             }
         }
+        File archivoPorDefecto = new File("ArchivoPorDefecto.txt");
+        Ori.copiarTxt(archivo, archivoPorDefecto);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
