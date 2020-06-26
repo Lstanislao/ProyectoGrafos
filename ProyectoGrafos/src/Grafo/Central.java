@@ -179,6 +179,7 @@ public class Central {
         catch(IndexOutOfBoundsException ex){
             
         }
+        Central.setGraph(mygraph);
     }
 
 }

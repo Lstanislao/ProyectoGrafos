@@ -121,6 +121,7 @@ public class Grafo {
 
     public boolean NuevoA(int v1, int v2, int recorrido) {
         int n1, n2;
+        System.out.println(v1+" "+v2+" "+recorrido+"HOLA");
         n1 = IndiceVerticeInt(v1);
         n2 = IndiceVerticeInt(v2);
         if (n1 < 0 || n2 < 0) {
@@ -155,6 +156,7 @@ public class Grafo {
         int recorrido[] = new int[nVertices];
         int aux;
         String cadena, cadena1, cadenafinal;
+        System.out.println(Vertices[orig].getNumVertice() + 1+" "+Vertices[orig].getNombre());
         cadena1 = "ID: " + Integer.toString(Vertices[orig].getNumVertice() + 1)
                 + " " + Vertices[orig].getNombre() + ", " + Vertices[orig].getUrb()
                 + ", " + Vertices[orig].getCalle() + "\n";
