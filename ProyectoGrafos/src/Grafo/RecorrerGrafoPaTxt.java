@@ -14,22 +14,25 @@ import java.io.FileWriter;
  *
  * @author Luis Stanislao
  */
-public class RecorrerGrafoPaTxt 
-{
-    public static String Clientes()
-    {
-       Grafo mygraph = Central.getGraph();
-       Vertice clientes [] = mygraph.getVertices();
-       int num = mygraph.getnVertices();
-       String cadenaClientes= "";
-       
-       
-       for (int i = 0; i < num; i++) 
-       {
-           cadenaClientes=cadenaClientes+Integer.toString(clientes[i].getNumVertice()+1)+","+clientes[i].getNombre()+","+clientes[i].getUrb()+","+clientes[i].getCalle()+"\n";
-           System.out.println(cadenaClientes);
+public class RecorrerGrafoPaTxt {
+
+    /*
+    Construye un String que tiene toda la informacion de los clientes en el 
+    formato adecuado para el txt
+     */
+    public static String Clientes() {
+        Grafo mygraph = Central.getGraph();
+        Vertice clientes[] = mygraph.getVertices();
+        int num = mygraph.getnVertices();
+        String cadenaClientes = "";
+
+        for (int i = 0; i < num; i++) {
+            cadenaClientes += Integer.toString(clientes[i].getNumVertice() + 1)
+                    + "," + clientes[i].getNombre() + "," + clientes[i].getUrb()
+                    + "," + clientes[i].getCalle() + "\n";
+            System.out.println(cadenaClientes);
         }
-       return cadenaClientes;   
+        return cadenaClientes;
     }
-    
+
 }

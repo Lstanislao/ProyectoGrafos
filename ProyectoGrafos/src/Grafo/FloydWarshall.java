@@ -5,6 +5,8 @@
  */
 package Grafo;
 
+import static Grafo.Grafo.VALOR_MAX;
+
 /**
  *
  * @author orian
@@ -19,13 +21,12 @@ public class FloydWarshall {
         num = grafo.getnVertices(); // Es el numero de vertices
         dist = new int[num][num]; // Guardara la distancia mas corta entre pares
         camino = new int[num][num]; // Guardara indices para reconstruir el camino mas corto
-        int max = 999999999;
 
         // Asignamos a las matrices sus valores iniciales
         for (int i = 0; i < num; i++) {
             for (int j = 0; j < num; j++) {
                 dist[i][j] = grafo.MatrizAd[i][j];
-                if (grafo.MatrizAd[i][j] != max && i != j) {
+                if (grafo.MatrizAd[i][j] != VALOR_MAX && i != j) {
                     camino[i][j] = j + 1;
                 }
             }
@@ -46,11 +47,11 @@ public class FloydWarshall {
         return CaminoMasCorto(inicio, end);
     }
 
+    // Se reconstruye la ruta del camino mas corto obtenido del metodo de Floyd Warshall
     public String CaminoMasCorto(int inicio, int end) {
         String ruta = Integer.toString(inicio + 1);
-        int max = 999999999;
-        // Se reconstruye la ruta del camino mas corto
-        if (dist[inicio][end] != max && inicio != end) {
+
+        if (dist[inicio][end] != VALOR_MAX && inicio != end) {
             int u = inicio + 1;
             int v = end + 1;
             do {
@@ -58,7 +59,7 @@ public class FloydWarshall {
                 ruta += " -> " + u;
             } while (u != v);
         }
-        return ruta + "  ~  Distancia total entre los puntos: " + dist[inicio][end] +" Km";
+        return ruta + "  ~  Distancia total entre los puntos: " + dist[inicio][end] + " Km";
     }
 
 }

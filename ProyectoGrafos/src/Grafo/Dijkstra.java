@@ -5,6 +5,8 @@
  */
 package Grafo;
 
+import static Grafo.Grafo.VALOR_MAX;
+
 /**
  *
  * @author Luis Stanislao
@@ -29,8 +31,11 @@ public class Dijkstra {
     }
 
     public void CaminoDijkstra() {
-        for (int i = 0; i < Num; i++) // se inicializan los arreglos Visiatados con falso, el de costo con el costo de todos los arcos que tien el origen y el ultimo recorrido es origen 
-        {
+        /* se inicializan los arreglos Visiatados con falso, el de costo con el 
+        costo de todos los arcos que tien el origen y el ultimo recorrido es 
+        origen*/
+
+        for (int i = 0; i < Num; i++) {
             Visitados[i] = false;
             Cost[i] = Matriz[Orig][i];
             Ultimo[i] = Orig;
@@ -53,6 +58,10 @@ public class Dijkstra {
 
     }
 
+    /*
+    Recupera un String con el camino inverso mas corto obtenido del algoritmo
+    de Dijkstra
+     */
     public String RecuperarCamino(int v, String cadena) {
         /*for(int i = 0; i<Cost.length; i++){
             System.out.println("Cost[" + i + "]: " + Cost[i]);
@@ -76,34 +85,28 @@ public class Dijkstra {
         return cadena;
     }
 
+    // Invierte el camino para obtener asi el camino mas corto en el formato deseado
     public String CaminoFormato() {
         CaminoDijkstra();
-        String cadena = RecuperarCamino(Destino,"");
+        String cadena = RecuperarCamino(Destino, "");
         String s[] = cadena.split(",");
 
         int j = s.length - 1;
         String inverse = "1";
         j--;
         for (int i = 1; i < s.length - 1; i++) {
-
-
-
-                inverse = inverse + " -> " + Integer.toString(Integer.parseInt(s[j])+1)  ;
-
-
+            inverse = inverse + " -> " + Integer.toString(Integer.parseInt(s[j]) + 1);
             j--;
-
         }
-        
-        return inverse+"  ~  Distancia total entre los puntos: "+Cost[Destino]+" Km";
+        return inverse + "  ~  Distancia total entre los puntos: " + Cost[Destino] + " Km";
     }
 
+    // Encuentra el indice del vertice adyacente que esta mas cerca del origen
     private int MenorDistancia() {
-        int minimo = 999999999;
+        int minimo = VALOR_MAX;
         int aux = 1;
         for (int i = 0; i < Num; i++) {
-            if (!Visitados[i] && (Cost[i] < minimo))//Va revisar los vertices adyacentes al origen y va a ver cual de ellos esta mas cerca que es lo que se almacena en min
-            {
+            if (!Visitados[i] && (Cost[i] < minimo)) {
                 minimo = Cost[i];
                 aux = i;
             }

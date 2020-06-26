@@ -5,6 +5,7 @@
  */
 package Ventanas;
 
+import static Grafo.Central.graph;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class interfazDeRegistro extends javax.swing.JFrame {
 
+    // Valida que el argumento sea un numero entero
     public boolean Validacion(String cadena) {
         int num;
         try {
@@ -22,10 +24,11 @@ public class interfazDeRegistro extends javax.swing.JFrame {
         }
         return false;
     }
+
     public interfazDeRegistro() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+
     }
 
     /**
@@ -110,7 +113,7 @@ public class interfazDeRegistro extends javax.swing.JFrame {
         jLabel6.setText("iD del Nuevo Cliente :");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
 
-        jLabel7.setText("Distancia Entre los Vertices :");
+        jLabel7.setText("Distancia Entre los Vértices :");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
 
         idVertice1.setEditable(false);
@@ -160,17 +163,22 @@ public class interfazDeRegistro extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         boolean valid1 = Validacion(idVertice1.getText());
-        boolean valid2 = Validacion(idVertice2.getText());
+        boolean valid2 = Validacion(idVertice2.getText())
+                && graph.IndiceVerticeInt(Integer.parseInt(idVertice2.getText())) != -1;
         boolean valid3 = Validacion(distanciaEntreVertices.getText());
 
         if ("".equals(nombreRegistro.getText()) || "".equals(urbRegistro.getText()) || "".equals(calleAveRegistro.getText())
-                || valid1 == false || valid2 == false || valid3 == false) {
+                || !valid1 || !valid2 || !valid3) {
             JOptionPane.showMessageDialog(this, "Por favor registre correctamente toda la información que se le pide");
         } else {
             //REGISTRAR LOS DATOS
+
+            graph.NuevoV(nombreRegistro.getText(), urbRegistro.getText(), calleAveRegistro.getText());
+            //graph.NuevoA(, idVertice2.getText(), distanciaEntreVertices.getText());
+            // el primer valor deberia ya estar anclado
             mensaje.setText("Registro Existoso");
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void calleAveRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calleAveRegistroActionPerformed

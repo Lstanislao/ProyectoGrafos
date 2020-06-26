@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Grafo.*;
+import static Grafo.Central.graph;
+import static Grafo.DibujarGrafo.Dibujar;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -25,7 +27,7 @@ public class interfazMenu extends javax.swing.JFrame {
     JFileChooser seleccionado = new JFileChooser();
     File archivo;
     String nombreDelArchivoTxtSeleccionado;
-    
+
     public interfazMenu() {
 
         initComponents();
@@ -54,6 +56,7 @@ public class interfazMenu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -112,14 +115,14 @@ public class interfazMenu extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Silom", 1, 14)); // NOI18N
-        jButton1.setText("Hacer un Delivery");
+        jButton1.setText("Grafico");
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 210, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 120, 40));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pin.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 40, 40));
@@ -151,6 +154,17 @@ public class interfazMenu extends javax.swing.JFrame {
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 250, 40));
 
+        jButton8.setBackground(new java.awt.Color(255, 255, 255));
+        jButton8.setFont(new java.awt.Font("Silom", 1, 14)); // NOI18N
+        jButton8.setText("Hacer un Delivery");
+        jButton8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 210, 40));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo1.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 494, 320));
 
@@ -162,10 +176,7 @@ public class interfazMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        interfazDelivery a = new interfazDelivery();
-        a.setVisible(true);
-        a.setLocationRelativeTo(null);
-        this.setVisible(false);
+        Dibujar(graph);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -208,8 +219,15 @@ public class interfazMenu extends javax.swing.JFrame {
         interfazNuevaRuta a = new interfazNuevaRuta();
         a.setVisible(true);
         a.setLocationRelativeTo(null);
-        this.setVisible(false);    
+        this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        interfazDelivery a = new interfazDelivery();
+        a.setVisible(true);
+        a.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,6 +271,7 @@ public class interfazMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -7,7 +7,7 @@ package Ventanas;
 
 import Grafo.*;
 import Grafo.DibujarGrafo.*;
-//import static Grafo.DibujarGrafo.DibujarRutaMasCorta;
+import static Grafo.DibujarGrafo.DibujarRutaMasCorta;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +24,7 @@ public class interfazDelivery extends javax.swing.JFrame {
     File archivo;
     String nombreDelArchivoTxtSeleccionado;
 
+    // esta funcion ya no es muy util no?
     public boolean validarArchivoCargado() {
         String cargado = Central.getActual();
         if (cargado != null) {
@@ -77,7 +78,7 @@ public class interfazDelivery extends javax.swing.JFrame {
         jLabel2.setText("DELIVERY");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jLabel3.setText("Oprima uno de los sig. botones para ver la distantcia mas corta por el metodo Floyd o Dijkstra:");
+        jLabel3.setText("Oprima uno de los sig. botones para ver la distancia más corta por el método Floyd o Dijkstra:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
 
         jButtonSalir.setBackground(new java.awt.Color(255, 255, 255));
@@ -143,13 +144,13 @@ public class interfazDelivery extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonMenuDelivery, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 90, 40));
 
-        jButtonEnterRegistro.setText("DIJKSTR");
+        jButtonEnterRegistro.setText("DIJKSTRA");
         jButtonEnterRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEnterRegistroActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonEnterRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 480, 80, 40));
+        getContentPane().add(jButtonEnterRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 480, 110, 40));
 
         jButtonActualizarLista.setText("SELECCIONAR LISTA");
         jButtonActualizarLista.addActionListener(new java.awt.event.ActionListener() {
@@ -164,7 +165,7 @@ public class interfazDelivery extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 320, 260));
 
-        jLabel7.setText("A continuacion, indique el iD de su destino:");
+        jLabel7.setText("A continuación, indique el iD de su destino:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
 
         jButtonEnterRegistro1.setText("FLOYD");
@@ -176,7 +177,7 @@ public class interfazDelivery extends javax.swing.JFrame {
         getContentPane().add(jButtonEnterRegistro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 80, 40));
 
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 2, 18)); // NOI18N
-        jLabel6.setText("OBTENCION DEL CAMINO MAS CORTO ENTRE LA EMPRESA Y UN DESTINO:");
+        jLabel6.setText("OBTENCIÓN DEL CAMINO MÁS CORTO ENTRE LA EMPRESA Y UN DESTINO:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/morado.jpg"))); // NOI18N
@@ -198,7 +199,7 @@ public class interfazDelivery extends javax.swing.JFrame {
 
     private void jButtonEnterRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnterRegistroActionPerformed
         Grafo mygraph = Central.getGraph();
-        boolean cargado = validarArchivoCargado();
+        boolean cargado = validarArchivoCargado();// se va?
         int destino = Integer.parseInt(idDestino.getText());
         String output = "";
         destino = mygraph.IndiceVerticeInt(destino - 1);
@@ -207,10 +208,10 @@ public class interfazDelivery extends javax.swing.JFrame {
                 Dijkstra camino = new Dijkstra(mygraph, 0, (destino));
                 output = camino.CaminoFormato();
                 outputCaminoMasCorto.setText(output);
-                
-            //    DibujarRutaMasCorta(mygraph, output);
+
+                DibujarRutaMasCorta(mygraph, output);
             } else {
-                JOptionPane.showMessageDialog(this, "Vertice Invalido , intentelo nuevamente");
+                JOptionPane.showMessageDialog(this, "Vertice Invalido, intentelo nuevamente");
                 idDestino.setText("");
             }
         }
@@ -289,8 +290,8 @@ public class interfazDelivery extends javax.swing.JFrame {
                 FloydWarshall camino = new FloydWarshall();
                 output = camino.Floyd(0, destino, mygraph);
                 outputCaminoMasCorto.setText(output);
-                
- //               DibujarRutaMasCorta(mygraph, output);
+
+                DibujarRutaMasCorta(mygraph, output);
             } else {
                 JOptionPane.showMessageDialog(this, "Vertice Invalido , intentelo nuevamente");
                 idDestino.setText("");
@@ -300,21 +301,18 @@ public class interfazDelivery extends javax.swing.JFrame {
 
     private void jButtonDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDFSActionPerformed
         Grafo mygraph = Central.getGraph();
-        boolean cargado = validarArchivoCargado();
+        boolean cargado = validarArchivoCargado();// se va?
         String output = "";
         if (cargado) {
-            output = mygraph.OutputDFS();
+            output = mygraph.OutputDFS(0);
             Salida.setText(output);
-            
-           
         }
-
 
     }//GEN-LAST:event_jButtonDFSActionPerformed
 
     private void jButtonBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBFSActionPerformed
         Grafo mygraph = Central.getGraph();
-        boolean cargado = validarArchivoCargado();
+        boolean cargado = validarArchivoCargado();//se va?
         String output = "";
         if (cargado) {
             output = mygraph.BFS(0);

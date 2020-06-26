@@ -41,7 +41,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Oprima uno de los sig. botones para ver la distantcia mas corta por el metodo Floyd o Dijkstra:"/>
+        <Property name="text" type="java.lang.String" value="Oprima uno de los sig. botones para ver la distancia m&#xe1;s corta por el m&#xe9;todo Floyd o Dijkstra:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -179,14 +179,14 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButtonEnterRegistro">
       <Properties>
-        <Property name="text" type="java.lang.String" value="DIJKSTR"/>
+        <Property name="text" type="java.lang.String" value="DIJKSTRA"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEnterRegistroActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="110" y="480" width="80" height="40"/>
+          <AbsoluteConstraints x="110" y="480" width="110" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -224,7 +224,7 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
-        <Property name="text" type="java.lang.String" value="A continuacion, indique el iD de su destino:"/>
+        <Property name="text" type="java.lang.String" value="A continuaci&#xf3;n, indique el iD de su destino:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -250,7 +250,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lucida Grande" size="18" style="2"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="OBTENCION DEL CAMINO MAS CORTO ENTRE LA EMPRESA Y UN DESTINO:"/>
+        <Property name="text" type="java.lang.String" value="OBTENCI&#xd3;N DEL CAMINO M&#xc1;S CORTO ENTRE LA EMPRESA Y UN DESTINO:"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

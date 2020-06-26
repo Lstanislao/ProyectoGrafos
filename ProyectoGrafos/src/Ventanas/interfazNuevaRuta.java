@@ -5,6 +5,7 @@
  */
 package Ventanas;
 
+import static Grafo.Central.graph;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class interfazNuevaRuta extends javax.swing.JFrame {
 
+    // Valida que el argumento sea un numero entero
     public boolean Validacion(String cadena) {
         int num;
         try {
@@ -136,14 +138,20 @@ public class interfazNuevaRuta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        boolean valid1 = Validacion(idVertice1.getText());
-        boolean valid2 = Validacion(idVertice2.getText());
+        boolean valid1 = Validacion(idVertice1.getText())
+                && graph.IndiceVerticeInt(Integer.parseInt(idVertice2.getText())) != -1;
+        boolean valid2 = Validacion(idVertice2.getText())
+                && graph.IndiceVerticeInt(Integer.parseInt(idVertice2.getText())) != -1;
         boolean valid3 = Validacion(distanciaEntreVertices.getText());
 
-        if (valid1 == false || valid2 == false || valid3 == false) {
+        if (!valid1 || !valid2 || !valid3) {
             JOptionPane.showMessageDialog(this, "Por favor registre unicamente valores numericos");
         } else {
             //REGISTRAR LOS DATOS
+            int v1 = Integer.parseInt(idVertice1.getText());
+            int v2 = Integer.parseInt(idVertice2.getText());
+            int dist = Integer.parseInt(distanciaEntreVertices.getText());
+            graph.NuevoA(v1, v2, dist);
             mensaje.setText("Registro Existoso");
         }
 
