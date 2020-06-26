@@ -5,6 +5,7 @@
  */
 package Ventanas;
 
+import Grafo.Archivo;
 import Grafo.Central;
 import static Grafo.Central.graph;
 import Grafo.Grafo;
@@ -151,12 +152,13 @@ public class interfazNuevaRuta extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Por favor registre unicamente valores numericos");
         } else {
             //REGISTRAR LOS DATOS
-            int v1 = Integer.parseInt(idVertice1.getText());
-            int v2 = Integer.parseInt(idVertice2.getText());
+            int v1 = Integer.parseInt(idVertice1.getText())-1;
+            int v2 = Integer.parseInt(idVertice2.getText())-1;
             int dist = Integer.parseInt(distanciaEntreVertices.getText());
             graph.NuevoA(v1, v2, dist);
             mensaje.setText("Registro Existoso");
             Central.setGraph(graph);
+            Archivo.EscribirGrafoEnTxt();
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
