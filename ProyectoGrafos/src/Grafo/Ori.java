@@ -45,31 +45,5 @@ public class Ori {
         return caminos;
     }
 
-    public static void copiarTxt(File archivoExterno, File archivoFijo) {
-        FileReader leer;
-        BufferedReader almacenamiento;
-        String cadena, texto = "";
 
-        try {
-            leer = new FileReader(archivoExterno);
-            almacenamiento = new BufferedReader(leer);
-
-            try {
-                while ((cadena = almacenamiento.readLine()) != null) {
-                    texto += cadena + "\n";
-                }
-                PrintWriter escribir;
-                archivoFijo.createNewFile();
-                escribir = new PrintWriter(archivoFijo, "utf-8");
-
-                escribir.println(texto);
-                escribir.close();
-
-            } catch (IOException ex) {
-                Logger.getLogger(Ori.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Ori.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 }

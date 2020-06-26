@@ -197,7 +197,7 @@ public class interfazMenu extends javax.swing.JFrame {
             }
         }
         File archivoPorDefecto = new File("ArchivoPorDefecto.txt");
-        Ori.copiarTxt(archivo, archivoPorDefecto);
+        Archivo.copiarTxt(archivo);
         
     }//GEN-LAST:event_jButton6ActionPerformed
 

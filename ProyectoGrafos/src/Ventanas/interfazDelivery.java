@@ -333,6 +333,7 @@ public class interfazDelivery extends javax.swing.JFrame {
             Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
         }
         Central.setActual(nombreDelArchivoTxtSeleccionado);
+        Archivo.copiarTxt(miArchivo);
         Central.CargarGrafo1();
     }//GEN-LAST:event_jButtonActualizarListaActionPerformed
 

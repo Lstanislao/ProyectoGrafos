@@ -6,8 +6,10 @@
 package Grafo;
 
 import Ventanas.interfazRegistro;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -90,6 +92,35 @@ public class Archivo {
         }
         System.out.println(caminos);
         return caminos;
+    }
+    
+    public static void copiarTxt(File archivoExterno) {
+        File archivoFijo= new File("ArchivoPorDefecto.txt");
+        FileReader leer;
+        BufferedReader almacenamiento;
+        String cadena, texto = "";
+
+        try {
+            leer = new FileReader(archivoExterno);
+            almacenamiento = new BufferedReader(leer);
+
+            try {
+                while ((cadena = almacenamiento.readLine()) != null) {
+                    texto += cadena + "\n";
+                }
+                PrintWriter escribir;
+                archivoFijo.createNewFile();
+                escribir = new PrintWriter(archivoFijo, "utf-8");
+
+                escribir.println(texto);
+                escribir.close();
+
+            } catch (IOException ex) {
+                Logger.getLogger(Ori.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Ori.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
