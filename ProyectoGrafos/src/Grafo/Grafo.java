@@ -262,7 +262,7 @@ public class Grafo {
             int indice = Integer.parseInt(array[i]);
             out1 += "->" + "ID" + Integer.toString(Vertices[indice].getNumVertice() + 1);
             out2 += "ID: " + Integer.toString(Vertices[indice].getNumVertice() + 1)
-                    + " " + Vertices[indice].getNombre() + ", " + Vertices[i].getUrb()
+                    + " " + Vertices[indice].getNombre() + ", " + Vertices[indice].getUrb()
                     + ", " + Vertices[indice].getCalle() + "\n";
         }
 

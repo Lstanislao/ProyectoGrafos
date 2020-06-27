@@ -75,7 +75,7 @@ public class Ori {
                         cliente = linea.split(",");
                         System.out.println("entre cliente");
                         System.out.println(linea);
-                        if (cliente.length != 4) {
+                        if (cliente.length != 3 && cliente.length != 4) {
                             clientesValido = false;
                             break;
                         }

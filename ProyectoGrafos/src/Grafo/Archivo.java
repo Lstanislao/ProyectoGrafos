@@ -61,14 +61,28 @@ public class Archivo {
         Vertice clientes[] = mygraph.getVertices();
         int num = mygraph.getnVertices();
         String cadenaClientes = "";
-
+        
+        //antes
+//        for (int i = 0; i < num; i++) {
+//            if (i == num - 1) {
+//                cadenaClientes += Integer.toString(clientes[i].getNumVertice() + 1) + "," + clientes[i].getNombre() + "," + clientes[i].getUrb() + "," + clientes[i].getCalle();
+//            } else {
+//                cadenaClientes += Integer.toString(clientes[i].getNumVertice() + 1) + "," + clientes[i].getNombre() + "," + clientes[i].getUrb() + "," + clientes[i].getCalle() + "\n";
+//            }
+//        }
+        
+        //ahora
         for (int i = 0; i < num; i++) {
-            if (i == num - 1) {
-                cadenaClientes = cadenaClientes + Integer.toString(clientes[i].getNumVertice() + 1) + "," + clientes[i].getNombre() + "," + clientes[i].getUrb() + "," + clientes[i].getCalle();
-            } else {
-                cadenaClientes = cadenaClientes + Integer.toString(clientes[i].getNumVertice() + 1) + "," + clientes[i].getNombre() + "," + clientes[i].getUrb() + "," + clientes[i].getCalle() + "\n";
+            cadenaClientes += Integer.toString(clientes[i].getNumVertice() + 1) + "," + clientes[i].getNombre() + "," + clientes[i].getUrb();
+            if (!clientes[i].getCalle().equals("")) {
+                cadenaClientes += "," + clientes[i].getCalle();
+            }
+            if (i != num - 1) {
+                cadenaClientes += "\n";
             }
         }
+         
+        
         System.out.println(cadenaClientes);
         return cadenaClientes;
     }
@@ -79,11 +93,23 @@ public class Archivo {
         int num = mygraph.getnVertices();
         String cadenaClientes = "Lista de Clientes:\n";
 
+        //antes
+//        for (int i = 0; i < num; i++) {
+//            if (i == num) {
+//                cadenaClientes = cadenaClientes + "ID: " + Integer.toString(clientes[i].getNumVertice() + 1) + " , " + clientes[i].getNombre() + " , " + clientes[i].getUrb() + " , " + clientes[i].getCalle();
+//            } else {
+//                cadenaClientes = cadenaClientes + "ID: " + Integer.toString(clientes[i].getNumVertice() + 1) + " , " + clientes[i].getNombre() + " , " + clientes[i].getUrb() + " , " + clientes[i].getCalle() + "\n";
+//            }
+//        }
+        
+        //ahora
         for (int i = 0; i < num; i++) {
-            if (i == num) {
-                cadenaClientes = cadenaClientes + "ID: " + Integer.toString(clientes[i].getNumVertice() + 1) + " , " + clientes[i].getNombre() + " , " + clientes[i].getUrb() + " , " + clientes[i].getCalle();
-            } else {
-                cadenaClientes = cadenaClientes + "ID: " + Integer.toString(clientes[i].getNumVertice() + 1) + " , " + clientes[i].getNombre() + " , " + clientes[i].getUrb() + " , " + clientes[i].getCalle() + "\n";
+            cadenaClientes += "ID: " + Integer.toString(clientes[i].getNumVertice() + 1) + " , " + clientes[i].getNombre() + " , " + clientes[i].getUrb();
+            if (!clientes[i].getCalle().equals("")) {
+                cadenaClientes += " , " + clientes[i].getCalle();
+            }
+            if (i != num) {
+                cadenaClientes += "\n";
             }
         }
         System.out.println(cadenaClientes);

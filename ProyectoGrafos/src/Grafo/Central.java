@@ -159,7 +159,12 @@ public class Central {
                     cadena = line.split(",");
                     nombre = cadena[1];
                     urb = cadena[2];
-                    calle = cadena[3];
+                    if (cadena.length > 3) {
+                        calle = cadena[3];
+                    } else {
+                        calle = "";
+                    }
+                    
                     mygraph.NuevoV(nombre, calle, urb);
                     
                 // Parte que inserta caminos en la lista caminos
