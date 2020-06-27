@@ -198,36 +198,13 @@ public class interfazMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        File archivoPorDefecto = new File("ArchivoPorDefecto.txt");
-        FileReader leer;
-        BufferedReader almacenamiento;
-        String cadena, texto = "";
 
-        try {
-            leer = new FileReader(archivoPorDefecto);
-            almacenamiento = new BufferedReader(leer);
-
-            try {
-                while ((cadena = almacenamiento.readLine()) != null) {
-                    texto += cadena + "\n";
-                }
-                interfazDeRegistro a = new interfazDeRegistro(texto);
-                a.setVisible(true);
-                a.setLocationRelativeTo(null);
-                this.setVisible(false);
-
-            } catch (IOException ex) {
-                Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        /*interfazDeRegistro a = new interfazDeRegistro();
+        String texto = Archivo.ClientesPantalla();
+        interfazDeRegistro a = new interfazDeRegistro(texto);
         a.setVisible(true);
         a.setLocationRelativeTo(null);
-        this.setVisible(false);*/
+        this.setVisible(false);
+
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -282,36 +259,12 @@ public class interfazMenu extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
 
-        File archivoPorDefecto = new File("ArchivoPorDefecto.txt");
-        FileReader leer;
-        BufferedReader almacenamiento;
-        String cadena, texto = "";
-
-        try {
-            leer = new FileReader(archivoPorDefecto);
-            almacenamiento = new BufferedReader(leer);
-
-            try {
-                while ((cadena = almacenamiento.readLine()) != null) {
-                    texto += cadena + "\n";
-                }
-                interfazDeRegistro a = new interfazDeRegistro(texto);
-                a.setVisible(true);
-                a.setLocationRelativeTo(null);
-                this.setVisible(false);
-
-            } catch (IOException ex) {
-                Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        /*interfazNuevaRuta a = new interfazNuevaRuta();
+        String texto = Archivo.ClientesPantalla();
+        interfazNuevaRuta a = new interfazNuevaRuta(texto);
         a.setVisible(true);
         a.setLocationRelativeTo(null);
-        this.setVisible(false);*/
+        this.setVisible(false);
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
