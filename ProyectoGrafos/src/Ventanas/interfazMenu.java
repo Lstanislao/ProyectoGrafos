@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import Grafo.*;
 import static Grafo.Central.graph;
 import static Grafo.DibujarGrafo.Dibujar;
+import static Grafo.Ori.VerificarFormatoArchivo;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -29,20 +30,18 @@ public class interfazMenu extends javax.swing.JFrame {
     String nombreDelArchivoTxtSeleccionado;
 
     public interfazMenu() {
-        boolean PrimeraVezInciado= Central.getIniciado();
-        if(!PrimeraVezInciado)
-        {
-            String archivoActual= Central.Actual;
+        boolean PrimeraVezInciado = Central.getIniciado();
+        if (!PrimeraVezInciado) {
+            String archivoActual = Central.Actual;
             File porDefecto = new File("ArchivoPorDefecto.txt");
-            File actual = new File(archivoActual);    
-            Archivo.copiarTxt(actual,porDefecto);
+            File actual = new File(archivoActual);
+            Archivo.copiarTxt(actual, porDefecto);
             Central.CargarGrafo1();
             Central.setInciado(true);
         }
 
         initComponents();
         this.setLocationRelativeTo(null);
-
 
     }
 
@@ -194,7 +193,7 @@ public class interfazMenu extends javax.swing.JFrame {
         a.setVisible(true);
         a.setLocationRelativeTo(null);
         this.setVisible(false);
-        
+
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -209,21 +208,42 @@ public class interfazMenu extends javax.swing.JFrame {
                 }
             }
         }
-        int cambiar=JOptionPane.showConfirmDialog(this,"Se guardaran los datos actuales en memeroia y se procedera a caragar el nuevo archivo. Desea seguir?");
-        if(cambiar==0)
-        {
-            String archivoActual= Central.Actual;
-            File actual = new File(archivoActual);    
-            File porDefecto = new File("ArchivoPorDefecto.txt");
-            File porCargarse = new File(nombreDelArchivoTxtSeleccionado);
-            Archivo.copiarTxt(porDefecto,actual);
-            Archivo.copiarTxt(porCargarse, porDefecto);
-            Central.CargarGrafo1();
-            Central.setActual(nombreDelArchivoTxtSeleccionado);
-        }
-        
 
-        
+        if (VerificarFormatoArchivo(archivo)) {
+            int cambiar = JOptionPane.showConfirmDialog(this, "Se guardaran los datos actuales en memeria y se procedera a cargar el nuevo archivo. Desea seguir?");
+            if (cambiar == 0) {
+                String archivoActual = Central.Actual;
+                File actual = new File(archivoActual);
+                File porDefecto = new File("ArchivoPorDefecto.txt");
+                File porCargarse = new File(nombreDelArchivoTxtSeleccionado);
+                Archivo.copiarTxt(porDefecto, actual);
+                Archivo.copiarTxt(porCargarse, porDefecto);
+                Central.CargarGrafo1();
+                Central.setActual(nombreDelArchivoTxtSeleccionado);
+            }
+        } else {
+            String mensaje = "El formato del archivo seleccionado no es válido.\n"
+                    + "El formato del archivo debe ser:\n\n"
+                    + "clientes\nID,nombre,urbanización,calle/avenida\n"
+                    + "...[más clientes]...\ncaminos\norigen,destino,distancia\n"
+                    + "...[más caminos]...";
+            JOptionPane.showMessageDialog(rootPane, mensaje);
+        }
+        // Si no funciona bien lo que esta abajo es lo que estaba antes
+
+//        int cambiar=JOptionPane.showConfirmDialog(this,"Se guardaran los datos actuales en memeroia y se procedera a caragar el nuevo archivo. Desea seguir?");
+//        if(cambiar==0)
+//        {
+//            String archivoActual= Central.Actual;
+//            File actual = new File(archivoActual);    
+//            File porDefecto = new File("ArchivoPorDefecto.txt");
+//            File porCargarse = new File(nombreDelArchivoTxtSeleccionado);
+//            Archivo.copiarTxt(porDefecto,actual);
+//            Archivo.copiarTxt(porCargarse, porDefecto);
+//            Central.CargarGrafo1();
+//            Central.setActual(nombreDelArchivoTxtSeleccionado);
+//        }
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -248,11 +268,11 @@ public class interfazMenu extends javax.swing.JFrame {
                 while ((cadena = almacenamiento.readLine()) != null) {
                     texto += cadena + "\n";
                 }
-                    interfazDelivery a = new interfazDelivery(texto);
-                    a.setVisible(true);
-                    a.setLocationRelativeTo(null);
-                    this.setVisible(false);
-                
+                interfazDelivery a = new interfazDelivery(texto);
+                a.setVisible(true);
+                a.setLocationRelativeTo(null);
+                this.setVisible(false);
+
             } catch (IOException ex) {
                 Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -260,7 +280,7 @@ public class interfazMenu extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
