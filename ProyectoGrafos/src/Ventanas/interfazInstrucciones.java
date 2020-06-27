@@ -16,6 +16,7 @@ public class interfazInstrucciones extends javax.swing.JFrame {
      */
     public interfazInstrucciones() {
         initComponents();
+       //jTextArea1.setBackground(new java.awt.Color(0,0,0,1));
     }
 
     /**
@@ -30,27 +31,47 @@ public class interfazInstrucciones extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jButtonMenu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Silom", 1, 24)); // NOI18N
         jLabel2.setText("INSTRUCCIONES");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.setText("\n");
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 470, 250));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 600, 280));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gris.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 489, 309));
+        jButtonMenu.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonMenu.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
+        jButtonMenu.setForeground(new java.awt.Color(0, 153, 102));
+        jButtonMenu.setText("Menu");
+        jButtonMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMenuActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 90, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Light-Blue-Gradient-Background-Graphics-3943096-1.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuActionPerformed
+        interfazMenu a = new interfazMenu();
+        a.setVisible(true);
+        a.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -88,6 +109,7 @@ public class interfazInstrucciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

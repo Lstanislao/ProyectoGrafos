@@ -36,6 +36,12 @@ public class interfazDeRegistro extends javax.swing.JFrame {
         int id =graph.getnVertices()+1;
         idVertice1.setText(Integer.toString(id));
     }
+    
+    public interfazDeRegistro(String lista){
+        initComponents();
+        this.setLocationRelativeTo(null);
+        clientesRegistrados.setText(lista);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,44 +66,49 @@ public class interfazDeRegistro extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         idVertice1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        mensaje = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         distanciaEntreVertices = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        clientesRegistrados = new javax.swing.JTextPane();
+        jLabel10 = new javax.swing.JLabel();
+        mensaje = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Silom", 1, 24)); // NOI18N
         jLabel2.setText("REGISTRO");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 3, 14)); // NOI18N
         jLabel3.setText("CALLE/AVENIDA :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 3, 14)); // NOI18N
         jLabel4.setText("NOMBRE :");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 3, 14)); // NOI18N
         jLabel5.setText("URBANIZACIÓN :");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
         calleAveRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 calleAveRegistroActionPerformed(evt);
             }
         });
-        getContentPane().add(calleAveRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 280, -1));
+        getContentPane().add(calleAveRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 280, -1));
 
         nombreRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreRegistroActionPerformed(evt);
             }
         });
-        getContentPane().add(nombreRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 280, -1));
-        getContentPane().add(urbRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 280, -1));
+        getContentPane().add(nombreRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 280, -1));
+        getContentPane().add(urbRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 280, -1));
 
         jButtonSalir.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSalir.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
@@ -108,7 +119,7 @@ public class interfazDeRegistro extends javax.swing.JFrame {
                 jButtonSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 450, 90, 40));
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 460, 90, 40));
 
         jButtonMenu.setBackground(new java.awt.Color(255, 255, 255));
         jButtonMenu.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
@@ -119,14 +130,14 @@ public class interfazDeRegistro extends javax.swing.JFrame {
                 jButtonMenuActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 90, 40));
-        getContentPane().add(idVertice2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, 50, 40));
+        getContentPane().add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 90, 40));
+        getContentPane().add(idVertice2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 50, 40));
 
         jLabel6.setText("iD del Nuevo Cliente :");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
 
         jLabel7.setText("Distancia Entre los Vértices :");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
 
         idVertice1.setEditable(false);
         idVertice1.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +145,7 @@ public class interfazDeRegistro extends javax.swing.JFrame {
                 idVertice1ActionPerformed(evt);
             }
         });
-        getContentPane().add(idVertice1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 50, 40));
+        getContentPane().add(idVertice1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 50, 40));
 
         jButton1.setText("REGISTRAR DATOS");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -142,18 +153,39 @@ public class interfazDeRegistro extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, 140, 40));
-
-        mensaje.setFont(new java.awt.Font("Lucida Grande", 2, 14)); // NOI18N
-        mensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(mensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 430, 130, 20));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, 140, 40));
 
         jLabel8.setText("iD del Cliente al que desea conectar: ");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
-        getContentPane().add(distanciaEntreVertices, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, 50, 40));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
+        getContentPane().add(distanciaEntreVertices, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 50, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pastel.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 500));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Registro.png"))); // NOI18N
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 100));
+
+        jButton2.setText("GUARDAR DATOS");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 140, 40));
+
+        clientesRegistrados.setEditable(false);
+        jScrollPane3.setViewportView(clientesRegistrados);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 350, 300));
+
+        jLabel10.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
+        jLabel10.setText("Datos del Archivo Seleccionado:");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
+
+        mensaje.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
+        mensaje.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        mensaje.setInheritsPopupMenu(false);
+        getContentPane().add(mensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 220, 20));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Light-Blue-Gradient-Background-Graphics-3943096-1.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -205,6 +237,12 @@ public class interfazDeRegistro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreRegistroActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //CODIGO DE GUARDAR ARCHIVO
+        
+        mensaje.setText("Registro Existoso");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -242,13 +280,16 @@ public class interfazDeRegistro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField calleAveRegistro;
+    private javax.swing.JTextPane clientesRegistrados;
     private javax.swing.JTextField distanciaEntreVertices;
     private javax.swing.JTextField idVertice1;
     private javax.swing.JTextField idVertice2;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonMenu;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -256,6 +297,8 @@ public class interfazDeRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel mensaje;
     private javax.swing.JTextField nombreRegistro;
     private javax.swing.JTextField urbRegistro;

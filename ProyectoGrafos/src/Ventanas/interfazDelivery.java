@@ -35,17 +35,28 @@ public class interfazDelivery extends javax.swing.JFrame {
         }
     }
 
+    // Valida que el argumento sea un numero entero
+    public boolean Validacion(String cadena) {
+        int num;
+        try {
+            num = Integer.parseInt(cadena);
+            return true;
+        } catch (Exception e) {
+        }
+        return false;
+    }
+
     public interfazDelivery() {
         initComponents();
         this.setLocationRelativeTo(null);
 
     }
-    
-    public interfazDelivery(String lista){
+
+    public interfazDelivery(String lista) {
         initComponents();
         this.setLocationRelativeTo(null);
         clientesRegistrados.setText(lista);
-        
+
     }
 
     /**
@@ -69,24 +80,24 @@ public class interfazDelivery extends javax.swing.JFrame {
         Salida = new javax.swing.JTextPane();
         jButtonMenuDelivery = new javax.swing.JButton();
         jButtonEnterRegistro = new javax.swing.JButton();
-        jButtonActualizarLista = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         clientesRegistrados = new javax.swing.JTextPane();
         jLabel7 = new javax.swing.JLabel();
-        jButtonEnterRegistro1 = new javax.swing.JButton();
+        jButtonFloyd = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Silom", 1, 24)); // NOI18N
         jLabel2.setText("DELIVERY");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
 
         jLabel3.setText("Oprima uno de los sig. botones para ver la distancia más corta por el método Floyd o Dijkstra:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, -1));
 
         jButtonSalir.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSalir.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
@@ -97,14 +108,14 @@ public class interfazDelivery extends javax.swing.JFrame {
                 jButtonSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 570, 90, 40));
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 590, 90, 40));
 
         idDestino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idDestinoActionPerformed(evt);
             }
         });
-        getContentPane().add(idDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 50, 30));
+        getContentPane().add(idDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 430, 50, 30));
 
         outputCaminoMasCorto.setEditable(false);
         outputCaminoMasCorto.addActionListener(new java.awt.event.ActionListener() {
@@ -112,10 +123,10 @@ public class interfazDelivery extends javax.swing.JFrame {
                 outputCaminoMasCortoActionPerformed(evt);
             }
         });
-        getContentPane().add(outputCaminoMasCorto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 720, 30));
+        getContentPane().add(outputCaminoMasCorto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 720, 30));
 
         jLabel5.setText("Impresión del Grafo:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, -1, -1));
 
         jButtonBFS.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jButtonBFS.setText("BFS");
@@ -124,7 +135,7 @@ public class interfazDelivery extends javax.swing.JFrame {
                 jButtonBFSActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonBFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, 90, 40));
+        getContentPane().add(jButtonBFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 110, 90, 40));
 
         jButtonDFS.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jButtonDFS.setText("DFS");
@@ -133,12 +144,12 @@ public class interfazDelivery extends javax.swing.JFrame {
                 jButtonDFSActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonDFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 90, 40));
+        getContentPane().add(jButtonDFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 90, 40));
 
         Salida.setEditable(false);
         jScrollPane1.setViewportView(Salida);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 340, 230));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 370, 230));
 
         jButtonMenuDelivery.setBackground(new java.awt.Color(255, 255, 255));
         jButtonMenuDelivery.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
@@ -149,7 +160,7 @@ public class interfazDelivery extends javax.swing.JFrame {
                 jButtonMenuDeliveryActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonMenuDelivery, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 90, 40));
+        getContentPane().add(jButtonMenuDelivery, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 90, 40));
 
         jButtonEnterRegistro.setText("DIJKSTRA");
         jButtonEnterRegistro.addActionListener(new java.awt.event.ActionListener() {
@@ -157,38 +168,33 @@ public class interfazDelivery extends javax.swing.JFrame {
                 jButtonEnterRegistroActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonEnterRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 480, 110, 40));
-
-        jButtonActualizarLista.setText("SELECCIONAR LISTA");
-        jButtonActualizarLista.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonActualizarListaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButtonActualizarLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, -1, -1));
+        getContentPane().add(jButtonEnterRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 500, 110, 40));
 
         clientesRegistrados.setEditable(false);
         jScrollPane3.setViewportView(clientesRegistrados);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 320, 260));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 340, 260));
 
         jLabel7.setText("A continuación, indique el iD de su destino:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, -1, -1));
 
-        jButtonEnterRegistro1.setText("FLOYD");
-        jButtonEnterRegistro1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonFloyd.setText("FLOYD");
+        jButtonFloyd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEnterRegistro1ActionPerformed(evt);
+                jButtonFloydActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonEnterRegistro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 80, 40));
+        getContentPane().add(jButtonFloyd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 80, 40));
 
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 2, 18)); // NOI18N
         jLabel6.setText("OBTENCIÓN DEL CAMINO MÁS CORTO ENTRE LA EMPRESA Y UN DESTINO:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/morado.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 620));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/delivery_1.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Light-Blue-Gradient-Background-Graphics-3943096-1.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 640));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -205,44 +211,56 @@ public class interfazDelivery extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMenuDeliveryActionPerformed
 
     private void jButtonEnterRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnterRegistroActionPerformed
-        Grafo mygraph = Central.getGraph();
-        boolean cargado = validarArchivoCargado();// se va?
-        int destino = Integer.parseInt(idDestino.getText());
-        String output = "";
-        destino = mygraph.IndiceVerticeInt(destino - 1);
-        if (cargado) {
-            if (destino != -1) {
-                Dijkstra camino = new Dijkstra(mygraph, 0, (destino));
-                output = camino.CaminoFormato();
-                outputCaminoMasCorto.setText(output);
+        boolean validId = Validacion(idDestino.getText());
+        if ("".equals(idDestino.getText()) || !validId) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un valor numérico en la casilla del iD de su destino");
+        } else {
 
-                DibujarRutaMasCorta(mygraph, output);
-            } else {
-                JOptionPane.showMessageDialog(this, "Vertice Invalido, intentelo nuevamente");
-                idDestino.setText("");
+            Grafo mygraph = Central.getGraph();
+            boolean cargado = validarArchivoCargado();// se va?
+            int destino = Integer.parseInt(idDestino.getText());
+            String output = "";
+            destino = mygraph.IndiceVerticeInt(destino - 1);
+            if (cargado) {
+                if (destino != -1) {
+                    Dijkstra camino = new Dijkstra(mygraph, 0, (destino));
+                    output = camino.CaminoFormato();
+                    outputCaminoMasCorto.setText(output);
+
+                    DibujarRutaMasCorta(mygraph, output);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Vertice Invalido, intentelo nuevamente");
+                    idDestino.setText("");
+                }
             }
         }
     }//GEN-LAST:event_jButtonEnterRegistroActionPerformed
 
-    private void jButtonEnterRegistro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnterRegistro1ActionPerformed
-        Grafo mygraph = Central.getGraph();
-        boolean cargado = validarArchivoCargado();
-        int destino = Integer.parseInt(idDestino.getText());
-        String output = "";
-        destino = mygraph.IndiceVerticeInt(destino - 1);
-        if (cargado) {
-            if (destino != -1) {
-                FloydWarshall camino = new FloydWarshall();
-                output = camino.Floyd(0, destino, mygraph);
-                outputCaminoMasCorto.setText(output);
+    private void jButtonFloydActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFloydActionPerformed
 
-                DibujarRutaMasCorta(mygraph, output);
-            } else {
-                JOptionPane.showMessageDialog(this, "Vertice Invalido , intentelo nuevamente");
-                idDestino.setText("");
+        boolean validId = Validacion(idDestino.getText());
+        if ("".equals(idDestino.getText()) || !validId) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un valor numérico en la casilla del iD de su destino");
+        } else {
+            Grafo mygraph = Central.getGraph();
+            boolean cargado = validarArchivoCargado();
+            int destino = Integer.parseInt(idDestino.getText());
+            String output = "";
+            destino = mygraph.IndiceVerticeInt(destino - 1);
+            if (cargado) {
+                if (destino != -1) {
+                    FloydWarshall camino = new FloydWarshall();
+                    output = camino.Floyd(0, destino, mygraph);
+                    outputCaminoMasCorto.setText(output);
+
+                    DibujarRutaMasCorta(mygraph, output);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Vertice Invalido , intentelo nuevamente");
+                    idDestino.setText("");
+                }
             }
         }
-    }//GEN-LAST:event_jButtonEnterRegistro1ActionPerformed
+    }//GEN-LAST:event_jButtonFloydActionPerformed
 
     private void jButtonDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDFSActionPerformed
         Grafo mygraph = Central.getGraph();
@@ -273,71 +291,6 @@ public class interfazDelivery extends javax.swing.JFrame {
     private void idDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idDestinoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idDestinoActionPerformed
-
-    private void jButtonActualizarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarListaActionPerformed
-        /*File miArchivo;
-        FileReader leer;
-        BufferedReader almacenamiento;
-        String cadena, texto="";
-        miArchivo = new File("ArchivoDeTextoClientes.txt");
-
-        try {
-            leer = new FileReader(miArchivo);
-            almacenamiento = new BufferedReader(leer);
-
-            try {
-                while((cadena = almacenamiento.readLine())!=null){
-                    texto += cadena + "\n";
-                }
-                clientesRegistrados.setText(texto);
-            } catch (IOException ex) {
-                Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-
-        String ultimoCargado = Central.Actual;
-        if (seleccionado.showDialog(this, "CARGAR ARCHIVO") == JFileChooser.APPROVE_OPTION) {
-            archivo = seleccionado.getSelectedFile();
-            if (archivo.canRead()) {
-                if (archivo.getName().endsWith("txt")) {
-                    nombreDelArchivoTxtSeleccionado = archivo.getName();
-                    ultimoCargado = Central.Actual;
-                } else {
-                    JOptionPane.showMessageDialog(null, "ERROR. Por favor seleccione un archivo de texto (.txt)");
-                }
-            }
-        }
-        File miArchivo;
-        FileReader leer;
-        BufferedReader almacenamiento;
-        String cadena, texto = "";
-        miArchivo = new File(nombreDelArchivoTxtSeleccionado);
-         File porDefecto = new File("ArchivoPorDefecto.txt");
-
-        try {
-            leer = new FileReader(miArchivo);
-            almacenamiento = new BufferedReader(leer);
-
-            try {
-                while ((cadena = almacenamiento.readLine()) != null) {
-                    texto += cadena + "\n";
-                }
-                clientesRegistrados.setText(texto);
-            } catch (IOException ex) {
-                Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Central.setActual(nombreDelArchivoTxtSeleccionado);
-        
-        Archivo.copiarTxt(miArchivo,porDefecto);
-        Central.CargarGrafo1();
-    }//GEN-LAST:event_jButtonActualizarListaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -378,16 +331,16 @@ public class interfazDelivery extends javax.swing.JFrame {
     private javax.swing.JTextPane Salida;
     private javax.swing.JTextPane clientesRegistrados;
     private javax.swing.JTextField idDestino;
-    private javax.swing.JButton jButtonActualizarLista;
     private javax.swing.JButton jButtonBFS;
     private javax.swing.JButton jButtonDFS;
     private javax.swing.JButton jButtonEnterRegistro;
-    private javax.swing.JButton jButtonEnterRegistro1;
+    private javax.swing.JButton jButtonFloyd;
     private javax.swing.JButton jButtonMenuDelivery;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
