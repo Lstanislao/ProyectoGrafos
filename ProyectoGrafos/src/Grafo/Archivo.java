@@ -61,7 +61,7 @@ public class Archivo {
         Vertice clientes[] = mygraph.getVertices();
         int num = mygraph.getnVertices();
         String cadenaClientes = "";
-        
+
         //antes
 //        for (int i = 0; i < num; i++) {
 //            if (i == num - 1) {
@@ -70,19 +70,18 @@ public class Archivo {
 //                cadenaClientes += Integer.toString(clientes[i].getNumVertice() + 1) + "," + clientes[i].getNombre() + "," + clientes[i].getUrb() + "," + clientes[i].getCalle() + "\n";
 //            }
 //        }
-        
         //ahora
         for (int i = 0; i < num; i++) {
             cadenaClientes += Integer.toString(clientes[i].getNumVertice() + 1) + "," + clientes[i].getNombre() + "," + clientes[i].getUrb();
             if (!clientes[i].getCalle().equals("")) {
                 cadenaClientes += "," + clientes[i].getCalle();
+                System.out.println("tiene calle");
             }
             if (i != num - 1) {
                 cadenaClientes += "\n";
             }
         }
-         
-        
+
         System.out.println(cadenaClientes);
         return cadenaClientes;
     }
@@ -101,7 +100,6 @@ public class Archivo {
 //                cadenaClientes = cadenaClientes + "ID: " + Integer.toString(clientes[i].getNumVertice() + 1) + " , " + clientes[i].getNombre() + " , " + clientes[i].getUrb() + " , " + clientes[i].getCalle() + "\n";
 //            }
 //        }
-        
         //ahora
         for (int i = 0; i < num; i++) {
             cadenaClientes += "ID: " + Integer.toString(clientes[i].getNumVertice() + 1) + " , " + clientes[i].getNombre() + " , " + clientes[i].getUrb();
@@ -120,7 +118,7 @@ public class Archivo {
         String caminos = "";
         for (int i = 1; i < g.getnVertices(); i++) {
             for (int j = 0; j < i; j++) {
-                if (g.MatrizAd[i][j] != 999999999) {
+                if (g.MatrizAd[i][j] != g.VALOR_MAX) {
                     caminos += (j + 1) + "," + (i + 1) + "," + g.MatrizAd[i][j] + "\n";
                 }
             }

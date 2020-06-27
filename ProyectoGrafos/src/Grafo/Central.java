@@ -21,10 +21,9 @@ import java.util.logging.Logger;
 public class Central {
 
     public static Grafo graph = new Grafo(100);
-    public static String Actual="Enunciado.txt";
-    public static boolean Iniciado=false;
+    public static String Actual = "Enunciado.txt";
+    public static boolean Iniciado = false;
 
-    
     public static String getActual() {
         return Actual;
     }
@@ -48,8 +47,6 @@ public class Central {
     public static void setInciado(boolean Inciado) {
         Central.Iniciado = Inciado;
     }
-    
-    
 
     public static void CargarGrafo() {
         //Grafo mygraph = Central.getGraph();
@@ -75,13 +72,12 @@ public class Central {
                     urb = cadena[2];
                     calle = cadena[3];
                     System.out.println(nombre);
-                    
-                    nombre=nombre.substring(1);
-                    urb =urb.substring(1);
-                    calle=calle.substring(1);
-         
-                    
-                    System.out.println(nombre+urb+calle);
+
+                    nombre = nombre.substring(1);
+                    urb = urb.substring(1);
+                    calle = calle.substring(1);
+
+                    System.out.println(nombre + urb + calle);
                     mygraph.NuevoV(nombre, calle, urb);
                 }
 
@@ -118,44 +114,43 @@ public class Central {
         }
         graph = mygraph;
     }
-    
-    public static void CargarGrafo1()
-    {
+
+    public static void CargarGrafo1() {
         Grafo mygraph = new Grafo(100);
         File miArchivo;
         File ruta;
         FileReader leer;
         BufferedReader almacenamiento;
-        String id,nombre, calle, urb, linea, cadena[];
+        String id, nombre, calle, urb, linea, cadena[];
         int v1, v2, distancia;
-        miArchivo = new File("ArchivoPorDefecto.txt");                
-        String line;        
-        
-        boolean lineaClientes=false;
-        boolean lineaCaminos=false;
-        
+        miArchivo = new File("ArchivoPorDefecto.txt");
+        String line;
+
+        boolean lineaClientes = false;
+        boolean lineaCaminos = false;
+
         try {
-            FileReader fileReader = 
-                new FileReader(miArchivo);
-            BufferedReader bufferedReader = 
-                new BufferedReader(fileReader);
+            FileReader fileReader
+                    = new FileReader(miArchivo);
+            BufferedReader bufferedReader
+                    = new BufferedReader(fileReader);
 
             //Usa las separaciones del archivo(clientes, caminos)
             //para poder saber que lineas del archivo se usaran para crear las listas
-            while((line = bufferedReader.readLine()) != null) {
-                if(line.toLowerCase().equals("clientes")){
+            while ((line = bufferedReader.readLine()) != null) {
+                if (line.toLowerCase().equals("clientes")) {
                     lineaClientes = true;
                     line = bufferedReader.readLine();
                 }
-                if(line.toLowerCase().equals("caminos")){
-                    lineaClientes=false;
+                if (line.toLowerCase().equals("caminos")) {
+                    lineaClientes = false;
                     line = bufferedReader.readLine();
-                    lineaCaminos=true;
+                    lineaCaminos = true;
                 }
-                
-                         
+
                 // Parte que inserta clientes en la lista clientes
-                if(lineaClientes==true){
+                if (lineaClientes == true) {
+                    line = line.replace(", ", ",");
                     cadena = line.split(",");
                     nombre = cadena[1];
                     urb = cadena[2];
@@ -164,37 +159,35 @@ public class Central {
                     } else {
                         calle = "";
                     }
-                    
+
                     mygraph.NuevoV(nombre, calle, urb);
-                    
-                // Parte que inserta caminos en la lista caminos
-                } else if(lineaCaminos==true){
+
+                    // Parte que inserta caminos en la lista caminos
+                } else if (lineaCaminos == true) {
+                    line = line.replace(", ", ",");
                     cadena = line.split(",");
                     System.out.println(cadena[0]);
                     System.out.println(cadena[1]);
                     System.out.println(cadena[2]);
-                    v1 = Integer.parseInt(cadena[0])- 1;
-                    v2 = Integer.parseInt(cadena[1])- 1;
+                    v1 = Integer.parseInt(cadena[0]) - 1;
+                    v2 = Integer.parseInt(cadena[1]) - 1;
                     distancia = Integer.parseInt(cadena[2]);
                     mygraph.NuevoA(v1, v2, distancia);
-                }  
+                }
             }
-            
-            bufferedReader.close();         
-        }
-        catch(FileNotFoundException ex) {
+
+            bufferedReader.close();
+        } catch (FileNotFoundException ex) {
             System.out.println(
-                "No se puede abrir este archivo'" + 
-                miArchivo + "'");                
-        }
-        catch(IOException ex) {
+                    "No se puede abrir este archivo'"
+                    + miArchivo + "'");
+        } catch (IOException ex) {
             System.out.println(
-                "No se puede leer este archivo '" 
-                + miArchivo  + "'");                  
-            
-        }
-        catch(IndexOutOfBoundsException ex){
-            
+                    "No se puede leer este archivo '"
+                    + miArchivo + "'");
+
+        } catch (IndexOutOfBoundsException ex) {
+
         }
         Central.setGraph(mygraph);
     }

@@ -21,7 +21,7 @@ public class Ori {
         String caminos = "caminos\n";
         for (int i = 1; i < g.getnVertices(); i++) {
             for (int j = 0; j < i; j++) {
-                if (g.MatrizAd[i][j] != 999999999) {
+                if (g.MatrizAd[i][j] != g.VALOR_MAX) {
                     caminos += (j + 1) + " , " + (i + 1) + " , " + g.MatrizAd[i][j]
                             + "\n";
                 }

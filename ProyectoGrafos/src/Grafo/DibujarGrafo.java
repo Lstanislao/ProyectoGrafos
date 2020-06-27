@@ -30,7 +30,7 @@ public abstract class DibujarGrafo implements ViewerListener {
             + "     text-size: 15%;"
             + "     text-alignment: center;"
             + "     size: 0.05%;"
-//            + "     size-mode: fit;"
+            //            + "     size-mode: fit;"
             + "     text-style: bold;"
             + "     text-color: rgb(255,255,255);"
             + "     stroke-color: black;"
@@ -44,7 +44,7 @@ public abstract class DibujarGrafo implements ViewerListener {
             + "     text-size: 15%;"
             + "     text-style: bold;"
             + "     size: 0.05%;"
-//            + "     size-mode: fit;"
+            //            + "     size-mode: fit;"
             + "     stroke-color: black;"
             + "     stroke-mode: plain;"
             + "     stroke-width: 0.003%;"
@@ -88,7 +88,7 @@ public abstract class DibujarGrafo implements ViewerListener {
 
         for (int i = 0; i < g.getnVertices(); i++) {
             for (int j = 0; j < i; j++) {
-                if (g.MatrizAd[i][j] != 0 && g.MatrizAd[i][j] != 999999999) {
+                if (g.MatrizAd[i][j] != 0 && g.MatrizAd[i][j] != g.VALOR_MAX) {
                     String a = Integer.toString(i);
                     String b = Integer.toString(j);
                     Edge e = graph.addEdge(a + "-" + b, g.Vertices[i].getNombre(), g.Vertices[j].getNombre());
@@ -133,7 +133,7 @@ public abstract class DibujarGrafo implements ViewerListener {
 
         for (int i = 0; i < g.getnVertices(); i++) {
             for (int j = 0; j < i; j++) {
-                if (g.MatrizAd[i][j] != 0 && g.MatrizAd[i][j] != 999999999) {
+                if (g.MatrizAd[i][j] != 0 && g.MatrizAd[i][j] != g.VALOR_MAX) {
                     String a = Integer.toString(i);
                     String b = Integer.toString(j);
                     Edge e = graph.addEdge(a + "-" + b, g.Vertices[i].getNombre(), g.Vertices[j].getNombre());
