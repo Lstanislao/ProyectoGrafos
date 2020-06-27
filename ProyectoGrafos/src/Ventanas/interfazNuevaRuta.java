@@ -9,6 +9,7 @@ import Grafo.Archivo;
 import Grafo.Central;
 import static Grafo.Central.graph;
 import Grafo.Grafo;
+import java.io.File;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,8 +32,8 @@ public class interfazNuevaRuta extends javax.swing.JFrame {
     public interfazNuevaRuta() {
         initComponents();
     }
-    
-    public interfazNuevaRuta(String lista){
+
+    public interfazNuevaRuta(String lista) {
         initComponents();
         this.setLocationRelativeTo(null);
         clientesRegistrados.setText(lista);
@@ -65,6 +66,7 @@ public class interfazNuevaRuta extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonMenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -171,8 +173,8 @@ public class interfazNuevaRuta extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Por favor registre unicamente valores numericos");
         } else {
             //REGISTRAR LOS DATOS
-            int v1 = Integer.parseInt(idVertice1.getText())-1;
-            int v2 = Integer.parseInt(idVertice2.getText())-1;
+            int v1 = Integer.parseInt(idVertice1.getText()) - 1;
+            int v2 = Integer.parseInt(idVertice2.getText()) - 1;
             int dist = Integer.parseInt(distanciaEntreVertices.getText());
             graph.NuevoA(v1, v2, dist);
             mensaje.setText("Registro Existoso");
@@ -187,9 +189,13 @@ public class interfazNuevaRuta extends javax.swing.JFrame {
     }//GEN-LAST:event_idVertice1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //CODIGO DE GUARDAR ARCHIVO
-
-        mensaje.setText("Registro Existoso");
+        
+        String archivoActual = Central.Actual;
+        File actual = new File(archivoActual);
+        File porDefecto = new File("ArchivoPorDefecto.txt");
+        Archivo.copiarTxt(porDefecto, actual);
+        mensaje.setText("Archivo Guardado Exitosamente");
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

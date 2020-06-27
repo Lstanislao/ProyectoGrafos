@@ -221,7 +221,7 @@ public class interfazMenu extends javax.swing.JFrame {
         }
 
         if (VerificarFormatoArchivo(archivo)) {
-            int cambiar = JOptionPane.showConfirmDialog(this, "Se guardaran los datos actuales en memeria y se procedera a cargar el nuevo archivo. Desea seguir?");
+            int cambiar = JOptionPane.showConfirmDialog(this, "Se guardaran los datos actuales en memoria y se procedera a cargar el nuevo archivo. Desea seguir?");
             if (cambiar == 0) {
                 String archivoActual = Central.Actual;
                 File actual = new File(archivoActual);

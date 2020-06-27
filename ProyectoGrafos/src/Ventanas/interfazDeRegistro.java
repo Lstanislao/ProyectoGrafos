@@ -9,6 +9,8 @@ import Grafo.Archivo;
 import Grafo.Central;
 import static Grafo.Central.graph;
 import Grafo.Grafo;
+import java.io.File;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,7 +18,6 @@ import javax.swing.JOptionPane;
  * @author sosag
  */
 public class interfazDeRegistro extends javax.swing.JFrame {
-    
 
     // Valida que el argumento sea un numero entero
     public boolean Validacion(String cadena) {
@@ -32,12 +33,12 @@ public class interfazDeRegistro extends javax.swing.JFrame {
     public interfazDeRegistro() {
         initComponents();
         this.setLocationRelativeTo(null);
-        Grafo graph = Central.getGraph();
-        int id =graph.getnVertices()+1;
-        idVertice1.setText(Integer.toString(id));
+        //Grafo graph = Central.getGraph();
+        //int id = graph.getnVertices() + 1;
+        //idVertice1.setText(Integer.toString(id));
     }
-    
-    public interfazDeRegistro(String lista){
+
+    public interfazDeRegistro(String lista) {
         initComponents();
         this.setLocationRelativeTo(null);
         clientesRegistrados.setText(lista);
@@ -62,9 +63,7 @@ public class interfazDeRegistro extends javax.swing.JFrame {
         jButtonSalir = new javax.swing.JButton();
         jButtonMenu = new javax.swing.JButton();
         idVertice2 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        idVertice1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         distanciaEntreVertices = new javax.swing.JTextField();
@@ -77,6 +76,7 @@ public class interfazDeRegistro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Silom", 1, 24)); // NOI18N
@@ -133,19 +133,8 @@ public class interfazDeRegistro extends javax.swing.JFrame {
         getContentPane().add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 90, 40));
         getContentPane().add(idVertice2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 50, 40));
 
-        jLabel6.setText("iD del Nuevo Cliente :");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
-
         jLabel7.setText("Distancia Entre los Vértices :");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
-
-        idVertice1.setEditable(false);
-        idVertice1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idVertice1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(idVertice1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 50, 40));
 
         jButton1.setText("REGISTRAR DATOS");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -201,27 +190,20 @@ public class interfazDeRegistro extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButtonMenuActionPerformed
 
-    private void idVertice1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idVertice1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idVertice1ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Grafo graph = Central.getGraph();
-        boolean valid1 = Validacion(idVertice1.getText());
         boolean valid2 = Validacion(idVertice2.getText())
                 && graph.IndiceVerticeInt(Integer.parseInt(idVertice2.getText())) != -1;
         boolean valid3 = Validacion(distanciaEntreVertices.getText());
-
         if ("".equals(nombreRegistro.getText()) || "".equals(urbRegistro.getText()) || "".equals(calleAveRegistro.getText())
-                || !valid1 || !valid2 || !valid3) {
+                || !valid2 || !valid3) {
             JOptionPane.showMessageDialog(this, "Por favor registre correctamente toda la información que se le pide");
         } else {
             //REGISTRAR LOS DATOS
 
-            graph.NuevoV(nombreRegistro.getText(), calleAveRegistro.getText(),urbRegistro.getText());
-            int id =graph.getnVertices()-1;
-            System.out.println("ID"+id);
-            graph.NuevoA(id, Integer.parseInt(idVertice2.getText())-1,Integer.parseInt(distanciaEntreVertices.getText()));
+            graph.NuevoV(nombreRegistro.getText(), calleAveRegistro.getText(), urbRegistro.getText());
+            int id = graph.getnVertices() - 1;
+            graph.NuevoA(id, Integer.parseInt(idVertice2.getText()) - 1, Integer.parseInt(distanciaEntreVertices.getText()));
             Central.setGraph(graph);
             mensaje.setText("Registro Existoso");
             Archivo.EscribirGrafoEnTxt();
@@ -238,9 +220,13 @@ public class interfazDeRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_nombreRegistroActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //CODIGO DE GUARDAR ARCHIVO
+
+        String archivoActual = Central.Actual;
+        File actual = new File(archivoActual);
+        File porDefecto = new File("ArchivoPorDefecto.txt");
+        Archivo.copiarTxt(porDefecto, actual);
+        mensaje.setText("Archivo Guardado Exitosamente");
         
-        mensaje.setText("Registro Existoso");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -282,7 +268,6 @@ public class interfazDeRegistro extends javax.swing.JFrame {
     private javax.swing.JTextField calleAveRegistro;
     private javax.swing.JTextPane clientesRegistrados;
     private javax.swing.JTextField distanciaEntreVertices;
-    private javax.swing.JTextField idVertice1;
     private javax.swing.JTextField idVertice2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -294,7 +279,6 @@ public class interfazDeRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
