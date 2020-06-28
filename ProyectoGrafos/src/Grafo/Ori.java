@@ -5,7 +5,6 @@
  */
 package Grafo;
 
-import Ventanas.interfazRegistro;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
