@@ -72,7 +72,8 @@ public class Archivo {
 //        }
         //ahora
         for (int i = 0; i < num; i++) {
-            cadenaClientes += Integer.toString(clientes[i].getNumVertice() + 1) + "," + clientes[i].getNombre() + "," + clientes[i].getUrb();
+            cadenaClientes += Integer.toString(clientes[i].getNumVertice() + 1)
+                    + "," + clientes[i].getNombre() + "," + clientes[i].getUrb();
             if (!clientes[i].getCalle().equals("")) {
                 cadenaClientes += "," + clientes[i].getCalle();
                 System.out.println("tiene calle");
@@ -102,7 +103,8 @@ public class Archivo {
 //        }
         //ahora
         for (int i = 0; i < num; i++) {
-            cadenaClientes += "ID: " + Integer.toString(clientes[i].getNumVertice() + 1) + " , " + clientes[i].getNombre() + " , " + clientes[i].getUrb();
+            cadenaClientes += "ID: " + Integer.toString(clientes[i].getNumVertice() + 1)
+                    + " , " + clientes[i].getNombre() + " , " + clientes[i].getUrb();
             if (!clientes[i].getCalle().equals("")) {
                 cadenaClientes += " , " + clientes[i].getCalle();
             }
@@ -114,12 +116,14 @@ public class Archivo {
         return cadenaClientes;
     }
 
+    // Obtiene todos los caminos entre los vertices a partir del grafo
     public static String Caminos(Grafo g) {
         String caminos = "";
         for (int i = 1; i < g.getnVertices(); i++) {
             for (int j = 0; j < i; j++) {
                 if (g.MatrizAd[i][j] != g.VALOR_MAX) {
-                    caminos += (j + 1) + "," + (i + 1) + "," + g.MatrizAd[i][j] + "\n";
+                    caminos += (j + 1) + "," + (i + 1) + "," + g.MatrizAd[i][j]
+                            + "\n";
                 }
             }
         }
@@ -153,6 +157,76 @@ public class Archivo {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Ori.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    /* Verifica que el archivo tenga el formato deseado: la palabra clientes, 
+    la palabra caminos y tanto los clientes como los caminos en el formato deseado
+     */
+    public static boolean VerificarFormatoArchivo(File archivo) {
+        boolean archivoValido;
+        boolean tieneCaminos = false;
+        boolean tieneClientes = false;
+        boolean clientesValido = true;
+        boolean caminosValido = true;
+
+        String linea;
+        String[] cliente;
+        String[] ruta;
+        FileReader leer;
+        BufferedReader almacenamiento;
+        System.out.println("verificando");
+        try {
+            leer = new FileReader(archivo);
+            almacenamiento = new BufferedReader(leer);
+
+            while ((linea = almacenamiento.readLine()) != null) {
+
+                if (!"".equals(linea)) {
+                    System.out.println("viendo ifs");
+                    if (linea.toLowerCase().equals("clientes")) {
+                        System.out.println("tiene clientes");
+                        tieneClientes = true;
+                    } else if (linea.toLowerCase().equals("caminos")) {
+                        System.out.println("tiene caminos");
+                        tieneCaminos = true;
+                    } else if (tieneClientes && !tieneCaminos) {
+                        cliente = linea.split(",");
+                        System.out.println("entre cliente");
+                        System.out.println(linea);
+                        if (cliente.length != 3 && cliente.length != 4) {
+                            clientesValido = false;
+                            break;
+                        }
+                        System.out.println("cliente bien");
+                    } else if (tieneClientes && tieneCaminos) {
+                        System.out.println("entre caminos");
+                        System.out.println(linea);
+                        ruta = linea.split(",");
+                        if (ruta.length != 3) {
+                            caminosValido = false;
+                            break;
+                        }
+                        System.out.println("camino bien");
+                    }
+                }
+
+            }
+
+            almacenamiento.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println(
+                    "No se puede abrir este archivo'"
+                    + archivo + "'");
+        } catch (IOException ex) {
+            System.out.println(
+                    "No se puede leer este archivo '"
+                    + archivo + "'");
+
+        }
+
+        archivoValido = tieneClientes && tieneCaminos && clientesValido && caminosValido;
+        System.out.println("devolviendo " + archivoValido);
+        return archivoValido;
     }
 
 }

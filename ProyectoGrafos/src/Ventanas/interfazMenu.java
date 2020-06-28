@@ -13,9 +13,9 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Grafo.*;
+import static Grafo.Archivo.VerificarFormatoArchivo;
 import static Grafo.Central.graph;
 import static Grafo.DibujarGrafo.Dibujar;
-import static Grafo.Ori.VerificarFormatoArchivo;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
