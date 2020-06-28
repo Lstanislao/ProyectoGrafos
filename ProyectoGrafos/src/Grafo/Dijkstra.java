@@ -32,7 +32,7 @@ public class Dijkstra {
 
     public void CaminoDijkstra() {
         /* se inicializan los arreglos Visiatados con falso, el de costo con el 
-        costo de todos los arcos que tien el origen y el ultimo recorrido es 
+        costo de todos los arcos que tiene el origen y el ultimo recorrido es 
         origen*/
 
         for (int i = 0; i < Num; i++) {
@@ -41,7 +41,6 @@ public class Dijkstra {
             Ultimo[i] = Orig;
         }
         Visitados[Orig] = true;//se marca origen como ya visitado
-        //LowCost[Orig]=0;
         for (int k = 1; k < Num; k++) {
             int min = MenorDistancia();
             Visitados[min] = true;

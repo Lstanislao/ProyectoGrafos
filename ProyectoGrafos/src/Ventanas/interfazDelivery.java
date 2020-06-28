@@ -176,7 +176,7 @@ public class interfazDelivery extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void jButtonMenuDeliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuDeliveryActionPerformed
-        //Apertura de la interfaz Menu y cierre de la interfaz de Delivery
+        // Apertura de la interfaz Menu y cierre de la interfaz de Delivery
 
         interfazMenu a = new interfazMenu();
         a.setVisible(true);
@@ -185,9 +185,11 @@ public class interfazDelivery extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMenuDeliveryActionPerformed
 
     private void jButtonEnterRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnterRegistroActionPerformed
-        /* Boton Dijkstra: Toma el valor ingresado en a casilla iD destino, que esta validado como un numero entero,
-            luego genera el camino mas corto a recorrer utilizando el metodo de Dijkstra. Una vez impreso en la casilla
-                output, se abre una ventana con el camino a recorrer del grafo graficado.
+        /* 
+        Boton Dijkstra: Toma el valor ingresado en la casilla iD destino, que 
+        esta validado como un numero entero, luego genera el camino mas corto a 
+        recorrer utilizando el metodo de Dijkstra. Una vez impreso en la casilla
+        output, se abre una ventana con el camino a recorrer graficado.
          */
 
         boolean validId = Validacion(idDestino.getText());
@@ -213,9 +215,11 @@ public class interfazDelivery extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEnterRegistroActionPerformed
 
     private void jButtonFloydActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFloydActionPerformed
-        /* Boton Floyd: Toma el valor ingresado en a casilla iD destino, que esta validado como un numero entero,
-            luego genera el camino mas corto a recorrer utilizando el metodo de Floyd. Una vez impreso en la casilla
-                output, se abre una ventana con el camino a recorrer del grafo graficado.
+        /* 
+        Boton Floyd: Toma el valor ingresado en a casilla iD destino, que esta 
+        validado como un numero entero, luego genera el camino mas corto a recorrer 
+        utilizando el metodo de Floyd. Una vez impreso en la casilla output, se 
+        abre una ventana con el camino a recorrer graficado.
          */
 
         boolean validId = Validacion(idDestino.getText());
@@ -240,8 +244,9 @@ public class interfazDelivery extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonFloydActionPerformed
 
     private void jButtonDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDFSActionPerformed
-        /*Boton DFS: Imprime el  grafo textualmente en el Text Area de la derecha de la interfaz utilizando el recorrido
-            en profundidad DFS.
+        /*
+        Boton DFS: Imprime el  grafo textualmente en el Text Area de la derecha 
+        de la interfaz utilizando el recorrido en profundidad DFS.
          */
 
         Grafo mygraph = Central.getGraph();
@@ -252,8 +257,9 @@ public class interfazDelivery extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDFSActionPerformed
 
     private void jButtonBFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBFSActionPerformed
-        /*Boton BFS: Imprime el grafo textualmente en el Text Area de la derecha de la interfaz utilizando el recorrido
-            en anchura BFS.
+        /*
+        Boton BFS: Imprime el grafo textualmente en el Text Area de la derecha 
+        de la interfaz utilizando el recorrido en anchura BFS.
          */
 
         Grafo mygraph = Central.getGraph();

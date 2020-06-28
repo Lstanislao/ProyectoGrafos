@@ -20,7 +20,8 @@ import java.util.logging.Logger;
  * @author Luis Stanislao
  */
 public class Archivo {//Clase que contiene funciones relacionadas con el archivo Txt
-    //Funcion que toma el grafo y todos sus vertices y rutas y los escribe en un txt 
+    // Funcion que toma el grafo y todos sus vertices y rutas y los escribe en un txt 
+
     public static void EscribirGrafoEnTxt() {
         Grafo mygraph = Central.getGraph();
         int num = mygraph.getnVertices();
@@ -53,7 +54,11 @@ public class Archivo {//Clase que contiene funciones relacionadas con el archivo
 
         }
     }
-    //Funcion que recolecta los clientes y los devuelve en el formano necesario para ser escrito en txt
+
+    /*
+    Funcion que recolecta los clientes y los devuelve en el formano necesario 
+    para ser escrito en txt
+     */
     public static String Clientes() {
         Grafo mygraph = Central.getGraph();
         Vertice clientes[] = mygraph.getVertices();
@@ -65,7 +70,6 @@ public class Archivo {//Clase que contiene funciones relacionadas con el archivo
                     + "," + clientes[i].getNombre() + "," + clientes[i].getUrb();
             if (!clientes[i].getCalle().equals("")) {
                 cadenaClientes += "," + clientes[i].getCalle();
-                //System.out.println("tiene calle");
             }
             if (i != num - 1) {
                 cadenaClientes += "\n";
@@ -74,6 +78,7 @@ public class Archivo {//Clase que contiene funciones relacionadas con el archivo
 
         return cadenaClientes;
     }
+
     //Recolecta los clientes y devuelve el String que se muestra en la interfaz
     public static String ClientesPantalla() {
         Grafo mygraph = Central.getGraph();
@@ -107,7 +112,8 @@ public class Archivo {//Clase que contiene funciones relacionadas con el archivo
         }
         return caminos;
     }
-    //Toma 2 archivos txt y copia el contenido de uno en el otro
+
+    // Toma 2 archivos txt y copia el contenido de uno en el otro
     public static void copiarTxt(File archivoExterno, File archivoFijo) {
         FileReader leer;
         BufferedReader almacenamiento;
@@ -136,7 +142,8 @@ public class Archivo {//Clase que contiene funciones relacionadas con el archivo
         }
     }
 
-    /* Verifica que el archivo tenga el formato deseado: la palabra clientes, 
+    /* 
+    Verifica que el archivo tenga el formato deseado: la palabra clientes, 
     la palabra caminos y tanto los clientes como los caminos en el formato deseado
      */
     public static boolean VerificarFormatoArchivo(File archivo) {
@@ -151,7 +158,6 @@ public class Archivo {//Clase que contiene funciones relacionadas con el archivo
         String[] ruta;
         FileReader leer;
         BufferedReader almacenamiento;
-        System.out.println("verificando");
         try {
             leer = new FileReader(archivo);
             almacenamiento = new BufferedReader(leer);
@@ -159,31 +165,22 @@ public class Archivo {//Clase que contiene funciones relacionadas con el archivo
             while ((linea = almacenamiento.readLine()) != null) {
 
                 if (!"".equals(linea)) {
-                    System.out.println("viendo ifs");
                     if (linea.toLowerCase().equals("clientes")) {
-                        System.out.println("tiene clientes");
                         tieneClientes = true;
                     } else if (linea.toLowerCase().equals("caminos")) {
-                        System.out.println("tiene caminos");
                         tieneCaminos = true;
                     } else if (tieneClientes && !tieneCaminos) {
                         cliente = linea.split(",");
-                        System.out.println("entre cliente");
-                        System.out.println(linea);
                         if (cliente.length != 3 && cliente.length != 4) {
                             clientesValido = false;
                             break;
                         }
-                        System.out.println("cliente bien");
                     } else if (tieneClientes && tieneCaminos) {
-                        System.out.println("entre caminos");
-                        System.out.println(linea);
                         ruta = linea.split(",");
                         if (ruta.length != 3) {
                             caminosValido = false;
                             break;
                         }
-                        System.out.println("camino bien");
                     }
                 }
 
@@ -202,7 +199,6 @@ public class Archivo {//Clase que contiene funciones relacionadas con el archivo
         }
 
         archivoValido = tieneClientes && tieneCaminos && clientesValido && caminosValido;
-        System.out.println("devolviendo " + archivoValido);
         return archivoValido;
     }
 

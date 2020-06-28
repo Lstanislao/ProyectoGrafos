@@ -1,4 +1,3 @@
-
 package Ventanas;
 
 import java.io.File;
@@ -9,16 +8,17 @@ import static Grafo.DibujarGrafo.Dibujar;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-
 public class interfazMenu extends javax.swing.JFrame {
 
     JFileChooser seleccionado = new JFileChooser();
     File archivo;
     String nombreDelArchivoTxtSeleccionado;
 
-    /* Selección del archivo de datos por defecto si es primera vez que se inicializa el sistema, esto se debe a que si
-        el usuario no carga un archivo de datos, entonces ya tenga uno que puede utlizar.
-    */
+    /* 
+    Selección del archivo de datos por defecto si es primera vez que se inicializa
+    el sistema, esto se debe a que si el usuario no carga un archivo de datos, 
+    entonces ya tenga uno que puede utlizar.
+     */
     public interfazMenu() {
         boolean PrimeraVezInciado = Central.getIniciado();
         if (!PrimeraVezInciado) {
@@ -34,7 +34,6 @@ public class interfazMenu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
 
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -85,7 +84,7 @@ public class interfazMenu extends javax.swing.JFrame {
                 jButtonSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 70, 40));
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 90, 40));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Silom", 1, 14)); // NOI18N
@@ -173,14 +172,17 @@ public class interfazMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Botón Graficar Grafo: Abre una ventana con el dibujo del grafo del archivo de datos que se este utilizando
-        
+        /*
+        Botón Graficar Grafo: Abre una ventana con el dibujo del grafo del 
+        archivo de datos que se este utilizando
+         */
+
         Dibujar(graph);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        //Apertura de la interfaz Instrucciones y cierre de la interfaz de Menu
-        
+        // Apertura de la interfaz Instrucciones y cierre de la interfaz de Menu
+
         interfazInstrucciones a = new interfazInstrucciones();
         a.setVisible(true);
         a.setLocationRelativeTo(null);
@@ -188,11 +190,14 @@ public class interfazMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        /*  Apertura de la interfaz de Registro con un String llamado "texto" de parametro. Esto permite que ese String
-                sea impreso automaticamente en el TextArea del lado derecho de la interfaz Registro al inicializarse.
-                    El texto contiene la lista de clientes registradas en el archivo de datos que se esté utilizando.
-        */
-        
+        /*  
+        Apertura de la interfaz de Registro con un String llamado "texto" de
+        parametro. Esto permite que ese String sea impreso automaticamente en el
+        TextArea del lado derecho de la interfaz Registro al inicializarse. El
+        texto contiene la lista de clientes registradas en el archivo de datos 
+        que se esté utilizando.
+         */
+
         String texto = Archivo.ClientesPantalla();
         interfazDeRegistro a = new interfazDeRegistro(texto);
         a.setVisible(true);
@@ -201,11 +206,13 @@ public class interfazMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        /*  Boton Cargar Archivo de Datos: Permite seleccionar un archivo ".txt" del ordenador para su utilizacion en el 
-                sistema. Este archivo de datos es leido por el sistema para asegurarse que cumpla con el formato adecuado.
-                    De lo contrario aparecerá un mensaje indicando cual debe ser el formato.
-        */
-        
+        /*  
+        Boton Cargar Archivo de Datos: Permite seleccionar un archivo ".txt" del
+        ordenador para su utilizacion en el sistema. Este archivo de datos es 
+        leido por el sistema para asegurarse que cumpla con el formato adecuado.
+        De lo contrario aparecerá un mensaje indicando cual debe ser el formato.
+         */
+
         if (seleccionado.showDialog(this, "CARGAR ARCHIVO") == JFileChooser.APPROVE_OPTION) {
             archivo = seleccionado.getSelectedFile();
             if (archivo.canRead()) {
@@ -218,7 +225,7 @@ public class interfazMenu extends javax.swing.JFrame {
         }
 
         if (VerificarFormatoArchivo(archivo)) {
-            int cambiar = JOptionPane.showConfirmDialog(this, "Se guardaran los datos actuales en memoria y se procedera a cargar el nuevo archivo. Desea seguir?");
+            int cambiar = JOptionPane.showConfirmDialog(this, "Es importante que el archivo seleccionado se encuentre en la carpeta del proyecto. \nSe guardaran los datos actuales en memoria y se procedera a cargar el nuevo archivo. Desea seguir?");
             if (cambiar == 0) {
                 String archivoActual = Central.Actual;
                 File actual = new File(archivoActual);
@@ -242,11 +249,14 @@ public class interfazMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        /*  Apertura de la interfaz de Nuevas Rutas con un String llamado "texto" de parametro. Esto permite que ese String
-                sea impreso automaticamente en el TextArea del lado derecho de la interfaz Nuevas Rutas al inicializarse. 
-                    El texto contiene la lista de clientes registradas en el archivo de datos que se esté utilizando.
-        */
-        
+        /*  
+        Apertura de la interfaz de Nuevas Rutas con un String llamado "texto" de
+        parametro. Esto permite que ese String sea impreso automaticamente en el
+        TextArea del lado derecho de la interfaz Nuevas Rutas al inicializarse. 
+        El texto contiene la lista de clientes registradas en el archivo de datos
+        que se esté utilizando.
+         */
+
         String texto = Archivo.ClientesPantalla();
         interfazNuevaRuta a = new interfazNuevaRuta(texto);
         a.setVisible(true);
@@ -256,10 +266,14 @@ public class interfazMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        /*  Apertura de la interfaz de Delivery con un String llamado "texto" de parametro. Esto permite que ese String
-                sea impreso automaticamente en el TextArea del lado derecho de la interfaz Delivery al inicializarse. 
-                    El texto contiene la lista de clientes registradas en el archivo de datos que se esté utilizando.
-        */
+        /*  
+        Apertura de la interfaz de Delivery con un String llamado "texto" de 
+        parametro. Esto permite que ese String sea impreso automaticamente en el
+        TextArea del lado derecho de la interfaz Delivery al inicializarse. El
+        texto contiene la lista de clientes registradas en el archivo de datos 
+        que se esté utilizando.
+         */
+
         String texto = Archivo.ClientesPantalla();
         interfazDelivery a = new interfazDelivery(texto);
         a.setVisible(true);

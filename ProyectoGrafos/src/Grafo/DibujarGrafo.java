@@ -18,7 +18,13 @@ public abstract class DibujarGrafo implements ViewerListener {
 
     /*
     En esta clase se utiliza la libreria GraphStream (http://graphstream-project.org/) 
-    para representar el grafo de forma grafica
+    para representar el grafo de forma grafica.
+    
+    La libreria deberia estar ya configurada al abrir el proyecto, en caso contrario las carpetas
+    donde estan los archivos .jar de la libreria forman parte del zip. Solamente
+    hay que agregar en las librerias del proyecto los archivos llamados: gs-algo-1.3, 
+    gs-core-1.3 y gs-ui-1.3. Dichos archivos se encuentran en carpetas con el 
+    mismo nombre.
      */
 
  /* Aqui se especifica todo lo referente al estilo de los vertices y aristas 
@@ -30,7 +36,6 @@ public abstract class DibujarGrafo implements ViewerListener {
             + "     text-size: 15%;"
             + "     text-alignment: center;"
             + "     size: 0.05%;"
-            //            + "     size-mode: fit;"
             + "     text-style: bold;"
             + "     text-color: rgb(255,255,255);"
             + "     stroke-color: black;"
@@ -44,7 +49,6 @@ public abstract class DibujarGrafo implements ViewerListener {
             + "     text-size: 15%;"
             + "     text-style: bold;"
             + "     size: 0.05%;"
-            //            + "     size-mode: fit;"
             + "     stroke-color: black;"
             + "     stroke-mode: plain;"
             + "     stroke-width: 0.003%;"
@@ -117,7 +121,7 @@ public abstract class DibujarGrafo implements ViewerListener {
         /* 
         A partir del grafo recibido agrego los vertices y aristas en un nuevo
         grafo que pertenece a la clase grafo de la libreria. Me aseguro de marcar
-        los vertices y aristas qeu formen parte del recorrido, para poder 
+        los vertices y aristas que formen parte del recorrido para poder 
         mostrarlo
          */
         for (int i = 0; i < g.getnVertices(); i++) {
@@ -151,7 +155,7 @@ public abstract class DibujarGrafo implements ViewerListener {
         viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.CLOSE_VIEWER);
     }
 
-    //Funcion que verifica si un vertice es parte del camino mas corto
+    // Funcion que verifica si un vertice es parte del camino mas corto
     public static boolean Pertenece(int i, String[] camino) {
         boolean existe = false;
         for (int j = 0; j < camino.length; j++) {
@@ -181,7 +185,7 @@ public abstract class DibujarGrafo implements ViewerListener {
         return aristas;
     }
 
-    //Funcion que verifica si una arista es parte del camino mas corto
+    // Funcion que verifica si una arista es parte del camino mas corto
     public static boolean PerteneceArista(String[] aristas, String a, String b) {
         boolean existe = false;
         for (int j = 0; j < aristas.length; j++) {

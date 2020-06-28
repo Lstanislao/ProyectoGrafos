@@ -17,6 +17,7 @@ public class FloydWarshall {
     int[][] dist;
     int[][] camino;
 
+    // Funcion que ejecuta el algoritmo Floyd-Warshall
     public String Floyd(int inicio, int end, Grafo grafo) {
         num = grafo.getnVertices(); // Es el numero de vertices
         dist = new int[num][num]; // Guardara la distancia mas corta entre pares
@@ -47,7 +48,7 @@ public class FloydWarshall {
         return CaminoMasCorto(inicio, end);
     }
 
-    // Se reconstruye la ruta del camino mas corto obtenido del metodo de Floyd Warshall
+    // Se reconstruye la ruta del camino mas corto obtenido del metodo de Floyd-Warshall
     public String CaminoMasCorto(int inicio, int end) {
         String ruta = Integer.toString(inicio + 1);
 

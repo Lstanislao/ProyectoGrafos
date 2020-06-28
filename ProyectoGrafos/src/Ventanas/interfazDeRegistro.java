@@ -1,4 +1,3 @@
-
 package Ventanas;
 
 import Grafo.Archivo;
@@ -6,7 +5,6 @@ import Grafo.Central;
 import Grafo.Grafo;
 import java.io.File;
 import javax.swing.JOptionPane;
-
 
 public class interfazDeRegistro extends javax.swing.JFrame {
 
@@ -33,7 +31,6 @@ public class interfazDeRegistro extends javax.swing.JFrame {
         clientesRegistrados.setText(lista);
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -127,7 +124,7 @@ public class interfazDeRegistro extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, 140, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, 160, 40));
 
         jLabel8.setText("iD del Cliente al que desea conectar: ");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
@@ -142,7 +139,7 @@ public class interfazDeRegistro extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 140, 40));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 440, 140, 40));
 
         clientesRegistrados.setEditable(false);
         jScrollPane3.setViewportView(clientesRegistrados);
@@ -169,7 +166,7 @@ public class interfazDeRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void jButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuActionPerformed
-        //Apertura de la interfaz Menu y cierre de la interfaz de Registro
+        // Apertura de la interfaz Menu y cierre de la interfaz de Registro
         interfazMenu a = new interfazMenu();
         a.setVisible(true);
         a.setLocationRelativeTo(null);
@@ -177,9 +174,10 @@ public class interfazDeRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMenuActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         Grafo graph = Central.getGraph();
-        //Validación de existencia del vertice ingresado en el grafo actual y que los datos registrados sean validos
+        /*Validación de existencia del vertice ingresado en el grafo actual y que 
+        los datos registrados sean validos*/
         boolean valid2 = Validacion(idVertice2.getText())
                 && graph.IndiceVerticeInt(Integer.parseInt(idVertice2.getText())) != -1;
         boolean valid3 = Validacion(distanciaEntreVertices.getText());
@@ -187,7 +185,7 @@ public class interfazDeRegistro extends javax.swing.JFrame {
                 || !valid2 || !valid3) {
             JOptionPane.showMessageDialog(this, "Por favor registre correctamente toda la información que se le pide");
         } else {
-            //REGISTRAR LOS DATOS
+            // Registra el nuevo cliente
             graph.NuevoV(nombreRegistro.getText(), calleAveRegistro.getText(), urbRegistro.getText());
             int id = graph.getnVertices() - 1;
             graph.NuevoA(id, Integer.parseInt(idVertice2.getText()) - 1, Integer.parseInt(distanciaEntreVertices.getText()));
@@ -208,16 +206,16 @@ public class interfazDeRegistro extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        /*  Copiando la informacion del archivo por defecto que utiliza el sistema y reescribiendo el archivo seleccionado
-                por el usuario
-        */
-        
+        /*  
+        Copiando la informacion del archivo por defecto que utiliza el sistema 
+        y reescribiendo el archivo seleccionado por el usuario
+         */
         String archivoActual = Central.Actual;
         File actual = new File(archivoActual);
         File porDefecto = new File("ArchivoPorDefecto.txt");
         Archivo.copiarTxt(porDefecto, actual);
         mensaje.setText("Archivo Guardado Exitosamente");
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

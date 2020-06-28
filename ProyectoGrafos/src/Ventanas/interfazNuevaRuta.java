@@ -1,4 +1,3 @@
-
 package Ventanas;
 
 import Grafo.Archivo;
@@ -7,7 +6,6 @@ import static Grafo.Central.graph;
 import Grafo.Grafo;
 import java.io.File;
 import javax.swing.JOptionPane;
-
 
 public class interfazNuevaRuta extends javax.swing.JFrame {
 
@@ -31,7 +29,6 @@ public class interfazNuevaRuta extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         clientesRegistrados.setText(lista);
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -95,7 +92,7 @@ public class interfazNuevaRuta extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 140, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 160, 40));
 
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         jLabel6.setText("iD Primer Vertice :");
@@ -131,7 +128,7 @@ public class interfazNuevaRuta extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, 130, 40));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 160, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Light-Blue-Gradient-Background-Graphics-3943096-1.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 460));
@@ -140,8 +137,8 @@ public class interfazNuevaRuta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuActionPerformed
-        //Apertura de la interfaz Menu y cierre de la interfaz de Nuevas Rutas  
-        
+        // Apertura de la interfaz Menu y cierre de la interfaz de Nuevas Rutas  
+
         interfazMenu a = new interfazMenu();
         a.setVisible(true);
         a.setLocationRelativeTo(null);
@@ -153,21 +150,22 @@ public class interfazNuevaRuta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        /*  Validación de existencia de los vertices ingresados en el grafo actual y que esos datos ingresados sean numeros
-                enteros     
-        */
+        /*  
+        Validación de existencia de los vertices ingresados en el grafo actual y
+        que esos datos ingresados sean numeros enteros     
+         */
 
         Grafo graph = Central.getGraph();
         boolean valid1 = Validacion(idVertice1.getText())
-                && graph.IndiceVerticeInt(Integer.parseInt(idVertice2.getText())) != -1;
+                && graph.IndiceVerticeInt(Integer.parseInt(idVertice2.getText()) - 1) != -1;
         boolean valid2 = Validacion(idVertice2.getText())
-                && graph.IndiceVerticeInt(Integer.parseInt(idVertice2.getText())) != -1;
+                && graph.IndiceVerticeInt(Integer.parseInt(idVertice2.getText()) -1) != -1;
         boolean valid3 = Validacion(distanciaEntreVertices.getText());
 
         if (!valid1 || !valid2 || !valid3) {
             JOptionPane.showMessageDialog(this, "Por favor registre unicamente valores numericos");
         } else {
-            //REGISTRAR LOS DATOS
+            // Registro la nueva ruta
             int v1 = Integer.parseInt(idVertice1.getText()) - 1;
             int v2 = Integer.parseInt(idVertice2.getText()) - 1;
             int dist = Integer.parseInt(distanciaEntreVertices.getText());
@@ -184,16 +182,17 @@ public class interfazNuevaRuta extends javax.swing.JFrame {
     }//GEN-LAST:event_idVertice1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        /*  Copiando la informacion del archivo por defecto que utiliza el sistema y reescribiendo el archivo seleccionado
-                por el usuario
-        */
-        
+        /*  
+        Copiando la informacion del archivo por defecto que utiliza el sistema 
+        y reescribiendo el archivo seleccionado por el usuario
+         */
+
         String archivoActual = Central.Actual;
         File actual = new File(archivoActual);
         File porDefecto = new File("ArchivoPorDefecto.txt");
         Archivo.copiarTxt(porDefecto, actual);
         mensaje.setText("Archivo Guardado Exitosamente");
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
