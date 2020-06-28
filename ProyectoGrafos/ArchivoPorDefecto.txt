@@ -1,10 +1,10 @@
 clientes
 1,La empresa,La Urbina
-2,Pedro Pérez, Los Caobos,Calle A
+2,Pedro Pérez,Los Caobos,Calle A
 3,Luisa Betancourt,La Candelaria,Calle Alameda
 4,Antonio Sánchez,La Urbina,Calle 4
 5,Hector Berbe,Santa Mónica,Avenida Teresa de la Parra
-9,Norberto Rivas,El cafetal,Avenida Principal
+6,Norberto Rivas,El cafetal,Avenida Principal
 7,Marbelis Carvajal,Montaban,Calle 8
 8,Andrés Marval,Cumbres de Curumo,Calle 1
 9,Alba Añez,La Boyera,calle2
@@ -30,10 +30,6 @@ caminos
 10,11,2
 7,12,6
 10,12,7
-
-
-
-
 
 
 

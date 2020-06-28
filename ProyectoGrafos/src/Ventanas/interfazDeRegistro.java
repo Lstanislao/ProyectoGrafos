@@ -179,7 +179,7 @@ public class interfazDeRegistro extends javax.swing.JFrame {
         /*Validación de existencia del vertice ingresado en el grafo actual y que 
         los datos registrados sean validos*/
         boolean valid2 = Validacion(idVertice2.getText())
-                && graph.IndiceVerticeInt(Integer.parseInt(idVertice2.getText())) != -1;
+                && graph.IndiceVerticeInt(Integer.parseInt(idVertice2.getText())-1) != -1;
         boolean valid3 = Validacion(distanciaEntreVertices.getText());
         if ("".equals(nombreRegistro.getText()) || "".equals(urbRegistro.getText()) || "".equals(calleAveRegistro.getText())
                 || !valid2 || !valid3) {
