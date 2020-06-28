@@ -60,23 +60,7 @@ public class Grafo {
         }
     }
 
-    /*public boolean Existe(String nombre)//Busca entre todos los vertices a ver si ya uno con ese nombre
-    {
-        boolean existe = false;
-        if (getnVertices()>0)
-                {
-                    for (int i = 0; i < getnVertices(); i++) 
-                    {
-                        if(Vertices[i].getNombre().equals(nombre))
-                        {
-                            existe=true;
-                        }
-                    }
-                }
-        return existe;
-    }*/
- /*
-    Este metodo se va al arreglo de vertices y compara para ver si ya existe uno
+    /*Este metodo se va al arreglo de vertices y compara para ver si ya existe uno
     con ese nombre y retorna su indice, de no existir retorna -1
      */
     public int IndiceVertice(String nombre, String calle, String urb) {
@@ -97,7 +81,8 @@ public class Grafo {
         }
 
     }
-
+    
+    //si es un vertice esvalido
     public int IndiceVerticeInt(int id) {
         if (id < nVertices) {
             return id;
@@ -107,13 +92,11 @@ public class Grafo {
 
     }
 // Para agregar un nuevo vertice al grafo
-
     public void NuevoV(String nombre, String calle, String urb) {
         boolean existe = IndiceVertice(nombre, calle, urb) >= 0;
         if (!existe) {
             Vertice newVertice = new Vertice(nombre, calle, urb);
             newVertice.setNumVertice(getnVertices());
-            System.out.println(newVertice.getNumVertice() + newVertice.getNombre());
             Vertices[nVertices] = newVertice;
             nVertices++;
         }
@@ -122,7 +105,6 @@ public class Grafo {
     // Para agregar una nueva arista al grafo
     public boolean NuevoA(int v1, int v2, int recorrido) {
         int n1, n2;
-        System.out.println(v1 + " " + v2 + " " + recorrido + "HOLA");
         n1 = IndiceVerticeInt(v1);
         n2 = IndiceVerticeInt(v2);
         if (n1 < 0 || n2 < 0) {
@@ -135,30 +117,12 @@ public class Grafo {
         }
     }
 
-    public boolean Adyacente(int n1, int n2) throws Exception {
-        if (n1 < 0 || n2 < 0) {
-            JOptionPane.showMessageDialog(null, "Alguno de los vertices no existe");
-            return false;
-        } else {
-            return MatrizAd[n1][n2] != 0 && MatrizAd[n1][n2] != VALOR_MAX;
-        }
-    }
-
-    public void ImprimirTabla() { //PROVISIONAL
-        for (int i = 0; i < nVertices; i++) {
-            for (int j = 0; j < nVertices; j++) {
-                System.out.print(MatrizAd[i][j] + " ");
-            }
-            System.out.println("");
-        }
-    }
 
     // Se encarga de recorrer todo el grafo por anchura
     public String BFS(int orig) {
         int recorrido[] = new int[nVertices];
         int aux;
         String cadena, cadena1, cadenafinal;
-        System.out.println(Vertices[orig].getNumVertice() + 1 + " " + Vertices[orig].getNombre());
         cadena1 = "ID: " + Integer.toString(Vertices[orig].getNumVertice() + 1)
                 + " " + Vertices[orig].getNombre() + ", " + Vertices[orig].getUrb()
                 + ", " + Vertices[orig].getCalle() + "\n";
@@ -192,7 +156,7 @@ public class Grafo {
             }
         }
         cadenafinal = "Recorrido BSF: \n" + cadena + "\n\n" + cadena1;
-        //System.out.println(cadenafinal);
+
 
         return cadenafinal;
     }
@@ -250,7 +214,6 @@ public class Grafo {
         String out2 = "";
         String array[];
         cadena = IniciarDFS(0);
-        System.out.println("dfs" + cadena);
         array = cadena.split(",");
 
         out1 += "ID" + Integer.toString(Vertices[orig].getNumVertice() + 1);
@@ -273,59 +236,3 @@ public class Grafo {
 
 }
 
-//    public String DFS(String orig) {
-//        int origen = IndiceVertice(orig);
-//        int siguiente;
-//        Lista pila = new Lista();
-//        int recorrido[] = new int[getnVertices()];
-//        int aux;
-//        int n = 0;
-//        String cadena = orig;
-//        if (origen >= 0) {
-//            for (int i = 0; i < getnVertices(); i++) {
-//                recorrido[i] = 0;
-//            }
-//
-//            pila.Apilar(origen);
-//            while (!pila.EsVacio()) {
-//                aux = (int) pila.LeerTope();
-//                pila.Desapilar();
-//                System.out.println(recorrido[aux]);
-//                if (recorrido[aux] == 0) {
-//                    cadena = cadena + " " + Vertices[n].getNombre();
-//                    recorrido[aux] = 1;
-//                    n++;
-//                    for (int j = 0; j < getnVertices(); j++) {
-//                        pila.Apilar(j);
-//                    }
-//                }
-//
-//            }
-//        }
-//        System.out.println(cadena);
-//        return cadena;
-//
-//    }
-/*public void EliminarA(String v1, String v2, int recorrido) {
-        int n1, n2;
-        n1 = IndiceVertice(v1);
-        n2 = IndiceVertice(v2);
-        if (n1 < 0 || n2 < 0) {
-            JOptionPane.showMessageDialog(null, "Alguno de los vertices no existe");
-        } else {
-            MatrizAd[n1][n2] = 0;
-            MatrizAd[n2][n1] = 0;
-        }
-
-    }*/
- /*public void NewA(String v1, String v2, int recorrido) {
-        int n1, n2;
-        n1 = IndiceVertice(v1);
-        n2 = IndiceVertice(v2);
-        if (n1 < 0 || n2 < 0) {
-            JOptionPane.showMessageDialog(null, "Alguno de los vertices no existe");
-        } else {
-            MatrizAd[n1][n2] = recorrido;
-            MatrizAd[n2][n1] = recorrido;
-        }
-    }*/

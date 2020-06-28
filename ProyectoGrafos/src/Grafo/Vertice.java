@@ -9,7 +9,7 @@ package Grafo;
  *
  * @author Luis Stanislao
  */
-public class Vertice {
+public class Vertice {//Vertice se refiere a cada cliente y su informacion
 
     private String Nombre;
     private int NumVertice;

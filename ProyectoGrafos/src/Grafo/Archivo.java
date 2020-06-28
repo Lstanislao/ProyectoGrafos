@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -20,8 +19,8 @@ import java.util.logging.Logger;
  *
  * @author Luis Stanislao
  */
-public class Archivo {
-
+public class Archivo {//Clase que contiene funciones relacionadas con el archivo Txt
+    //Funcion que toma el grafo y todos sus vertices y rutas y los escribe en un txt 
     public static void EscribirGrafoEnTxt() {
         Grafo mygraph = Central.getGraph();
         int num = mygraph.getnVertices();
@@ -54,53 +53,34 @@ public class Archivo {
 
         }
     }
-
+    //Funcion que recolecta los clientes y los devuelve en el formano necesario para ser escrito en txt
     public static String Clientes() {
         Grafo mygraph = Central.getGraph();
         Vertice clientes[] = mygraph.getVertices();
         int num = mygraph.getnVertices();
         String cadenaClientes = "";
 
-        //antes
-//        for (int i = 0; i < num; i++) {
-//            if (i == num - 1) {
-//                cadenaClientes += Integer.toString(clientes[i].getNumVertice() + 1) + "," + clientes[i].getNombre() + "," + clientes[i].getUrb() + "," + clientes[i].getCalle();
-//            } else {
-//                cadenaClientes += Integer.toString(clientes[i].getNumVertice() + 1) + "," + clientes[i].getNombre() + "," + clientes[i].getUrb() + "," + clientes[i].getCalle() + "\n";
-//            }
-//        }
-        //ahora
         for (int i = 0; i < num; i++) {
             cadenaClientes += Integer.toString(clientes[i].getNumVertice() + 1)
                     + "," + clientes[i].getNombre() + "," + clientes[i].getUrb();
             if (!clientes[i].getCalle().equals("")) {
                 cadenaClientes += "," + clientes[i].getCalle();
-                System.out.println("tiene calle");
+                //System.out.println("tiene calle");
             }
             if (i != num - 1) {
                 cadenaClientes += "\n";
             }
         }
 
-        System.out.println(cadenaClientes);
         return cadenaClientes;
     }
-
+    //Recolecta los clientes y devuelve el String que se muestra en la interfaz
     public static String ClientesPantalla() {
         Grafo mygraph = Central.getGraph();
         Vertice clientes[] = mygraph.getVertices();
         int num = mygraph.getnVertices();
         String cadenaClientes = "Lista de Clientes:\n";
 
-        //antes
-//        for (int i = 0; i < num; i++) {
-//            if (i == num) {
-//                cadenaClientes = cadenaClientes + "ID: " + Integer.toString(clientes[i].getNumVertice() + 1) + " , " + clientes[i].getNombre() + " , " + clientes[i].getUrb() + " , " + clientes[i].getCalle();
-//            } else {
-//                cadenaClientes = cadenaClientes + "ID: " + Integer.toString(clientes[i].getNumVertice() + 1) + " , " + clientes[i].getNombre() + " , " + clientes[i].getUrb() + " , " + clientes[i].getCalle() + "\n";
-//            }
-//        }
-        //ahora
         for (int i = 0; i < num; i++) {
             cadenaClientes += "ID: " + Integer.toString(clientes[i].getNumVertice() + 1)
                     + " , " + clientes[i].getNombre() + " , " + clientes[i].getUrb();
@@ -111,7 +91,6 @@ public class Archivo {
                 cadenaClientes += "\n";
             }
         }
-        System.out.println(cadenaClientes);
         return cadenaClientes;
     }
 
@@ -126,11 +105,10 @@ public class Archivo {
                 }
             }
         }
-        System.out.println(caminos);
         return caminos;
     }
-
-    public static void copiarTxt(File archivoExterno, File archivoFijo) {//el que voy a copiar , donde lo quiero copiar
+    //Toma 2 archivos txt y copia el contenido de uno en el otro
+    public static void copiarTxt(File archivoExterno, File archivoFijo) {
         FileReader leer;
         BufferedReader almacenamiento;
         String cadena, texto = "";
@@ -151,10 +129,10 @@ public class Archivo {
                 escribir.close();
 
             } catch (IOException ex) {
-                Logger.getLogger(Ori.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Archivo.class.getName()).log(Level.SEVERE, null, ex);
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Ori.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Archivo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

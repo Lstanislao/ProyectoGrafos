@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  * @author Luis Stanislao
  */
 public class Central {
-
+    //En esta clase se tiene el grafo cargado actualmente y el txt con el que se esta trabajando
     public static Grafo graph = new Grafo(100);
     public static String Actual = "Enunciado.txt";
     public static boolean Iniciado = false;
@@ -48,75 +48,9 @@ public class Central {
         Central.Iniciado = Inciado;
     }
 
-    public static void CargarGrafo() {
-        //Grafo mygraph = Central.getGraph();
-        Grafo mygraph = new Grafo(100);
-        File miArchivo;
-        File ruta;
-        FileReader leer;
-        BufferedReader almacenamiento;
-        String nombre, calle, urb, linea, cadena[];
-        int v1, v2, distancia;
-
-        System.out.println(Actual);
-        miArchivo = new File(Actual);
-
-        try {
-            leer = new FileReader(miArchivo);
-            almacenamiento = new BufferedReader(leer);
-
-            try {
-                while ((linea = almacenamiento.readLine()) != null) {
-                    cadena = linea.split(",");
-                    nombre = cadena[1];
-                    urb = cadena[2];
-                    calle = cadena[3];
-                    System.out.println(nombre);
-
-                    nombre = nombre.substring(1);
-                    urb = urb.substring(1);
-                    calle = calle.substring(1);
-
-                    System.out.println(nombre + urb + calle);
-                    mygraph.NuevoV(nombre, calle, urb);
-                }
-
-            } catch (IOException ex) {
-                Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        ruta = new File(Actual.replace("CLIENTES", "CAMINOS"));
-
-        try {
-            leer = new FileReader(ruta);
-            almacenamiento = new BufferedReader(leer);
-
-            try {
-                while ((linea = almacenamiento.readLine()) != null) {
-
-                    cadena = linea.split(",");
-                    v1 = (Integer.parseInt(cadena[0].replaceAll(" ", ""))) - 1;
-                    v2 = (Integer.parseInt(cadena[1].replaceAll(" ", ""))) - 1;
-                    distancia = Integer.parseInt(cadena[2].replaceAll(" ", ""));
-                    mygraph.NuevoA(v1, v2, distancia);
-                }
-
-            } catch (IOException ex) {
-                Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        graph = mygraph;
-    }
-
+//Caraga el grafo a partir de un txt
     public static void CargarGrafo1() {
-        Grafo mygraph = new Grafo(100);
+        Grafo mygraph = new Grafo(1000);
         File miArchivo;
         File ruta;
         FileReader leer;
@@ -166,13 +100,17 @@ public class Central {
                 } else if (lineaCaminos == true) {
                     line = line.replace(", ", ",");
                     cadena = line.split(",");
-                    System.out.println(cadena[0]);
-                    System.out.println(cadena[1]);
-                    System.out.println(cadena[2]);
-                    v1 = Integer.parseInt(cadena[0]) - 1;
-                    v2 = Integer.parseInt(cadena[1]) - 1;
-                    distancia = Integer.parseInt(cadena[2]);
-                    mygraph.NuevoA(v1, v2, distancia);
+                    String vertice1=cadena[0];
+                    String vertice2=cadena[0];
+                    if(!vertice1.equals("") && !vertice2.equals(""))
+                    {
+                        
+                        v1 = Integer.parseInt(cadena[0]) - 1;
+                        v2 = Integer.parseInt(cadena[1]) - 1;
+                        distancia = Integer.parseInt(cadena[2]);
+                        mygraph.NuevoA(v1, v2, distancia);
+                        
+                    }
                 }
             }
 

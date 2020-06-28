@@ -78,7 +78,6 @@ public abstract class DibujarGrafo implements ViewerListener {
 
         graph.addAttribute("ui.stylesheet", estilo);
 
-        g.ImprimirTabla();
         /* A partir del grafo recibido agrego los vertices y aristas en un nuevo
         grafo que pertenece a la clase grafo de la libreria*/
         for (int i = 0; i < g.getnVertices(); i++) {

@@ -1,17 +1,16 @@
 clientes
-1,La empresa,La Urbina,Calle 11
+1,La empresa,La Urbina
 2,Pedro Pérez, Los Caobos,Calle A
 3,Luisa Betancourt,La Candelaria,Calle Alameda
 4,Antonio Sánchez,La Urbina,Calle 4
 5,Hector Berbe,Santa Mónica,Avenida Teresa de la Parra
-6,Norberto Rivas,El cafetal,Avenida Principal
+9,Norberto Rivas,El cafetal,Avenida Principal
 7,Marbelis Carvajal,Montaban,Calle 8
 8,Andrés Marval,Cumbres de Curumo,Calle 1
 9,Alba Añez,La Boyera,calle2
 10,Luís Salazar,San Bernardino,calle 3
-11,Rafael Pérez,Urb. EL Marqués,Cale 4
+11,Rafael Pérez,Urb. EL Marqués,calle 4
 12,Lázaro,Urb. Los Dos Caminos,calle 6
-13,Guillermo Sosa,Los Chorros,Ave 6
 caminos
 1,3,11
 2,3,3
@@ -31,7 +30,12 @@ caminos
 10,11,2
 7,12,6
 10,12,7
-4,13,7
-12,13,5
+
+
+
+
+
+
+
 
 

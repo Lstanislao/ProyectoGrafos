@@ -9,7 +9,7 @@ package Grafo;
  *
  * @author Luis Stanislao
  */
-public class Lista {
+public class Lista {//Clase lista y sus primitivas para tratarla como un pila y como una cola
 
     private Nodo pInicio;
     private Nodo pFinal;

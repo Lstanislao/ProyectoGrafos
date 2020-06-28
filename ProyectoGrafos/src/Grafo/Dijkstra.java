@@ -63,23 +63,13 @@ public class Dijkstra {
     de Dijkstra
      */
     public String RecuperarCamino(int v, String cadena) {
-        /*for(int i = 0; i<Cost.length; i++){
-            System.out.println("Cost[" + i + "]: " + Cost[i]);
-        }
-        System.out.println("");
-        
-        for (int i = 0; i<Visitados.length; i++){
-            System.out.println("Ultimo[" + i + "]: " + Visitados[i]);
-        }
-        System.out.println("");*/
+
         int anterior = Ultimo[v];
         if (v != Orig) {
             cadena = cadena + "," + v;
             cadena = RecuperarCamino(anterior, cadena);
-            //System.out.print(" -> V" + v); 
 
         } else {
-            //System.out.print("V" + Orig);
             cadena = cadena + ",0";
         }
         return cadena;

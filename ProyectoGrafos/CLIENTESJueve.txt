@@ -1,3 +1,0 @@
-1, Empresa Delivery, HQ Empresa, Calle Principal de la Empresa
-2, G, L, A
-3, A, U, C

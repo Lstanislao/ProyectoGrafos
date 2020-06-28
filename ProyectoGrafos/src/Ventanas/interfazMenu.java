@@ -22,7 +22,7 @@ public class interfazMenu extends javax.swing.JFrame {
     public interfazMenu() {
         boolean PrimeraVezInciado = Central.getIniciado();
         if (!PrimeraVezInciado) {
-            String archivoActual = Central.Actual;
+            String archivoActual = Central.getActual();
             File porDefecto = new File("ArchivoPorDefecto.txt");
             File actual = new File(archivoActual);
             Archivo.copiarTxt(actual, porDefecto);
