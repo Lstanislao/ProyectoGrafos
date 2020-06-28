@@ -5,13 +5,7 @@
  */
 package Ventanas;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import Grafo.*;
 import static Grafo.Archivo.VerificarFormatoArchivo;
 import static Grafo.Central.graph;
@@ -240,20 +234,7 @@ public class interfazMenu extends javax.swing.JFrame {
                     + "...[más caminos]...";
             JOptionPane.showMessageDialog(rootPane, mensaje);
         }
-        // Si no funciona bien lo que esta abajo es lo que estaba antes
 
-//        int cambiar=JOptionPane.showConfirmDialog(this,"Se guardaran los datos actuales en memeroia y se procedera a caragar el nuevo archivo. Desea seguir?");
-//        if(cambiar==0)
-//        {
-//            String archivoActual= Central.Actual;
-//            File actual = new File(archivoActual);    
-//            File porDefecto = new File("ArchivoPorDefecto.txt");
-//            File porCargarse = new File(nombreDelArchivoTxtSeleccionado);
-//            Archivo.copiarTxt(porDefecto,actual);
-//            Archivo.copiarTxt(porCargarse, porDefecto);
-//            Central.CargarGrafo1();
-//            Central.setActual(nombreDelArchivoTxtSeleccionado);
-//        }
 
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -269,31 +250,12 @@ public class interfazMenu extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
 
-        File archivoPorDefecto = new File("ArchivoPorDefecto.txt");
-        FileReader leer;
-        BufferedReader almacenamiento;
-        String cadena, texto = "";
+        String texto = Archivo.ClientesPantalla();
+        interfazDelivery a = new interfazDelivery(texto);
+        a.setVisible(true);
+        a.setLocationRelativeTo(null);
+        this.setVisible(false);
 
-        try {
-            leer = new FileReader(archivoPorDefecto);
-            almacenamiento = new BufferedReader(leer);
-
-            try {
-                while ((cadena = almacenamiento.readLine()) != null) {
-                    texto += cadena + "\n";
-                }
-                interfazDelivery a = new interfazDelivery(texto);
-                a.setVisible(true);
-                a.setLocationRelativeTo(null);
-                this.setVisible(false);
-
-            } catch (IOException ex) {
-                Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(interfazDelivery.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
     }//GEN-LAST:event_jButton8ActionPerformed
 

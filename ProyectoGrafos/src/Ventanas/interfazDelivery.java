@@ -6,11 +6,8 @@
 package Ventanas;
 
 import Grafo.*;
-import Grafo.DibujarGrafo.*;
 import static Grafo.DibujarGrafo.DibujarRutaMasCorta;
 import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -149,7 +146,7 @@ public class interfazDelivery extends javax.swing.JFrame {
         Salida.setEditable(false);
         jScrollPane1.setViewportView(Salida);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 370, 230));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 380, 230));
 
         jButtonMenuDelivery.setBackground(new java.awt.Color(255, 255, 255));
         jButtonMenuDelivery.setFont(new java.awt.Font("Silom", 1, 18)); // NOI18N
@@ -173,7 +170,7 @@ public class interfazDelivery extends javax.swing.JFrame {
         clientesRegistrados.setEditable(false);
         jScrollPane3.setViewportView(clientesRegistrados);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 340, 260));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 360, 260));
 
         jLabel7.setText("A continuación, indique el iD de su destino:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, -1, -1));

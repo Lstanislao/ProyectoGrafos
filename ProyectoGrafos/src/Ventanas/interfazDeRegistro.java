@@ -7,10 +7,8 @@ package Ventanas;
 
 import Grafo.Archivo;
 import Grafo.Central;
-import static Grafo.Central.graph;
 import Grafo.Grafo;
 import java.io.File;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,9 +31,7 @@ public class interfazDeRegistro extends javax.swing.JFrame {
     public interfazDeRegistro() {
         initComponents();
         this.setLocationRelativeTo(null);
-        //Grafo graph = Central.getGraph();
-        //int id = graph.getnVertices() + 1;
-        //idVertice1.setText(Integer.toString(id));
+
     }
 
     public interfazDeRegistro(String lista) {
